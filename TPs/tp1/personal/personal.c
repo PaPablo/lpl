@@ -65,17 +65,54 @@ void display_funciones(){
 	}
 }
 
-int crear_datos_empleado(t_datos_empleado *nuevo){
-	int funcion;
+int obtener_funcion(int *funcion){
 	do {
 		printf("Ingrese funcion del empleado\n");
 		display_funciones();
-		scanf("%d",&funcion);
-		if(!funcion) return 1;
-		printf("Usted ingreso la opcion %d, correspondiente a %s\n",funcion,((funcion>(FUNCIONES_EMPLEADOS-1)||(funcion<0))?"ninguna función":tipos_empleados[funcion]));
+		scanf("%d",funcion);
+		if(!(*funcion)) return FUNCTION_FAILURE;
+		printf("Usted ingreso la opcion %s\n",(((*funcion)>(FUNCIONES_EMPLEADOS-1)||((*funcion)<0))?"ninguna función":tipos_empleados[funcion]));
 	}while(confirma("Desea continuar?"));
+	return FUNCTION_SUCCESS;
+}
+
+int nuevo_datos_empleado(t_datos_empleado *nuevo){
+	int funcion;
+	if(funcion = obtener_funcion()) return FUNCTION_FAILURE;
 	nuevo->funcion = funcion;
-	return 0;
+	return FUNCTION_SUCCESS;
+}
+
+int obtener_nombre_oficina(char *nombre_oficina){
+	char *exit_option[] = {"salir","exit",NULL};
+	do {
+		printf("Ingrese nombre de la oficina\n");
+		scanf("%m[^\n]",&nombre_oficina);
+		if(check_option(nombre_oficina,exit_option)) return FUNCTION_FAILURE;
+		printf("Usted ha ingresado: %s\n",nombre_oficina);
+	}while(confirma("Desea ingresar otro nombre de oficina?"));
+	return FUNCTION_SUCCESS;
+}
+
+int obtener_personas_a_cargo(int *personas_a_cargo){
+	do {
+		printf("Ingrese cantidad de personas a cargo:\n");
+		scanf("%d",&personas_a_cargo);
+		if(!personas_a_cargo) return FUNCTION_FAILURE;
+		printf("Usted ha ingresado %d\n", personas_a_cargo);
+	} while(confirma("Desea ingresar el valor nuevamente?"));
+	return FUNCTION_SUCCESS;
+}
+
+
+int nuevo_datos_gerente(t_datos_gerente *nuevo){
+	char *nombre_oficina;
+	if(obtener_nombre_oficina(nombre_oficina)) return FUNCTION_FAILURE;
+
+	int personas_a_cargo;
+	if(obtener_personas_a_cargo(&personas_a_cargo)) return FUNCTION_FAILURE;
+
+	return FUNCTION_SUCCESS;
 }
 
 char *ingresarNombre(){
@@ -150,5 +187,5 @@ void mostrarMenu(Personal arreglo[], int *tam){
 		}
 	while(rta != 0);
 
-	return 0;
+	return FUNCTION_SUCCESS;
 }
