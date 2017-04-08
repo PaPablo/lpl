@@ -55,7 +55,14 @@ void listado_gerentes(Personal personales[], int tope);
 //ABM EMPLEADO
 int crear_datos_empleado(t_datos_empleado *nuevo);
 void modificar_datos_empleado(t_datos_empleado *empleado);
+int obtener_funcion(int *funcion);
 void display_funciones();
+int nuevo_datos_empleado(t_datos_empleado *nuevo);
+
+//ABM GERENTE
+int nuevo_datos_gerente(t_datos_gerente *nuevo);
+int obtener_personas_a_cargo(int *personas_a_cargo);
+int obtener_nombre_oficina(char *nombre_oficina);
 
 int nuevaPersona(t_persona *nuevo);
 
