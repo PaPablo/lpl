@@ -5,15 +5,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include "fechas.h"
+#include "tools/tools.h"
 
+#define FUNCIONES_EMPLEADOS 4
+#define FUNCTION_SUCCESS 0
+#define FUNCTION_FAILURE 0
 
 typedef enum {
-	EMPLEADO = 0,
+	EMPLEADO = 1,
 	GERENTE
 } t_cargo;
 
 typedef enum {
-	MAQUINISTA = 0,
+	MAQUINISTA = 1,
 	SECRETARIO,
 	CADETE
 } t_funcion_empleado;
@@ -44,5 +48,10 @@ typedef struct {
 void listado_personal(Personal personales[], int tope);
 void listado_empleados(Personal personales[], int tope);
 void listado_gerentes(Personal personales[], int tope);
+
+//ABM EMPLEADO
+int crear_datos_empleado(t_datos_empleado *nuevo);
+void modificar_datos_empleado(t_datos_empleado *empleado);
+void display_funciones();
 
 #endif //PERSONAL_H
