@@ -90,7 +90,9 @@ int nuevaPersona(t_persona *nuevo){
 		if((nuevo->nombre = ingresarNombre()) == NULL){
 			MEM_ERROR()
 		}
-		if(check_option(nuevo->nombre, exit_option)) return FUNCTION_FAILURE;
+		if(check_option(nuevo->nombre, exit_option)){
+			return FUNCTION_FAILURE;
+		}
 		printf("Ingresó el nombre %s\n", nuevo->nombre);
 	}while(!confirma("Desea continuar?"));
 
