@@ -6,6 +6,7 @@
 #include <string.h>
 #include "fechas.h"
 
+#define MEM_ERROR() {perror("***NO SE PUDO RESERVAR MEMORIA.***"); exit(1);} 
 
 typedef enum {
 	EMPLEADO = 0,
@@ -45,4 +46,8 @@ void listado_personal(Personal personales[], int tope);
 void listado_empleados(Personal personales[], int tope);
 void listado_gerentes(Personal personales[], int tope);
 
+
+int nuevaPersona(t_persona *nuevo);
+
+void mostrarMenu();
 #endif //PERSONAL_H
