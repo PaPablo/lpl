@@ -7,9 +7,12 @@
 #include "fechas.h"
 #include "tools/tools.h"
 
+
 #define FUNCIONES_EMPLEADOS 4
 #define FUNCTION_SUCCESS 0
 #define FUNCTION_FAILURE 0
+
+#define MEM_ERROR() {perror("***NO SE PUDO RESERVAR MEMORIA.***"); exit(1);}
 
 typedef enum {
 	EMPLEADO = 1,
@@ -49,9 +52,14 @@ void listado_personal(Personal personales[], int tope);
 void listado_empleados(Personal personales[], int tope);
 void listado_gerentes(Personal personales[], int tope);
 
+
 //ABM EMPLEADO
 int crear_datos_empleado(t_datos_empleado *nuevo);
 void modificar_datos_empleado(t_datos_empleado *empleado);
 void display_funciones();
+
+int nuevaPersona(t_persona *nuevo);
+
+void mostrarMenu();
 
 #endif //PERSONAL_H
