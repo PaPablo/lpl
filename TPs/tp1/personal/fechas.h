@@ -1,16 +1,20 @@
-#ifndef FECHAS_
-#define FECHAS_
+#ifndef FECHAS_H
+#define FECHAS_H
 
-#define TRUE 1
-#define FALSE 0
-typedef struct {
-	int dia;
-	int mes;
-	int anio;
-} Fecha;
+#include <stdio.h>
+#include <stdlib.h>
 
-int esBisiesto(int anio);
+#define MAX_ANIO 9999
+
+typedef struct{
+	unsigned int dia;
+	unsigned int mes;
+	unsigned int anio;
+}fecha_t;
+
 int cantDiasMes(int mes, int anio);
-int esFechaValida(Fecha f);
+int esBisiesto(int anio);
+int esFechaValida(fecha_t fecha);
+fecha_t nuevaFecha();
 
-#endif
+#endif //FECHAS_H

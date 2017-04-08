@@ -1,43 +1,51 @@
 #include "fechas.h"
-int esBisiesto(int anio){
-	if(!(anio % 4) && (anio % 100)){
-		return TRUE;
-	}
-	else {
-		return !(anio % 400);
-	}
-}
 
 int cantDiasMes(int mes, int anio){
-	switch(mes){
-		case 1: 
-		case 3:
-		case 5:
-		case 7:
-		case 8:
-		case 10:
-		case 12:
-			return 31;
-			break;
-		case 2:
-			return esBisiesto(anio) ? 29 : 28;
-			break;
-		default:
-			return ((mes<0)||(mes>12))?0:30;
-	}
+	int diasMeses[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+	
+	if(mes == 2 && esBisiesto(anio)) return 29;
+
+	return diasMeses[mes-1];
 }
 
-int esFechaValida(Fecha f){
-	// si el año es negativo, OUT
-	if(f.anio < 0) return 0;
+int esBisiesto(int anio){
+	return ((anio % 4 == 0) && (anio % 100 != 0)) ? 1 : ((anio % 400 == 0) && (anio != 3600)); 
+}
 
-	// si mes es negativo o mayor que doce, OUT
-	if((f.mes < 0) || (f.mes > 12)) return 0;
+int validarAnio(int anio){
+	return anio > 0 && anio <= MAX_ANIO;
+}
+
+int validarMes(int mes){
+	return mes >= 1 && mes <= 12;
+}
+
+int validarDia(int dia, int mes, int anio){
 	
-	// si dia es negativo o mayor a la cantidad de dias del mes... in
-	if((f.dia < 0) || (f.dia > cantDiasMes(f.mes, f.anio))) return 0;
-	// haha, NO, OUT
+	return ((dia > 0) && (dia <= (cantDiasMes(mes, anio)))); 
+}
 
-	// si llegué hasta acá, es porque es verdadero
-	return 1;
+int esFechaValida(fecha_t fecha){
+
+	return validarAnio(fecha.anio) && validarMes(fecha.mes) && validarDia(fecha.dia, fecha.mes, fecha.anio);
+}
+
+fecha_t nuevaFecha(){
+
+    fecha_t fecha;
+    while(1){
+        printf("Ingrese anio: ");
+        scanf("%d", &fecha.anio);
+        printf("\nIngrese mes: ");
+        scanf("%d", &fecha.mes);
+        printf("\nIngrese dia: ");
+        scanf("%d", &fecha.dia); 
+
+        if(!esFechaValida(fecha))
+            printf("Fecha ingresada incorrecta. Intente de nuevo\n");
+        else
+            break;
+    }
+    
+    return fecha;
 }

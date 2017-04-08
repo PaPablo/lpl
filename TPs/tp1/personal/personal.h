@@ -19,12 +19,12 @@ typedef enum {
 } t_funcion_empleado;
 
 typedef struct {
-	char nombre[50];
-	Fecha fecha_nac;
+	char *nombre;
+	fecha_t fecha_nac;
 } t_persona;
 
 typedef struct {
-	char nombre_oficina[100];
+	char *nombre_oficina;
 	int empleados_a_cargo;
 } t_datos_gerente;
 
