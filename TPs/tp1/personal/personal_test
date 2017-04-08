@@ -1,1 +1,0 @@
-gcc ej18.c -o ejecutables/ej18 && ./ejecutables/ej18
