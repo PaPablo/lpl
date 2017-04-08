@@ -31,7 +31,7 @@ int confirma(char *msg){
         sacado de stackoverflow, of course*/
         lowercase(line);
 
-        printf("LOWER: %s\n", line);
+
         if (check_option(line,options)) break;    
     }
 
