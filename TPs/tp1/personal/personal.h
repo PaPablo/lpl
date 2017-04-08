@@ -52,7 +52,6 @@ void listado_personal(Personal personales[], int tope);
 void listado_empleados(Personal personales[], int tope);
 void listado_gerentes(Personal personales[], int tope);
 
-
 //ABM EMPLEADO
 int crear_datos_empleado(t_datos_empleado *nuevo);
 void modificar_datos_empleado(t_datos_empleado *empleado);
@@ -61,5 +60,8 @@ void display_funciones();
 int nuevaPersona(t_persona *nuevo);
 
 void mostrarMenu();
+
+int nuevoPersonal(Personal arreglo[], int *tam);
+void mostrarMenu(Personal arreglo[], int *tam);
 
 #endif //PERSONAL_H
