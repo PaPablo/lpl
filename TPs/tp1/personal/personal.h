@@ -45,9 +45,6 @@ typedef struct {
 void listado_personal(Personal personales[], int tope);
 void listado_empleados(Personal personales[], int tope);
 void listado_gerentes(Personal personales[], int tope);
-
-
-int nuevaPersona(t_persona *nuevo);
-
-void mostrarMenu();
+int nuevoPersonal(Personal arreglo[], int *tam);
+void mostrarMenu(Personal arreglo[], int *tam);
 #endif //PERSONAL_H

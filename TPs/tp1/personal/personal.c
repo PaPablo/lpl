@@ -57,7 +57,7 @@ void listado_gerentes(Personal personales[], int tope){
 	}
 }
 
-char *nuevoNombre(){
+char *ingresarNombre(){
 	char *line;
 	scanf(" %50m[^\n]", &line);
 	return line;
@@ -66,7 +66,7 @@ char *nuevoNombre(){
 int nuevaPersona(t_persona *nuevo){
 	
 	do{
-		if((nuevo->nombre = nuevoNombre()) == NULL){
+		if((nuevo->nombre = ingresarNombre()) == NULL){
 			MEM_ERROR()
 		}
 		if(check_option(nuevo->nombre, exit_option)) return FUNCTION_FAILURE;
@@ -75,6 +75,11 @@ int nuevaPersona(t_persona *nuevo){
 
 	do{
 		nuevo->fecha_nac = nuevaFecha();
+
+		if(nuevo->fecha_nac.dia == 0 
+			|| nuevo->fecha_nac.mes == 0
+			|| nuevo->fecha_nac.anio == 0) return FUNCTION_FAILURE;
+
 		printf("Ingresó la fecha %d/%d/d\n", 
 			nuevo->fecha_nac.dia, 
 			nuevo->fecha_nac.mes, 
@@ -85,7 +90,19 @@ int nuevaPersona(t_persona *nuevo){
 }
 
 
-void mostrarMenu(){
+int nuevoPersonal(Personal arreglo[], int *tam){
+
+	Personal nuevo;
+	if(nuevaPersona(&nuevo.datos_personales) == FUNCTION_SUCCESS 
+		&& ingresarCargo(&nuevo.cargo) == FUNCTION_SUCCESS
+		&& ingresarInfoCargo(&nuevo.cargo, &nuevo.info_adicional) == FUNCTION_SUCCESS){
+		arreglo[(*tam)++] = nuevo;
+	}
+
+	return FUNCTION_SUCCESS;
+}
+
+void mostrarMenu(Personal arreglo[], int *tam){
 
 	int rta = 0;
 	do{
@@ -93,6 +110,23 @@ void mostrarMenu(){
 		printf("2. Mostrar listado completo\n");
 		printf("3. Mostrar listado de empleados\n");
 		printf("4. Mostrar listado de gerentes\n");
+
+		scanf("%d", &rta);
+
+		switch(rta){
+			case 1:
+				nuevoPersonal(arreglo, tam);
+				break;
+			case 2:
+				listado_personal(arreglo, tam);
+				break;
+			case 3:
+				listado_empleados(arreglo, tam);
+				break;
+			case 4:
+				listado_gerentes(arreglo, tam);
+			default: break;
+		}
 	while(rta != 0);
 
 	return 0;
