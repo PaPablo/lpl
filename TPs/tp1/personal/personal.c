@@ -6,26 +6,35 @@ char *tipo_cargo[] = {"EMPLEADO", "GERENTE"};
 char *exit_option[] = {"salir","exit",NULL};
 
 void print_encabezado_personal(){
-	printf("NOMBRE\t\t|DIA\t|MES\t|AÑO\t|CARGO\n");
-	printf("------------------------------------------------|\n");
+	printf("NOMBRE");
+	for(int i = 0; i < 50 - strlen("NOMBRE"); i++) printf(" ");
+	printf("|DIA\t|MES\t|AÑO\t|CARGO\n");
+	printf("------------------------------------------------------------------------------\n");
 }
 
 void print_encabezado_empleado(){
-	printf("NOMBRE\t\t|DIA\t|MES\t|AÑO\t|FUNCION\n");
-	printf("--------------------------------------------------------------------\n");
+	printf("NOMBRE");
+	for(int i = 0; i < 50 - strlen("NOMBRE"); i++) printf(" ");
+	printf("|DIA\t|MES\t|AÑO\t|FUNCION\n");
+	printf("--------------------------------------------------------------------------------\n");
 }
 
 void print_encabezado_gerente(){
-	printf("NOMBRE\t\t|DIA\t|MES\t|AÑO\t|NOMBRE DE OFICINA\t|EMPLEADOS A CARGO\n");
-	printf("--------------------------------------------------------------------------------\n");
+	printf("NOMBRE");
+	for(int i = 0; i < 50 - strlen("NOMBRE"); i++) printf(" ");
+	printf("|DIA\t|MES\t|AÑO\t|NOMBRE DE OFICINA");
+	for(int j = 0; j < 50 - strlen("NOMBRE DE OFICINA"); j++) printf(" ");
+	printf("|EMPLEADOS A CARGO\n");
+	printf("---------------------------------------------------------------------------------------------------------------------------------------------\n");
 }
 
 void listado_personal(Personal personales[], int tope){
 	clear();
 	print_encabezado_personal();
 	for(int i = 0; i < tope; i++){
-		printf("%s\t\t|%d\t|%d\t|%d\t|%s\n",
-			personales[i].datos_personales.nombre,
+		printf("%s", personales[i].datos_personales.nombre);
+		for(int j = 0; j < 50-strlen(personales[i].datos_personales.nombre);j++) printf(" ");
+		printf("|%d\t|%d\t|%d\t|%s\n",
 			personales[i].datos_personales.fecha_nac.dia,
 			personales[i].datos_personales.fecha_nac.mes,
 			personales[i].datos_personales.fecha_nac.anio,
@@ -39,8 +48,9 @@ void listado_empleados(Personal personales[], int tope){
 	print_encabezado_empleado();
 	for(int i = 0; i < tope; i++){
 		if(personales[i].cargo==EMPLEADO){
-			printf("%s\t\t|%d\t|%d\t|%d\t|%s\n",
-				personales[i].datos_personales.nombre,
+			printf("%s", personales[i].datos_personales.nombre);
+			for(int j = 0; j < 50-strlen(personales[i].datos_personales.nombre);j++) printf(" ");
+			printf("|%d\t|%d\t|%d\t|%s\n",
 				personales[i].datos_personales.fecha_nac.dia,
 				personales[i].datos_personales.fecha_nac.mes,
 				personales[i].datos_personales.fecha_nac.anio,
@@ -55,13 +65,15 @@ void listado_gerentes(Personal personales[], int tope){
 	print_encabezado_gerente();
 	for(int i = 0; i < tope; i++){
 		if(personales[i].cargo==GERENTE){
-			printf("%s\t\t|%d\t|%d\t|%d\t|%s\t\t\t|%d\n",
-				personales[i].datos_personales.nombre,
+			printf("%s", personales[i].datos_personales.nombre);
+			for(int j = 0; j < 50-strlen(personales[i].datos_personales.nombre);j++) printf(" ");
+			printf("|%d\t|%d\t|%d\t|",
 				personales[i].datos_personales.fecha_nac.dia,
 				personales[i].datos_personales.fecha_nac.mes,
-				personales[i].datos_personales.fecha_nac.anio,
-				personales[i].info_adicional.datos_gerente.nombre_oficina,
-				personales[i].info_adicional.datos_gerente.empleados_a_cargo);
+				personales[i].datos_personales.fecha_nac.anio);
+			printf("%s", personales[i].info_adicional.datos_gerente.nombre_oficina);
+			for(int j = 0; j < 50-strlen(personales[i].info_adicional.datos_gerente.nombre_oficina);j++) printf(" ");
+			printf("|%d\n", personales[i].info_adicional.datos_gerente.empleados_a_cargo);
 		}
 	}
 	GET_CHAR();
@@ -107,9 +119,11 @@ int obtener_nombre_oficina(char **nombre_oficina){
 
 	do {
 		printf("Ingrese nombre de la oficina  (ingrese \"salir\" o \"exit\" para salir)\n");
-		scanf(" %100m[^\n]", nombre_oficina);
+		scanf(" %50m[^\n]", nombre_oficina);
 		if(*nombre_oficina == NULL){
-			//free(nombre_oficina);
+
+			free(nombre_oficina);
+
 			MEM_ERROR();
 		}
 		if(check_option(*nombre_oficina,exit_option)) return FUNCTION_FAILURE;
@@ -198,7 +212,9 @@ int nuevaPersona(t_persona *nuevo){
 			MEM_ERROR()
 		}
 		if(check_option(nuevo->nombre, exit_option)){
-			//free(nuevo->nombre)
+
+			free(nuevo->nombre);
+
 			return FUNCTION_FAILURE;
 		}
 		printf("Ingresó el nombre %s\n", nuevo->nombre);
