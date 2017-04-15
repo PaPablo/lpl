@@ -6,7 +6,7 @@
 #include <string.h>
 #include "fechas.h"
 
-#define MEM_ERROR() {perror("***NO SE PUDO RESERVAR MEMORIA.***"); exit(1);} 
+#define MEM_ERROR() {perror("***NO SE PUDO RESERVAR MEMORIA.***"); exit(1);}
 
 typedef enum {
 	EMPLEADO = 0,
