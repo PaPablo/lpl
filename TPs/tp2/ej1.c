@@ -1,38 +1,3 @@
-<<<<<<< HEAD
-#include <stdio.h>
-#include <stdlib.h>
-
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
-int main(int argc, char *argv[]) {
-	printf("Hello World!\n");
-	return 0;
-}
-
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-=======
 #include <stdio.h>
 
 typedef int (* swaping)(void *a, void*b);
@@ -75,4 +40,4 @@ int main(int argc, char const *argv[])
 
 	return 0;
 }
->>>>>>> 255f99cb7d14a3e59b12376def76dc6fe776baef
+
