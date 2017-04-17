@@ -1,7 +1,7 @@
 #include "herramientas.h"
 #define SALIDA "salir"
 #define clear() printf("\033[H\033[J")
-
+#define GETCHAR() getchar();getchar()
 //herramientas.c
 extern char *palabras_reservadas[];
 
@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
 
 		if(archivo == NULL){
 			printf("*** NO SE PUDO ABRIR EL ARCHIVO \"%s\"***\n", nombre);
-			return 1;
+            GETCHAR();
 		}else break;
 	}
 
