@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
 		archivo = fopen(nombre,"r");
 
 		if(archivo == NULL){
-			printf("*** NO SE PUDO ABRIR EL ARCHIVO %s***", nombre);
+			printf("*** NO SE PUDO ABRIR EL ARCHIVO \"%s\"***\n", nombre);
 			return 1;
 		}else break;
 	}
@@ -61,18 +61,20 @@ int main(int argc, char const *argv[])
 
 	clear();
 
-	printf("\nCantidad de líneas leídas: %d\n\n", lineas);
-	printf("Palabras reservadas encontradas:\n");
+	printf("Cantidad de líneas leídas: %d\n\n", lineas);
+	if(lista_ocurrencias.cant_palabras <= 0){
+        printf("No se encontraron palabras reservadas en el archivo \"%s\"\n", nombre);
+    }else{
+        printf("Palabras reservadas encontradas en el archivo \"%s\":\n", nombre);
 
-	
-	for(int i = 0; i < lista_ocurrencias.cant_palabras; i++){
-		printf("%s\t: ", lista_ocurrencias.arreglo[i].palabra);
-		for(int j = 0; j < lista_ocurrencias.arreglo[i].cant_ocurrencias; j++){
-			printf("%d ", lista_ocurrencias.arreglo[i].ocurrencias[j]);
-		}
-		printf("\n");
-	}
-
+	    for(int i = 0; i < lista_ocurrencias.cant_palabras; i++){
+		    printf("%s\t: ", lista_ocurrencias.arreglo[i].palabra);
+		    for(int j = 0; j < lista_ocurrencias.arreglo[i].cant_ocurrencias; j++){
+			    printf("%d ", lista_ocurrencias.arreglo[i].ocurrencias[j]);
+		    }
+		    printf("\n");
+	    }
+    }
 	limpiar(&lista_ocurrencias);
 	return 0;
 }
