@@ -9,25 +9,3 @@ int main(int argc, char *argv[]) {
 }
 
 case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina
-case hola mundo break for la situación\nprueba return break if final\nif termina

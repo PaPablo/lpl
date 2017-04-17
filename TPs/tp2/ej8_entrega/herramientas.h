@@ -21,7 +21,7 @@ typedef struct
 int cantPalabras();
 int inicializar_arreglo(int *arreglo, int tope);
 int esPalabraReservada(char *cadena);
-int registrarOcurrencia(char *palabra, t_lista lista);
+int registrarOcurrencia(char *palabra, int linea, t_lista *lista);
 void limpiar(t_lista lista);
 
 

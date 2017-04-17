@@ -24,21 +24,73 @@ int esPalabraReservada(char *cadena){
 	return -1;
 }
 
-int yaRegistrada(char *l, t_lista lista){
+int yaRegistrada(char *p, t_lista *lista){
     /*chequeamos si la palabra reservada ya tiene un nodo en la lista*/
-    for(int i = 0; i < lista.cant_palabras; i++){
-
+    for(int i = 0; i < lista->cant_palabras; i++){
+    	if (strcmp(p, lista->arreglo[i].palabra) == 0){
+    		return i;
+    	}
     }
 
-    return 0;
+    return -1;
 }
 
-int registrarOcurrencia(char *palabra, t_lista lista){
+int nuevaPalabra(t_palabra *nodo, char *palabra){
+	nodo->palabra = (char *)malloc(strlen(palabra) + 1);
+	if(nodo->palabra == NULL) return -1;
+	strcpy(nodo->palabra, palabra);
+
+	nodo->ocurrencias = (int *)malloc(sizeof(int));
+	if(nodo->ocurrencias == NULL) return -1;
+
+	nodo->cant_ocurrencias = 0;
+	return 0;
+}
+int registrarOcurrencia(char *palabra, int linea, t_lista *lista){
 	/*Si la palabra ya está registrada, incrementamos su contador de ocurrencias
 	y almacenamos la línea en la que se registró
 	Si no está registrada, tenemos que crearle un nodo nuevo, inicializar su contador a 1
 	y almacenar la línea en la que se registró (crear también el arreglo de entero para almacenar las líneas)*/
-	//if(yaRegistrada(palabra, lista))
+	int pos;
+	if((pos = yaRegistrada(palabra, lista)) == -1){
+		//se registra una nueva palabra, se incrementa el contador
+		lista->cant_palabras++;
+
+		t_palabra nuevo;
+		//se inicializa el nodo
+		if((nuevaPalabra(&nuevo, palabra)) == -1){
+			perror("*** ERROR DE MEMORIA ***");
+			return -1;
+		}
+
+		//se reserva espacio para el nuevo nodo
+		t_palabra *tmp = (t_palabra *)realloc(lista->arreglo, lista->cant_palabras * sizeof(t_palabra));
+		if (tmp == NULL){
+			perror("*** ERROR DE MEMORIA ***");
+			return -1;
+		}
+
+		//se almacena el nuevo nodo
+		lista->arreglo = tmp;
+		pos = (lista->cant_palabras) - 1;
+		lista->arreglo[pos] = nuevo;
+	}
+
+	//se incrementa la cantidad de veces que apareció la palabra
+	//pos tiene la posicion del nodo en el arreglo de la palabra deseada
+	lista->arreglo[pos].cant_ocurrencias++;
+	//se reserva espacio para almacenar la línea en la que apareció
+	int *tmp = (int *)realloc(lista->arreglo[pos].ocurrencias, lista->arreglo[pos].cant_ocurrencias * sizeof(int));
+	
+	if (tmp == NULL){
+		perror("*** ERROR DE MEMORIA ***");
+		return -1;
+	}
+
+	//se almacena la línea en la que apareció
+	lista->arreglo[pos].ocurrencias = tmp;
+	lista->arreglo[pos].ocurrencias[(lista->arreglo[pos].cant_ocurrencias) - 1] = linea+1;
+
 
 	return 0;
 }

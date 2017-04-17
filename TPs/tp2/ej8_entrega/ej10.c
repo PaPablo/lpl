@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
 		*token,
 		delim[] = " \t(){};\n!=";
 
-	char *nombre = "ej1.c";
+	char *nombre = "ejemplo.c";
 	archivo = fopen(nombre,"r");
 
 	if(archivo == NULL){
@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
 		while(token != NULL){
 
 			if((pos_reservada = esPalabraReservada(token)) != -1){
-				if ((registrarOcurrencia(palabras_reservadas[pos_reservada], lista_ocurrencias)) == -1){
+				if ((registrarOcurrencia(palabras_reservadas[pos_reservada], lineas, &lista_ocurrencias)) == -1){
 					limpiar(lista_ocurrencias);
 					return 1;
 				}
@@ -51,14 +51,16 @@ int main(int argc, char const *argv[])
 	}
 
 	printf("\nCantidad de líneas leídas: %d\n\n", lineas);
+	printf("Palabras reservadas encontradas:\n");
 
-	/*
-	for(int i = 0; i < lista.cant_palabras; i++){
-		printf("%s\t: \n", lista.arreglo[i].palabra);
-		for(int j = 0; j < lista.arreglo[i].cant_ocurrencias; j++){
-			printf("%d ", lista.arreglo[i].ocurrencias[j]);
+	
+	for(int i = 0; i < lista_ocurrencias.cant_palabras; i++){
+		printf("%s\t: ", lista_ocurrencias.arreglo[i].palabra);
+		for(int j = 0; j < lista_ocurrencias.arreglo[i].cant_ocurrencias; j++){
+			printf("%d ", lista_ocurrencias.arreglo[i].ocurrencias[j]);
 		}
-	}*/
+		printf("\n");
+	}
 
 	limpiar(lista_ocurrencias);
 	return 0;
