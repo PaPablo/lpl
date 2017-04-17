@@ -1,2 +1,2 @@
-prueba: ej10.c herramientas.c
-	gcc -o prueba ej10.c herramientas.c -I.
+prueba: main.c herramientas.c
+	gcc -o prueba main.c herramientas.c -I.

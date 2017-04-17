@@ -1,5 +1,6 @@
 #include "herramientas.h"
-
+#define SALIDA "salir"
+#define clear() printf("\033[H\033[J")
 
 //herramientas.c
 extern char *palabras_reservadas[];
@@ -18,13 +19,21 @@ int main(int argc, char const *argv[])
 		*token,
 		delim[] = " \t(){};\n!=";
 
-	char *nombre = "ejemplo.c";
-	archivo = fopen(nombre,"r");
+	char *nombre;
+	while(1){
+		clear();
+		printf("Ingrese el nombre del archivo (ingrese \"salir\" para salir): ");
+		scanf(" %m[^\n]", &nombre);
+		if(strcmp(nombre, SALIDA) == 0) return 0;
 
-	if(archivo == NULL){
-		printf("*** NO SE PUDO ABRIR EL ARCHIVO %s***", nombre);
-		return 1;
+		archivo = fopen(nombre,"r");
+
+		if(archivo == NULL){
+			printf("*** NO SE PUDO ABRIR EL ARCHIVO %s***", nombre);
+			return 1;
+		}else break;
 	}
+
 
 	int lineas = 0;
 	int pos_reservada;
@@ -49,6 +58,8 @@ int main(int argc, char const *argv[])
 		lineas++;
 
 	}
+
+	clear();
 
 	printf("\nCantidad de líneas leídas: %d\n\n", lineas);
 	printf("Palabras reservadas encontradas:\n");
