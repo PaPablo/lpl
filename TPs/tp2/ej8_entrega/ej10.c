@@ -38,7 +38,7 @@ int main(int argc, char const *argv[])
 
 			if((pos_reservada = esPalabraReservada(token)) != -1){
 				if ((registrarOcurrencia(palabras_reservadas[pos_reservada], lineas, &lista_ocurrencias)) == -1){
-					limpiar(lista_ocurrencias);
+					limpiar(&lista_ocurrencias);
 					return 1;
 				}
 			}
@@ -62,6 +62,6 @@ int main(int argc, char const *argv[])
 		printf("\n");
 	}
 
-	limpiar(lista_ocurrencias);
+	limpiar(&lista_ocurrencias);
 	return 0;
 }

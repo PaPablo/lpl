@@ -95,6 +95,9 @@ int registrarOcurrencia(char *palabra, int linea, t_lista *lista){
 	return 0;
 }
 
-void limpiar(t_lista lista){
-
+void limpiar(t_lista *lista){
+	for(int i = 0; i < lista->cant_palabras; i++){
+		free(lista->arreglo[i].ocurrencias);
+		free(lista->arreglo[i].palabra);
+	}
 }
