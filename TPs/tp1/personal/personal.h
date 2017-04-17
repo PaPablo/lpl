@@ -7,12 +7,15 @@
 #include "fechas.h"
 #include "tools/tools.h"
 
+<<<<<<< HEAD
 #define FUNCIONES_EMPLEADOS 3
 #define FUNCTION_SUCCESS 0
 #define FUNCTION_FAILURE 1
 
 #define clear() printf("\033[H\033[J")
 #define GET_CHAR() getchar();getchar();
+=======
+>>>>>>> 255f99cb7d14a3e59b12376def76dc6fe776baef
 #define MEM_ERROR() {perror("***NO SE PUDO RESERVAR MEMORIA.***"); exit(1);}
 
 typedef enum {
