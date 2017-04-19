@@ -1,0 +1,9 @@
+
+
+La implementación de este ejercicio utiliza la función getline()
+
+
+Grupo:
+
+	SERRUYA ALOISI, Luciano
+	TOLEDO MARGALEF, Pablo

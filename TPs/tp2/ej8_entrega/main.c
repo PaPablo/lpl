@@ -24,14 +24,17 @@ int main(int argc, char const *argv[])
 		clear();
 		printf("Ingrese el nombre del archivo (ingrese \"salir\" para salir): ");
 		scanf(" %m[^\n]", &nombre);
-		if(strcmp(nombre, SALIDA) == 0) return 0;
+		
+		if(strcmp(nombre, SALIDA) == 0) 
+			return 0;
 
 		archivo = fopen(nombre,"r");
 
 		if(archivo == NULL){
 			printf("*** NO SE PUDO ABRIR EL ARCHIVO \"%s\"***\n", nombre);
             GETCHAR();
-		}else break;
+		}else 
+			break;
 	}
 
 
