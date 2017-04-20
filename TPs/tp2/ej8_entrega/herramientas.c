@@ -9,6 +9,7 @@ int cantPalabras(){
 }
 
 int esPalabraReservada(char *cadena){
+
 	for(int i = 0; i < cantPalabras(); i++){
 		if(!strcmp(cadena, palabras_reservadas[i]))
 			return i;	
@@ -93,4 +94,5 @@ void limpiar(t_lista *lista){
 		free(lista->arreglo[i].ocurrencias);
 		free(lista->arreglo[i].palabra);
 	}
+    free(lista->arreglo);
 }
