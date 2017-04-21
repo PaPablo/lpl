@@ -18,6 +18,13 @@ typedef struct
 	int cant_palabras;
 }t_lista;
 
+#define SALIDA "salir"
+#define MAX_CHAR 256
+
+#define MEMORY_ERROR() perror("*** ERROR DE MEMORIA ***");
+#define clear() printf("\033[H\033[J")
+#define GETCHAR() getchar();getchar()
+
 int esPalabraReservada(char *cadena);
 int registrarOcurrencia(char *palabra, int linea, t_lista *lista);
 void limpiar(t_lista *lista);

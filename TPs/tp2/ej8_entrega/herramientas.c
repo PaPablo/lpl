@@ -30,14 +30,13 @@ int yaRegistrada(char *p, t_lista *lista){
 }
 
 int nuevaPalabra(t_palabra *nodo, char *palabra){
-	nodo->palabra = (char *)malloc(strlen(palabra) + 1);
-	if(nodo->palabra == NULL) return -1;
+	if ((nodo->palabra = (char *)malloc(strlen(palabra) + 1)) == NULL) return -1;
 	strcpy(nodo->palabra, palabra);
 
-	nodo->ocurrencias = (int *)malloc(sizeof(int));
-	if(nodo->ocurrencias == NULL) return -1;
+	if ((nodo->ocurrencias = (int *)malloc(sizeof(int))) == NULL) return -1;
 
 	nodo->cant_ocurrencias = 0;
+	
 	return 0;
 }
 int registrarOcurrencia(char *palabra, int linea, t_lista *lista){
@@ -53,14 +52,14 @@ int registrarOcurrencia(char *palabra, int linea, t_lista *lista){
 		t_palabra nuevo;
 		//se inicializa el nodo
 		if((nuevaPalabra(&nuevo, palabra)) == -1){
-			perror("*** ERROR DE MEMORIA ***");
+			MEMORY_ERROR();
 			return -1;
 		}
 
 		//se reserva espacio para el nuevo nodo
 		t_palabra *tmp = (t_palabra *)realloc(lista->arreglo, lista->cant_palabras * sizeof(t_palabra));
 		if (tmp == NULL){
-			perror("*** ERROR DE MEMORIA ***");
+			MEMORY_ERROR();
 			return -1;
 		}
 
@@ -77,7 +76,7 @@ int registrarOcurrencia(char *palabra, int linea, t_lista *lista){
 	int *tmp = (int *)realloc(lista->arreglo[pos].ocurrencias, lista->arreglo[pos].cant_ocurrencias * sizeof(int));
 	
 	if (tmp == NULL){
-		perror("*** ERROR DE MEMORIA ***");
+		MEMORY_ERROR();
 		return -1;
 	}
 

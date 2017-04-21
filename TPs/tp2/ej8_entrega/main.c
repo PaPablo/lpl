@@ -1,25 +1,26 @@
 #include "herramientas.h"
-#define SALIDA "salir"
-#define clear() printf("\033[H\033[J")
-#define GETCHAR() getchar();getchar()
+
 //herramientas.c
 extern char *palabras_reservadas[];
 
 int main(int argc, char const *argv[])
 {
 	
-	//int ocurrencias[MAX_PALABRAS_RESERVADAS];
-	//inicializar_arreglo(ocurrencias,MAX_PALABRAS_RESERVADAS);
 	t_lista lista_ocurrencias;
 	lista_ocurrencias.cant_palabras = 0;
 	FILE *archivo;
-	size_t len = 0;
 
-	char *buff = NULL,
-		*token,
-		delim[] = " \t(){};\n!=";
+	char 	*buff,
+			*token,
+			*nombre,
+			delim[] = " \t(){};\n!=";
 
-	char *nombre;
+	//reservamos espacio para MAX_CHAR caracteres más el '\0'
+	if((buff = (char *)malloc((MAX_CHAR + 1) * sizeof(char))) == NULL){
+		MEMORY_ERROR();
+		fclose(archivo);
+	}
+
 	while(1){
 		clear();
 		printf("Ingrese el nombre del archivo (ingrese \"salir\" para salir): ");
@@ -38,12 +39,14 @@ int main(int argc, char const *argv[])
 	}
 
 
+
 	int lineas = 0;
 	int pos_reservada;
 	if(archivo == NULL)
 		exit(EXIT_FAILURE);
 
-	while((getline(&buff, &len, archivo)) != -1){
+
+	while((fgets(buff, MAX_CHAR + 1, archivo)) != NULL){
 		token = strtok(buff, delim);
 
 		while(token != NULL){
@@ -66,18 +69,22 @@ int main(int argc, char const *argv[])
 
 	printf("Cantidad de líneas leídas: %d\n\n", lineas);
 	if(lista_ocurrencias.cant_palabras <= 0){
-        printf("No se encontraron palabras reservadas en el archivo \"%s\"\n", nombre);
+        printf("No se encontraron palabras reservadas en el archivo \"%s\"\n\n", nombre);
     }else{
         printf("Palabras reservadas encontradas en el archivo \"%s\":\n", nombre);
 
 	    for(int i = 0; i < lista_ocurrencias.cant_palabras; i++){
-		    printf("%s\t: ", lista_ocurrencias.arreglo[i].palabra);
+		    printf("%-10s: ", lista_ocurrencias.arreglo[i].palabra);
 		    for(int j = 0; j < lista_ocurrencias.arreglo[i].cant_ocurrencias; j++){
-			    printf("%d ", lista_ocurrencias.arreglo[i].ocurrencias[j]);
+			    printf("%-3d", lista_ocurrencias.arreglo[i].ocurrencias[j]);
 		    }
 		    printf("\n");
 	    }
     }
+
+    fclose(archivo);
+    free(buff);
 	limpiar(&lista_ocurrencias);
+
 	return 0;
 }
