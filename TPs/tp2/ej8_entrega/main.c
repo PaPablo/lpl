@@ -8,8 +8,6 @@ extern char *palabras_reservadas[];
 int main(int argc, char const *argv[])
 {
 	
-	//int ocurrencias[MAX_PALABRAS_RESERVADAS];
-	//inicializar_arreglo(ocurrencias,MAX_PALABRAS_RESERVADAS);
 	t_lista lista_ocurrencias;
 	lista_ocurrencias.cant_palabras = 0;
 	FILE *archivo;
@@ -40,8 +38,6 @@ int main(int argc, char const *argv[])
 
 	int lineas = 0;
 	int pos_reservada;
-	if(archivo == NULL)
-		exit(EXIT_FAILURE);
 
 	while((getline(&buff, &len, archivo)) != -1){
 		token = strtok(buff, delim);

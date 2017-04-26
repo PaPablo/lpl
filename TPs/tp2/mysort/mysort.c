@@ -48,14 +48,14 @@ int main(int argc, char const *argv[])
 
 	printf("***ANTES DE ORDENAR***\n\n");
 	for(int j = 0; j < i; j++){
-		printf("%-3d\t%s\n", j, arreglo[j]);
+		printf("%-5d%s\n", j, arreglo[j]);
 	}
 
 	qsort(arreglo, i, sizeof(char *), comparaCadenas);
 
 	printf("\n\n***DESPUES DE ORDENAR***\n\n");
 	for(int j = 0; j < i; j++){
-		printf("%-3d\t%s\n", j, arreglo[j]);
+		printf("%-5d%s\n", j, arreglo[j]);
 	}
 
 	limpiar(arreglo, i);

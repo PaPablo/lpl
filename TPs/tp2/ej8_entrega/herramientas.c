@@ -1,7 +1,7 @@
 #include "herramientas.h"
 
 char *palabras_reservadas[] = 	{"break","case","default","do",
-								"else","for","if","return","switch",
+                                        "else","for","if","return","switch",
 								"void","while","exit","static","extern"};
 
 int cantPalabras(){
@@ -35,7 +35,10 @@ int nuevaPalabra(t_palabra *nodo, char *palabra){
 	strcpy(nodo->palabra, palabra);
 
 	nodo->ocurrencias = (int *)malloc(sizeof(int));
-	if(nodo->ocurrencias == NULL) return -1;
+	if(nodo->ocurrencias == NULL){
+        free(nodo->palabra);
+        return -1;
+    }
 
 	nodo->cant_ocurrencias = 0;
 	return 0;
