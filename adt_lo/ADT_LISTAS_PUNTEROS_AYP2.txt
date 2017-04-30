@@ -1,0 +1,277 @@
+tipoClave = ... //tipo de la clave a almacenar
+tipoInfo = ...  //tipo del dato a almacenar
+tipoNodo: registro
+tipoPunt: ^tipoNodo
+tipoNodo = registro
+	clave: tipoClave
+	info: tipoInfo
+	sig: tipoPunt
+Fin Registro
+	
+tipoLista = registro
+	long: entero
+	lista: tipoPunt
+Fin Registro
+	
+	
+Procedimiento crear()
+{Crea una lista
+Precondiciones: -
+Postcondiciones: l = L y L está vacía
+Excepciones: -}
+
+INICIO
+
+	l.long <- 0
+	l.lista <- null
+	
+FIN
+
+
+Procedimiento insertar (E/S l: tipoLista; E k: tipoClave ; E i: tipoInfo)
+{Agrega un elemento a la lista dada su clave e información
+Precondiciones: l = L y k = K y i = I
+Postcondiciones: l = L1 y L1 es L con el elemento con clave K e información I agregado y L1
+está ordenada
+Excepciones: listaLlena – claveExiste}
+
+VAR
+	aux, ant, p: tipoPunt
+	
+INICIO
+	p <- l.lista
+	
+	Mientras ((p <> null) y (k > p^.clave)) hacer
+		ant <- p
+		p <- p^.sig
+	Fin Mientras
+	
+	Si ((p <> null) y (k = p^.clave)) entonces
+		lanzar claveExiste
+	Si no
+		aux <- nuevo()
+		aux^.clave <- k
+		aux^.info <- i
+		aux^.sig <- p
+		Si (p <> l.lista) entonces
+			ant^.sig <- aux
+		Si no
+			l.lista <- aux
+		Fin Si
+		l.long <- l.long + 1
+	Fin Si
+
+Excepciones
+	cuando errorEnMemoria => lanzar listaLlena
+FIN
+
+
+procedimiento suprimir (E/S l : tipoLista; E k : tipoClave)
+{Elimina un elemento de la lista dada su clave
+Precondiciones: l = L y k = K
+Postcondiciones: l = L1 y L1 es L sin el elemento con clave K y L1 está ordenada
+Excepciones: claveNoExiste}
+
+VAR
+	ant, p: tipoPunt
+	
+INICIO
+
+	p <- l.lista
+	
+	Mientras ((p <> null) y (k > p^.clave)) hacer
+		ant <- p
+		p <- p^.sig
+	Fin Mientras
+	
+	Si (((p <> null) y (k < p^.clave)) o (p = null)) entonces
+		lanzar claveNoExiste
+	Si no
+		Si (p <> l.lista) entonces
+			ant^.sig <- p^.sig		//caso de que esté en el medio o final
+		Si no
+			l.lista <- p^.sig		//caso de que sea el primero
+		Fin Si
+		Liberar(p)
+		l.long <- l.long - 1
+	Fin Si
+	
+FIN
+
+
+Funcion longitud(E l: tipoLista)
+{Obtiene la longitud de la lista
+Precondiciones: l = L
+Postcondiciones: longitud = N y N ≥ 0
+Excepciones: -}
+
+INICIO
+
+	longitud <- l.long
+	
+FIN
+
+
+Procedimiento recuClave (E l : tipoLista ; E k :tipoClave ; S i: tipoInfo)
+{Obtiene un elemento de la lista dada su clave
+Precondiciones: l = L y k = K
+Postcondiciones: i = I y clave(I) = K
+Excepciones: claveNoExiste}
+
+VAR
+	p: tipoPunt
+	
+INICIO
+
+	p <- l.lista
+	
+	Mientras ((p <> null) y (k > p^.clave)) hacer
+		p <- p^.sig
+	Fin Mientras
+	
+	Si ((p <> null) y (k = p^.clave)) entonces
+		i <- p^.	info
+	Si no
+		lanzar claveNoExiste
+	Fin Si
+	
+FIN
+
+
+Procedimiento recuAnt (E l: tipoLista ; E k: tipoClave ; S ant: tipoClave)
+{Obtiene la clave del elemento de la lista anterior a la clave dada
+Precondiciones: l = L y k = K
+Postcondiciones: ant = K1 y K1 es la clave anterior a K
+Excepciones: claveNoExiste - claveEsPrimera}
+
+VAR
+	aux, p: tipoPunt
+	
+INICIO
+	p <- l.lista
+	
+	Mientras ((p <> null) y (k > p^.clave)) hacer
+		aux <- p
+		p <- p^.sig
+	Fin Mientras
+	
+	Si ((p <> null) y (k = p^.clave)) entonces
+		Si (l.lista = p) entonces
+			lanzar claveEsPrimera
+		Si no
+			ant <- aux^.clave
+		Fin Si
+	Si no
+		lanzar claveNoExiste
+	Fin Si
+	
+FIN
+
+
+Procedimiento recuSig (E l: tipoLista ; E k: tipoClave ; S sig: tipoClave)
+{Obtiene la clave del elemento de la lista siguiente a la clave dada
+Precondiciones: l = L y k = K
+Postcondiciones: sig = K1 y K1 es la clave siguiente a K
+Excepciones: claveNoExiste - claveEsUltima}
+
+VAR
+	p: tipoPunt
+	
+INICIO
+	p <- l.lista
+	
+	Mientras ((p <> null) y (k > p^.clave)) hacer
+		p <- p^.sig
+	Fin Mientras
+	
+	Si ((p <> null) y (k = p^.clave)) entonces
+		Si (p^.sig = null) entonces
+			lanzar claveEsUltima
+		Si no
+			sig <- p^.sig^.clave
+		Fin Si
+	Si no 
+		lanzar claveNoExiste
+	Fin Si
+	
+FIN
+
+
+Procedimiento recuPrim(E l: tipoLista)
+{Obtiene la clave del primer elemento de la lista
+Precondiciones: l = L
+Postcondiciones: prim = K y K es la primer clave de L
+Excepciones: listaVacia}
+
+INICIO
+	
+	Si (l.lista = null) entonces
+		lanzar listaVacia
+	Si no
+		prim <- l.lista^.clave
+	Fin Si
+	
+FIN
+
+
+Precondiciones recuUlt (E l: tipoLista ; S ult: tipoClave)
+{Obtiene la clave del último elemento de la lista
+Precondiciones: l = L
+Postcondiciones: ult = K y K es la última clave de L
+Excepciones: listaVacia}
+
+VAR
+	p: tipoPunt
+	
+INICIO
+	Si (l.lista <> null) entonces
+		p <- l.lista
+		
+		Mientras (p^.sig <> null) hacer
+			p <- p^.sig
+		Fin Mientras
+		
+		ult <- p^.clave
+	Si no
+		lanzar listaVacia
+	Fin Si
+FIN
+
+
+Funcion esVacia(E l: tipoLista)
+{Determina si la lista está vacía
+Precondiciones: l = L
+Postcondiciones: esVacia = Verdadero si L está vacía, sino esVacia = Falso
+Excepciones: -}
+
+INICIO
+
+	esVacia <- (l.lista = null)
+	
+FIN
+
+
+Procedimiento vaciarLista (E/S l: tipoLista)
+{Vacía la lista
+PRE: l = L
+POS: l = L1, L1 está vacía
+Excepciones: -}
+
+VAR
+	p, ant: tipoPunt
+
+INICIO
+
+	p <- l.lista
+	
+	Mientras (p <> null) hacer
+		ant <- p
+		p <- p^.sig
+		liberar(ant)
+	Fin Mientras
+	
+	l.long <- 0
+FIN
+
+
+
