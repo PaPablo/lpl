@@ -9,6 +9,8 @@ struct nodo{
 
 typedef struct nodo *t_nodo;
 
+
+
 struct t_lista{
    t_nodo lista;
    int cant;
@@ -37,7 +39,7 @@ t_nodo nuevo_nodo(){
 
 int crear_lista(tipoLista l, comparar funcion){
     if(funcion == NULL){
-        printf("COMPARATOR FUNCTION NOT SPECIFIED\n");
+        printf("FUNCIÓN DE COMPARACIÓN NO ESPECIFICADA\n");
         return 1;
     }
 
@@ -51,13 +53,35 @@ int crear_lista(tipoLista l, comparar funcion){
     return 0;
 }
 
+int vaciar_lista(tipoLista l){
+    if(l == NULL) return LISTA_VACIA;
+
+    t_nodo p, ant;
+    p = l->lista;
+
+    while(p != NULL){
+        ant = p;
+        p = p->sig;
+        free(ant);
+    }
+    free(p);
+    /*
+    este último free capaz que da problemas eh, tenerlo en cuenta
+    */
+
+
+    l->cant = 0;
+
+    return 0;
+}
+
 int insertar_lista(tipoLista l, tipoClave k, tipoInfo i){
     
     t_nodo aux, ant, p;
     comparar func = l->comparador;
     p = l->lista;
 
-    while((p != NULL) && ((func(&k, &p->clave) == 1))){
+    while((p != NULL) && ((func(&k, &p->clave) > 0))){
         ant = p;
         p = p->sig;
     }

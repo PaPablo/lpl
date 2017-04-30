@@ -8,14 +8,15 @@
 
 #define MALLOC_ERROR 1
 #define CLAVE_EXISTE 2
+#define LISTA_VACIA  3
+
+
+
 
 typedef     int    tipoClave;       //A MODIFICAR SEGÚN NECESIDAD
 typedef     int    tipoInfo;        //A MODIFICAR SEGÚN NECESIDAD
 
-typedef struct t_lista *tipoLista;
-
 typedef int(*comparar)(const void*, const void*);
-
 /*PARA IMPLEMENTAR LA FUNCION DE COMPARACION:
  *  Si la función devuelve 0, los elementos son iguales
  *  Si función devuelve menor que 0, el primer elemento es menor que el segundo
@@ -25,6 +26,10 @@ typedef int(*comparar)(const void*, const void*);
 
 
 
+
+
+
+typedef struct t_lista *tipoLista;
 //API del ADT
 extern int crear_lista(tipoLista, comparar);
 extern int insertar_lista(tipoLista, tipoClave, tipoInfo);
@@ -36,7 +41,7 @@ extern int recuSig_lista(tipoLista, tipoClave, tipoClave*);
 extern int recuPrim_lista(tipoLista);
 extern int recuUlt_lista(tipoLista, tipoClave*);
 extern int esVacia_lista(tipoLista);
-extern int vaciarLista_lista(tipoLista);
+extern int vaciar_lista(tipoLista);
 
 
 #endif //ADTLO_H
