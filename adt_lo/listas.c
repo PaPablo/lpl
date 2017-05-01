@@ -1,4 +1,4 @@
-#include "listas.h"
+#include <listas.h>
 
 struct nodo{
     tipoClave clave;
@@ -17,9 +17,11 @@ struct t_lista{
    mostrar display;
 };
 
-typedef struct t_lista *tipoLista;
+//typedef struct t_lista *tipoLista;
 //ver si se puede borrar, una vez que funcione todo jeje
-
+int listaNoExiste(tipoLista l){
+    return ((l == NULL) || (l->lista == NULL));
+}
 void mostrar_default(const void* k, const void* i){
     printf("K = %p\tI = %p", k, i);
 }
@@ -52,10 +54,8 @@ int crear_lista(tipoLista *l, comparar funcion, mostrar display){
 }
 
 int vaciar_lista(tipoLista *l){
-    if(((*l) == NULL) || ((*l)->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(*l)) return LISTA_NOEXISTE;
     
-    printf("VACIAR_LISTA: vamos a entrar\n");
-
     t_nodo ant;
     //t_nodo p = (*l)->lista;
 
@@ -65,14 +65,11 @@ int vaciar_lista(tipoLista *l){
         free(ant);
     }
 
-    printf("VACIAR_LISTA: después del while\n");
     free((*l)->lista);
-    printf("VACIAR_LISTA: liberamos lista\n");
     /*
     este último free capaz que da problemas eh, tenerlo en cuenta
     */
     *l = NULL;
-    printf("VACIAR_LISTA: nos vamos\n");
     return 0;
 }
 
@@ -82,7 +79,7 @@ int insertar_lista(tipoLista *l, tipoClave k, tipoInfo i){
      * por lo tanto cuando salía de crear_lista, la lista pasada no tenía nada
      * Me parece que con que crear_lista reciba un puntero a tipoLista ya estaría,
      * no creo que todos las funciones que modifiquen la lista necesiten recibir un tipoLista* */    
-    if(((*l) == NULL) || ((*l)->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(*l)) return LISTA_NOEXISTE;
     t_nodo aux, ant, p;
     comparar func = (*l)->comparador;
     p = (*l)->lista;
@@ -119,7 +116,7 @@ int insertar_lista(tipoLista *l, tipoClave k, tipoInfo i){
 }
 
 int eliminar_lista(tipoLista *l, tipoClave k){
-    if(((*l) == NULL) || ((*l)->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(*l)) return LISTA_NOEXISTE;
     t_nodo ant, p;
     
     comparar func = (*l)->comparador;
@@ -146,18 +143,18 @@ int eliminar_lista(tipoLista *l, tipoClave k){
 
 
 int longitud_lista(tipoLista l){
-    if((l == NULL) || (l->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(l)) return LISTA_NOEXISTE;
     return l->cant;
 }
 
 int recuPrim_lista(tipoLista l, tipoClave *prim){
-    if((l == NULL) || (l->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(l)) return LISTA_NOEXISTE;
     *prim = l->lista->clave;    
     return 0;
 } 
 
 int recuUlt_lista(tipoLista l, tipoClave *ult){
-    if((l == NULL) || (l->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(l)) return LISTA_NOEXISTE;
 
     t_nodo p = l->lista;
 
@@ -170,7 +167,7 @@ int recuUlt_lista(tipoLista l, tipoClave *ult){
 }
 
 int recuClave_lista(tipoLista l, tipoClave k, tipoInfo *i){
-    if((l == NULL) || (l->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(l)) return LISTA_NOEXISTE;
 
     t_nodo p = l->lista;
     comparar func = l->comparador;
@@ -188,7 +185,7 @@ int recuClave_lista(tipoLista l, tipoClave k, tipoInfo *i){
 }
 
 int recuAnt_lista(tipoLista l, tipoClave k, tipoClave *ant){
-    if((l == NULL) || (l->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(l)) return LISTA_NOEXISTE;
     
     t_nodo aux, p = l->lista;
     comparar func = l->comparador;
@@ -205,7 +202,7 @@ int recuAnt_lista(tipoLista l, tipoClave k, tipoClave *ant){
 }
 
 int recuSig_lista(tipoLista l, tipoClave k, tipoClave *sig){
-    if((l == NULL) || (l->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(l)) return LISTA_NOEXISTE;
     
     t_nodo p = l->lista;
     comparar func = l->comparador;
@@ -222,22 +219,17 @@ int recuSig_lista(tipoLista l, tipoClave k, tipoClave *sig){
 }
 
 int esVacia_lista(tipoLista l){
-    if((l == NULL) || (l->lista == NULL)) return LISTA_NOEXISTE;
+    if (listaNoExiste(l)) return LISTA_NOEXISTE;
     return (!l->cant);
 }
 
 void imprimir_lista(tipoLista l){
-   if((l == NULL) || (l->lista == NULL)) return;
+    if (listaNoExiste(l)) return;
     
    if(l->cant == 0){
         printf("***LISTA VACÍA***\n");
         return;
    }
-   if(l->display == NULL){
-        printf("***FUNCIÓN DE DISPLAY NO ESPECIFICADA***\n");
-        return;
-   }
-
    t_nodo p = l->lista;
    int i = 1;
    printf("Cantidad de nodos: %d\n", l->cant);

@@ -26,5 +26,10 @@ int main(int argc, char *argv[]){
     
     tipoClave x;
     if(recuPrim_lista(lista, &x) == 0) printf("yey %d\n", x);
+    vaciar_lista(&lista);
+    vaciar_lista(&lista);
+    vaciar_lista(&lista);
+    vaciar_lista(&lista);
+    vaciar_lista(&lista);
 }
 

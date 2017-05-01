@@ -47,17 +47,17 @@ typedef void(*mostrar)(const void*, const void*);
 
 typedef struct t_lista *tipoLista;
 //API del ADT
-extern int crear_lista(tipoLista*, comparar, mostrar);
-extern int insertar_lista(tipoLista*, tipoClave, tipoInfo);
-extern int eliminar_lista(tipoLista*, tipoClave);
-extern int longitud_lista(tipoLista);
-extern int recuClave_lista(tipoLista, tipoClave, tipoInfo*);
-extern int recuAnt_lista(tipoLista, tipoClave, tipoClave*);
-extern int recuSig_lista(tipoLista, tipoClave, tipoClave*);
-extern int recuPrim_lista(tipoLista, tipoClave*);
-extern int recuUlt_lista(tipoLista, tipoClave*);
-extern int esVacia_lista(tipoLista);
-extern int vaciar_lista(tipoLista*);
-extern void imprimir_lista(tipoLista);
+int crear_lista(tipoLista*, comparar, mostrar);
+int insertar_lista(tipoLista*, tipoClave, tipoInfo);
+int eliminar_lista(tipoLista*, tipoClave);
+int longitud_lista(tipoLista);
+int recuClave_lista(tipoLista, tipoClave, tipoInfo*);
+int recuAnt_lista(tipoLista, tipoClave, tipoClave*);
+int recuSig_lista(tipoLista, tipoClave, tipoClave*);
+int recuPrim_lista(tipoLista, tipoClave*);
+int recuUlt_lista(tipoLista, tipoClave*);
+int esVacia_lista(tipoLista);
+int vaciar_lista(tipoLista*);
+void imprimir_lista(tipoLista);
 
 #endif //ADTLO_H
