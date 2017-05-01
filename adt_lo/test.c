@@ -4,11 +4,14 @@
 int comparaEnteros(const void *num1, const void *num2){
     return *(int *)num1 - *(int *)num2;
 }
+void muestraEnteros(const void *clave, const void *info){
+    printf("CLAVE: %-3d INFO: %-3d", *(int*)clave, *(int*)info);
+}
 int main(int argc, char* argv[]){
 
     tipoLista l; 
     printf("Lista declarada\n");
-    crear_lista(&l, comparaEnteros);
+    crear_lista(&l, comparaEnteros, muestraEnteros);
     printf("Lista creada\n");
     imprimir_lista(l);
     int k;

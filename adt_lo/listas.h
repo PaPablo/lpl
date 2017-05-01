@@ -25,14 +25,18 @@ typedef int(*comparar)(const void*, const void*);
  *
  *      return a - b;*/
 
-
+typedef void(*mostrar)(const void*, const void*);
+/*PARA IMPLEMENTAR LA FUNCIÓN DE MOSTRAR
+ * poner el printf con el formato deseado 
+ * para que se muestren los datos de un elemento de la lista
+ * */
 
 
 
 
 typedef struct t_lista *tipoLista;
 //API del ADT
-extern int crear_lista(tipoLista*, comparar);
+extern int crear_lista(tipoLista*, comparar, mostrar);
 extern int insertar_lista(tipoLista*, tipoClave, tipoInfo);
 extern int eliminar_lista(tipoLista*, tipoClave);
 extern int longitud_lista(tipoLista);

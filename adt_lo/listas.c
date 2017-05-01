@@ -14,6 +14,7 @@ struct t_lista{
    t_nodo lista;
    int cant;
    comparar comparador;
+   mostrar display;
 };
 
 typedef struct t_lista *tipoLista;
@@ -37,7 +38,7 @@ t_nodo nuevo_nodo(){
 
 }
 
-int crear_lista(tipoLista *l, comparar funcion){
+int crear_lista(tipoLista *l, comparar funcion, mostrar display){
     if(funcion == NULL){
         printf("FUNCIÓN DE COMPARACIÓN NO ESPECIFICADA\n");
         return 1;
@@ -46,6 +47,7 @@ int crear_lista(tipoLista *l, comparar funcion){
     if((*l = (tipoLista)malloc(sizeof(struct t_lista))) == NULL) return MALLOC_ERROR;
     (*l)->cant = 0;
     (*l)->comparador = funcion;
+    (*l)->display = display; 
     if (((*l)->lista = (t_nodo)malloc(sizeof(tipoClave))) == NULL){
         free(*l);
         return MALLOC_ERROR;
@@ -146,15 +148,22 @@ int recuPrim_lista(tipoLista l, tipoClave *prim){
 
 void imprimir_lista(tipoLista l){
     
-   t_nodo p = l->lista;
-   int i = 1;
    if(l->cant == 0){
         printf("***LISTA VACÍA***\n");
         return;
    }
+   if(l->display == NULL){
+        printf("***FUNCIÓN DE DISPLAY NO ESPECIFICADA***\n");
+        return;
+   }
+
+   t_nodo p = l->lista;
+   int i = 1;
    printf("Cantidad de nodos: %d\n", l->cant);
    while(p != NULL){
-       printf("NODO %d, k = %-3d i = %d\n", i++, p->clave, p->info);
+       printf("NODO %d ", i++);
+       l->display(&p->clave, &p->info);
+       printf("\n");
        p = p->sig;
    }
 
