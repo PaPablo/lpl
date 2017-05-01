@@ -9,7 +9,10 @@
 #define MALLOC_ERROR    1
 #define CLAVE_EXISTE    2
 #define CLAVE_NOEXISTE  3
-#define LISTA_VACIA     4
+#define CLAVE_PRIMERA   4
+#define CLAVE_ULTIMA    5
+#define LISTA_VACIA     6
+#define LISTA_NOEXISTE  7
 
 
 
@@ -29,6 +32,10 @@ typedef void(*mostrar)(const void*, const void*);
 /*PARA IMPLEMENTAR LA FUNCIÓN DE MOSTRAR
  * poner el printf con el formato deseado 
  * para que se muestren los datos de un elemento de la lista
+ * por ejemplo:
+ *      printf("clave = %d\tinfo = %d\n", clave, info);
+ *
+ * el listado genérico no incorpora salto de línea, así que no olvidárselo si se lo desea
  * */
 
 
