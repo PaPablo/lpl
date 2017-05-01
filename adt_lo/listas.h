@@ -6,9 +6,10 @@
 #include<stdio.h>
 #include<string.h>
 
-#define MALLOC_ERROR 1
-#define CLAVE_EXISTE 2
-#define LISTA_VACIA  3
+#define MALLOC_ERROR    1
+#define CLAVE_EXISTE    2
+#define CLAVE_NOEXISTE  3
+#define LISTA_VACIA     4
 
 
 
@@ -32,16 +33,16 @@ typedef int(*comparar)(const void*, const void*);
 typedef struct t_lista *tipoLista;
 //API del ADT
 extern int crear_lista(tipoLista*, comparar);
-extern int insertar_lista(tipoLista, tipoClave, tipoInfo);
-extern int eliminar_lista(tipoLista, tipoClave);
+extern int insertar_lista(tipoLista*, tipoClave, tipoInfo);
+extern int eliminar_lista(tipoLista*, tipoClave);
 extern int longitud_lista(tipoLista);
 extern int recuClave_lista(tipoLista, tipoClave, tipoInfo*);
 extern int recuAnt_lista(tipoLista, tipoClave, tipoClave*);
 extern int recuSig_lista(tipoLista, tipoClave, tipoClave*);
-extern int recuPrim_lista(tipoLista);
+extern int recuPrim_lista(tipoLista, tipoClave*);
 extern int recuUlt_lista(tipoLista, tipoClave*);
 extern int esVacia_lista(tipoLista);
-extern int vaciar_lista(tipoLista);
-
+extern int vaciar_lista(tipoLista*);
+extern void imprimir_lista(tipoLista);
 
 #endif //ADTLO_H

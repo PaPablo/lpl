@@ -1,6 +1,5 @@
 #include "listas.h"
 
-
 struct nodo{
     tipoClave clave;
     tipoInfo info;
@@ -35,6 +34,7 @@ t_nodo nuevo_nodo(){
     nuevo = (t_nodo)malloc(sizeof(struct nodo));
     //si malloc falla, nuevo va a tener NULL
     return nuevo;
+
 }
 
 int crear_lista(tipoLista *l, comparar funcion){
@@ -53,11 +53,11 @@ int crear_lista(tipoLista *l, comparar funcion){
     return 0;
 }
 
-int vaciar_lista(tipoLista l){
-    if(l == NULL) return LISTA_VACIA;
+int vaciar_lista(tipoLista *l){
+    if(((*l) == NULL) || (l == NULL)) return LISTA_VACIA;
 
     t_nodo p, ant;
-    p = l->lista;
+    p = (*l)->lista;
 
     while(p != NULL){
         ant = p;
@@ -68,51 +68,94 @@ int vaciar_lista(tipoLista l){
     /*
     este último free capaz que da problemas eh, tenerlo en cuenta
     */
-
-
-    l->cant = 0;
-
+    *l = NULL;
     return 0;
 }
 
-int insertar_lista(tipoLista l, tipoClave k, tipoInfo i){
+int insertar_lista(tipoLista *l, tipoClave k, tipoInfo i){
     /*Había problemas porque en crear_lista se hacía el malloc a la lista pasada por parámetros
      * así que se le asignaba una dirección distinta a la pasada por parámetro
      * por lo tanto cuando salía de crear_lista, la lista pasada no tenía nada
      * Me parece que con que crear_lista reciba un puntero a tipoLista ya estaría,
      * no creo que todos las funciones que modifiquen la lista necesiten recibir un tipoLista* */    
-    printf("INSERTAR LISTA: COMIENZO\n");
     t_nodo aux, ant, p;
-    printf("INSERTAR LISTA: DESPUES DE DECLARAR VARIABLES\n");
-    comparar func = l->comparador;
-    printf("INSERTAR LISTA: FUNCION DE COMPARACION ASIGNADA\n");
-    p = l->lista;
-    printf("INSERTAR LISTA: LISTA RESCATADA\n");
+    comparar func = (*l)->comparador;
+    p = (*l)->lista;
 
-    printf("INSERTAR LISTA: ANTES DE WHILE \n");
+    if((*l)->cant == 0){
+        if((aux = nuevo_nodo()) == NULL) return MALLOC_ERROR;
+        aux->clave = k;
+        aux->info = i;
+        aux->sig = NULL;
+        (*l)->lista = aux;
+        (*l)->cant++;
+        return 0;
+    }
+
     while((p != NULL) && ((func(&k, &p->clave) > 0))){
+        if((*l)->cant == 0) break;
         ant = p;
         p = p->sig;
-        printf("INSERTAR LISTA: DENTRO DE WHILE\n");
     }
     
-    printf("INSERTAR LISTA: DESPUES DE WHILE\n");
     if((p != NULL) && ((func(&k, &p->clave) == 0))) return CLAVE_EXISTE;
-
-    printf("INSERTAR LISTA: DESPUES DE PREGUNTAR POR CLAVE EXISTE\n");
+    
     if((aux = nuevo_nodo()) == NULL) return MALLOC_ERROR;
     aux->clave = k;
     aux->info = i;
     aux->sig = p;
-
-    printf("INSERTAR LISTA: NODO INSERTADO\n");
-    if(p != l->lista){
+    if(p != (*l)->lista){
         ant->sig = aux;
     }else{
-        l->lista = aux;
+        (*l)->lista = aux;
+    }
+    (*l)->cant++;
+    return 0;
+}
+
+int eliminar_lista(tipoLista *l, tipoClave k){
+    t_nodo ant, p;
+    
+    comparar func = (*l)->comparador;
+    p = (*l)->lista;
+    
+    while ((p != NULL) && ((func(&k, &p->clave) > 0))){
+        ant = p;
+        p = p->sig;
     }
 
-    printf("INSERTAR LISTA: YA EN EL FINAL\n");
-    l->cant++;
+    if(((p != NULL) && (func(&k, &p->clave) < 0) || (p == NULL))) return CLAVE_NOEXISTE;
+    
+    if(p != (*l)->lista){ 
+        ant->sig = p->sig;
+    } else{
+        (*l)->lista = p->sig;
+    }
+
+    free(p);
+    (*l)->cant--;
+
     return 0;
+}
+
+int recuPrim_lista(tipoLista l, tipoClave *prim){
+    if(l->lista == NULL) return LISTA_VACIA;
+    *prim = l->lista->clave;    
+    return 0;
+} 
+
+void imprimir_lista(tipoLista l){
+    
+   t_nodo p = l->lista;
+   int i = 1;
+   if(l->cant == 0){
+        printf("***LISTA VACÍA***\n");
+        return;
+   }
+   printf("Cantidad de nodos: %d\n", l->cant);
+   while(p != NULL){
+       printf("NODO %d, k = %-3d i = %d\n", i++, p->clave, p->info);
+       p = p->sig;
+   }
+
 }
