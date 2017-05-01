@@ -1,4 +1,4 @@
-#include "listas.h"
+#include <listas.h>
 #include <unistd.h>
 #define MAX 10
 int comparaEnteros(const void *num1, const void *num2){
