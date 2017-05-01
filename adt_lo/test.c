@@ -7,7 +7,7 @@ int main(int argc, char* argv[]){
 
     tipoLista l; 
     printf("Lista declarada\n");
-    crear_lista(l, comparaEnteros);
+    crear_lista(&l, comparaEnteros);
     printf("Lista creada\n");
     insertar_lista(l, 2, 3);
     printf("Insertado en la lista: (2, 3)\n");

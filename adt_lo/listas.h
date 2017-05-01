@@ -31,7 +31,7 @@ typedef int(*comparar)(const void*, const void*);
 
 typedef struct t_lista *tipoLista;
 //API del ADT
-extern int crear_lista(tipoLista, comparar);
+extern int crear_lista(tipoLista*, comparar);
 extern int insertar_lista(tipoLista, tipoClave, tipoInfo);
 extern int eliminar_lista(tipoLista, tipoClave);
 extern int longitud_lista(tipoLista);

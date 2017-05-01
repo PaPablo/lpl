@@ -37,17 +37,17 @@ t_nodo nuevo_nodo(){
     return nuevo;
 }
 
-int crear_lista(tipoLista l, comparar funcion){
+int crear_lista(tipoLista *l, comparar funcion){
     if(funcion == NULL){
         printf("FUNCIÓN DE COMPARACIÓN NO ESPECIFICADA\n");
         return 1;
     }
 
-    if((l = (tipoLista)malloc(sizeof(struct t_lista))) == NULL) return MALLOC_ERROR;
-    l->cant = 0;
-    l->comparador = funcion;
-    if ((l->lista = (t_nodo)malloc(sizeof(tipoClave))) == NULL){
-        free(l);
+    if((*l = (tipoLista)malloc(sizeof(struct t_lista))) == NULL) return MALLOC_ERROR;
+    (*l)->cant = 0;
+    (*l)->comparador = funcion;
+    if (((*l)->lista = (t_nodo)malloc(sizeof(tipoClave))) == NULL){
+        free(*l);
         return MALLOC_ERROR;
     }
     return 0;
@@ -76,7 +76,11 @@ int vaciar_lista(tipoLista l){
 }
 
 int insertar_lista(tipoLista l, tipoClave k, tipoInfo i){
-    
+    /*Había problemas porque en crear_lista se hacía el malloc a la lista pasada por parámetros
+     * así que se le asignaba una dirección distinta a la pasada por parámetro
+     * por lo tanto cuando salía de crear_lista, la lista pasada no tenía nada
+     * Me parece que con que crear_lista reciba un puntero a tipoLista ya estaría,
+     * no creo que todos las funciones que modifiquen la lista necesiten recibir un tipoLista* */    
     printf("INSERTAR LISTA: COMIENZO\n");
     t_nodo aux, ant, p;
     printf("INSERTAR LISTA: DESPUES DE DECLARAR VARIABLES\n");
