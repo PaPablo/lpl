@@ -17,7 +17,7 @@ struct t_lista{
    comparar comparador;
 };
 
-//typedef struct t_lista *tipoLista;
+typedef struct t_lista *tipoLista;
 //ver si se puede borrar, una vez que funcione todo jeje
 
 /*PARA IMPLEMENTAR LA FUNCION DE COMPARACION:
@@ -77,28 +77,38 @@ int vaciar_lista(tipoLista l){
 
 int insertar_lista(tipoLista l, tipoClave k, tipoInfo i){
     
+    printf("INSERTAR LISTA: COMIENZO\n");
     t_nodo aux, ant, p;
+    printf("INSERTAR LISTA: DESPUES DE DECLARAR VARIABLES\n");
     comparar func = l->comparador;
+    printf("INSERTAR LISTA: FUNCION DE COMPARACION ASIGNADA\n");
     p = l->lista;
+    printf("INSERTAR LISTA: LISTA RESCATADA\n");
 
+    printf("INSERTAR LISTA: ANTES DE WHILE \n");
     while((p != NULL) && ((func(&k, &p->clave) > 0))){
         ant = p;
         p = p->sig;
+        printf("INSERTAR LISTA: DENTRO DE WHILE\n");
     }
-
+    
+    printf("INSERTAR LISTA: DESPUES DE WHILE\n");
     if((p != NULL) && ((func(&k, &p->clave) == 0))) return CLAVE_EXISTE;
 
+    printf("INSERTAR LISTA: DESPUES DE PREGUNTAR POR CLAVE EXISTE\n");
     if((aux = nuevo_nodo()) == NULL) return MALLOC_ERROR;
     aux->clave = k;
     aux->info = i;
     aux->sig = p;
 
+    printf("INSERTAR LISTA: NODO INSERTADO\n");
     if(p != l->lista){
         ant->sig = aux;
     }else{
         l->lista = aux;
     }
 
+    printf("INSERTAR LISTA: YA EN EL FINAL\n");
     l->cant++;
     return 0;
 }
