@@ -23,7 +23,7 @@ int listaNoExiste(tipoLista l){
     return ((l == NULL) || (l->lista == NULL));
 }
 void mostrar_default(const void* k, const void* i){
-    printf("K = %p\tI = %p", k, i);
+    printf("K = %p\tI = %p\n", k, i);
 }
 
 t_nodo nuevo_nodo(){
@@ -86,8 +86,12 @@ int insertar_lista(tipoLista *l, tipoClave k, tipoInfo i){
 
     if((*l)->cant == 0){
         if((aux = nuevo_nodo()) == NULL) return MALLOC_ERROR;
+
         aux->clave = k;
+        //bcopy(&k, &aux->clave, sizeof(k));
         aux->info = i;
+        //bcopy(&i, &aux->info, sizeof(i));
+
         aux->sig = NULL;
         (*l)->lista = aux;
         (*l)->cant++;
@@ -103,8 +107,12 @@ int insertar_lista(tipoLista *l, tipoClave k, tipoInfo i){
     if((p != NULL) && ((func(&k, &p->clave) == 0))) return CLAVE_EXISTE;
     
     if((aux = nuevo_nodo()) == NULL) return MALLOC_ERROR;
+
     aux->clave = k;
+    //bcopy(&k, &aux->clave, sizeof(k));
     aux->info = i;
+    //bcopy(&i, &aux->info, sizeof(i));
+
     aux->sig = p;
     if(p != (*l)->lista){
         ant->sig = aux;
@@ -127,7 +135,7 @@ int eliminar_lista(tipoLista *l, tipoClave k){
         p = p->sig;
     }
 
-    if(((p != NULL) && (func(&k, &p->clave) < 0) || (p == NULL))) return CLAVE_NOEXISTE;
+    if(((p != NULL) && (func(&k, &p->clave) < 0)) || (p == NULL)) return CLAVE_NOEXISTE;
     
     if(p != (*l)->lista){ 
         ant->sig = p->sig;
@@ -144,6 +152,7 @@ int eliminar_lista(tipoLista *l, tipoClave k){
 
 int longitud_lista(tipoLista l){
     if (listaNoExiste(l)) return LISTA_NOEXISTE;
+
     return l->cant;
 }
 
@@ -179,6 +188,7 @@ int recuClave_lista(tipoLista l, tipoClave k, tipoInfo *i){
 
     if((p != NULL) && ((func(&k, &p->clave) == 0))){
         *i = p->info;
+        //bcopy(&p->info, i, sizeof(p->info));
     } else return CLAVE_NOEXISTE;
 
     return 0;

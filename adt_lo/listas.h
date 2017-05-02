@@ -6,6 +6,10 @@
 #include<stdio.h>
 #include<string.h>
 
+#include <persona.h>
+
+
+
 #define MALLOC_ERROR    1
 #define CLAVE_EXISTE    2
 #define CLAVE_NOEXISTE  3
@@ -18,7 +22,7 @@
 
 
 typedef     int    tipoClave;       //A MODIFICAR SEGÚN NECESIDAD
-typedef     int    tipoInfo;        //A MODIFICAR SEGÚN NECESIDAD
+typedef     t_persona    tipoInfo;        //A MODIFICAR SEGÚN NECESIDAD
 
 typedef int(*comparar)(const void*, const void*);
 /*PARA IMPLEMENTAR LA FUNCION DE COMPARACION:
