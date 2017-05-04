@@ -12,7 +12,7 @@ void mostrar_persona(const void *k, const void *i){
 int main(int argc, char *argv[]){
 
     tipoLista lista;
-    crear_lista(&lista, compara_personas, NULL);
+    crear_lista(&lista, compara_personas, mostrar_persona);
     
     t_persona luciano = {"Luciano Serruya Aloisi", 32},
               pablo = {"Pablo Toledo Margalef", 67},

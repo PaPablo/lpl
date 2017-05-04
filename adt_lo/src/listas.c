@@ -25,6 +25,9 @@ int listaNoExiste(tipoLista l){
 void mostrar_default(const void* k, const void* i){
     printf("K = %p\tI = %p\n", k, i);
 }
+int comparar_default(const void *a, const void *b){
+    return *(int *)a - *(int *)b;
+}
 
 t_nodo nuevo_nodo(){
 
@@ -37,14 +40,9 @@ t_nodo nuevo_nodo(){
 }
 
 int crear_lista(tipoLista *l, comparar funcion, mostrar display){
-    if(funcion == NULL){
-        printf("FUNCIÓN DE COMPARACIÓN NO ESPECIFICADA\n");
-        return 1;
-    }
-
     if((*l = (tipoLista)malloc(sizeof(struct t_lista))) == NULL) return MALLOC_ERROR;
     (*l)->cant = 0;
-    (*l)->comparador = funcion;
+    (*l)->comparador = funcion != NULL ? funcion : comparar_default;
     (*l)->display = display != NULL? display : mostrar_default; 
     if (((*l)->lista = (t_nodo)malloc(sizeof(tipoClave))) == NULL){
         free(*l);
