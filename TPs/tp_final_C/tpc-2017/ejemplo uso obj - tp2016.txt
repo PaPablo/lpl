@@ -1,0 +1,190 @@
+-- ejemplo de proyecto anterior -- 2016
+
+/*
+  ingr = ingrediente_new();
+  if(ingr->saveObj(ingr,"papa","kg",true))
+    printf("ingrediente agregado....\n");
+    */
+  
+  /*
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    printf("now: %d-%d-%d %d:%d:%d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+    */
+    //printf("Fecha: %s\n",getFechaHora()); 
+    
+/*  
+  pc = paciente_control_new();
+  if(  pc->saveObj(pc,22554171,"2016-04-18",85.2,true) )
+     printf("control de paciente agregado....\n");
+*/
+
+/*  
+    profesional = profesional_new();  
+  if(profesional->saveObj(profesional,22554496,"nutri-321","Diego","Rojas","280154789654",false,true,true))
+    printf("profesional agregado....\n");
+*/
+//  pprof = paciente_profesional_new();
+//  pprof->saveObj(pprof,25724706,18896125,"","",true);
+  
+ 
+  //crear nuevo paciente guardar
+  /*
+  paciente->saveObj(paciente,25724706,"Marcelo","Santander", "2016-04-18","Soler 1785" , "2804302270", "1977-05-13",82,180,true);
+  if(paciente->findbykey(paciente,25724706)!=-1)
+  {
+	  printf("paciente %d): dni : %d Nombre: %s  Apellido: %s - Dom: %s\n",i+1,paciente->dni,paciente->nombre,paciente->apellido, paciente->domicilio);	  
+	  paciente->saveObj(paciente,25724706,"Marcelo","Santander", "2016-04-18","Trelew - Soler 1785" , "2804302270", "1977-05-13",82,180,false);
+  }
+  */
+ 
+ 
+  /*
+  plato->findbykey(plato,2);
+  printf("dieta %d): codigo : %d Nombre: %s , detalle: %s\n",i+1,plato->codigo,plato->nombre,plato->detalle);
+*/
+ 
+
+/*   dieta = dieta_new();
+   dieta->findbykey (dieta,1);
+   printf("dieta %d): codigo : %d Nombre: %s autor: %s , fecha: %s  - %s\n",i+1,dieta->codigo,dieta->nombre,dieta->autor,dieta->fecha_alta,dieta->descripcion);
+  */
+  /*
+  dieta = dieta_new();
+  size = dieta->findAll(dieta,&list,NULL); // se invoca sin criterio - listar todos...
+  for(i=0;i<size;++i)
+  {
+    dieta = ((obj_dieta**)list)[i];
+     
+    printf("dieta %d): codigo : %d Nombre: %s , fecha: %s\n",i+1,dieta->codigo,dieta->nombre,dieta->fecha_alta);
+  }
+  //free(list);
+  
+  printf("\n\n\n");  
+  paciente = paciente_new();  
+  size = paciente->findAll(paciente,&list,NULL); // se invoca sin criterio - listar todos...
+  for(i=0;i<size;++i)
+  {
+    paciente = ((obj_paciente**)list)[i];
+     
+    printf("paciente %d): dni : %d Nombre: %s  Apellido: %s  - Dom: %s\n",i+1,paciente->dni,paciente->nombre,paciente->apellido,paciente->domicilio);
+  }
+  //free(list);
+  
+  printf("\n\n\n");  
+  dp = dieta_paciente_new();
+  size = dp->findAll(dp,&list,NULL); // se invoca sin criterio - listar todos...
+  for(i=0;i<size;++i)
+  {
+    ddpp = ((obj_dieta_paciente**)list)[i];
+    paciente = ddpp->get_paciente(ddpp);
+    dieta = ddpp->get_dieta(ddpp);
+    printf("dieta %d): codigo : %d dieta: %s - paciente: %s, %s  -  fecha: %s\n",i+1,ddpp->codigo,dieta->nombre,paciente->apellido,paciente->nombre,ddpp->fecha);
+  }
+  //free(list);
+
+  printf("\n\n\n");    
+  plato = plato_new();
+  size = plato->findAll(plato,&list,NULL); // se invoca sin criterio - listar todos...
+  for(i=0;i<size;++i)
+  {
+    plato = ((obj_plato**)list)[i];     
+    printf("plato %d): codigo : %d nombre: %s - detalle: %s\n",i+1,plato->codigo,plato->nombre,plato->detalle);
+  }
+  
+  //free(list);
+
+    printf("\n\n\n");  
+    pc = paciente_control_new();
+    size = pc->findAll(pc,&list,NULL); // se invoca sin criterio - listar todos...
+    for(i=0;i<size;++i)
+    {
+    pc = ((obj_paciente_control**)list)[i];     
+    paciente = pc->get_paciente(pc);
+    printf("pc %d): dni : %d - %s, %s  - fecha: %s - peso: %.2f\n",i+1,pc->dni_paciente,paciente->apellido, paciente->nombre, pc->fecha,pc->peso);
+    }
+    //free(list);  
+  
+
+    printf("\n\n\n");  
+    ingr = ingrediente_new();
+    
+    size = ingr->findAll(ingr,&list,NULL); // se invoca sin criterio - listar todos...
+    for(i=0;i<size;++i)
+    {
+    ingr = ((obj_ingrediente**)list)[i];     
+    printf(" %d): codigo : %d   -   nombre: %s , unidadmed: %s\n",i+1,ingr->codigo,ingr->nombre,ingr->unidadmed);
+    }
+    //free(list);
+  
+    printf("\n\n\n");  
+
+  plato_dieta = plato_dieta_new();  
+  size = plato_dieta->findAll(plato_dieta,&list,NULL); // se invoca sin criterio - listar todos...
+  for(i=0;i<size;++i)
+  {
+    plato_dieta = ((obj_plato_dieta**)list)[i];
+    plato = plato_dieta->get_plato(plato_dieta);
+    dieta = plato_dieta->get_dieta(plato_dieta);
+    printf(" %d): plato : %s   -   dieta: %s , porcion: %.2f\n",i+1,plato->nombre,dieta->nombre,plato_dieta->porcion);
+  }
+  //free(list);  
+  
+  
+    printf("\n\n\n");  
+  ping  = plato_ingrediente_new();
+  size = ping->findAll(ping,&list,NULL); // se invoca sin criterio - listar todos...
+  for(i=0;i<size;++i)
+  {
+    ping = ((obj_plato_ingrediente**)list)[i];
+    ingr = ping->get_ingrediente(ping);
+    plato = ping->get_plato(ping);
+    printf(" %d): plato : %s   -   ingrediente: %s , cant: %.2f\n",i+1,plato->nombre,ingr->nombre,ping->cantidad);
+  }
+  //free(list);
+  
+
+  printf("\n\n\n");  
+  pp  = plato_paciente_new();
+  size = pp->findAll(pp,&list,NULL); // se invoca sin criterio - listar todos...
+  for(i=0;i<size;++i)
+  {
+    pp = ((obj_plato_paciente**)list)[i];     
+    plato = pp->get_plato(pp);
+    paciente = pp->get_paciente(pp);
+    printf(" %d): plato : %s   -   paciente: %s, %s  -  fecha: %s -  cantidad: %.2f\n",i+1,plato->nombre,paciente->apellido,paciente->nombre ,pp->fecha,pp->cantidad);
+  }
+  //free(list);
+  
+
+  printf("\n\n\n");  
+  profesional = profesional_new();  
+  size = profesional->findAll(profesional,&list,NULL); // se invoca sin criterio - listar todos...
+  for(i=0;i<size;++i)
+  {
+    profesional = ((obj_profesional**)list)[i];     
+    printf("profesional %d): dni : %d Nombre,: %s %s  - tel: %s  - fecha: %s\n",i+1,profesional->dni,profesional->nombre,profesional->apellido,profesional->telefono, profesional->fecha_alta);
+  }
+  //free(list);
+  
+  printf("\n\n\n");  
+    pprof = paciente_profesional_new();
+    size = pprof->findAll(pprof,&list,NULL); // se invoca sin criterio - listar todos...
+    for(i=0;i<size;++i)
+    {
+    pprof = ((obj_paciente_profesional**)list)[i];     
+    paciente = pprof->get_paciente(pprof);
+    profesional = pprof->get_profesional(pprof);
+    printf("pprof %d): dni paciente : %d nombre apellido paciente: %s %s - dni profesional : %d nombre apellido profesional: %s %s   -  fecha: %s\n",i+1,pprof->dni_paciente, paciente->nombre,paciente->apellido,pprof->dni_medico, profesional->nombre,profesional->apellido,pprof->fecha_desde);
+    }
+    //free(list);
+  
+*/
+/*
+   paciente = paciente_new();  
+   //paciente->findbykey(paciente,25741852);     
+   p=paciente;
+//   p->saveObj(p,p->dni,p->nombre,p->apellido,"Rawson 150" ,p->telefono,p->fecha_nac,p->peso_inicial,p->talla,false);
+   p->saveObj(p,22554171,"Cecilia","Castro","Edison 1148" ,"2804363661","1972-04-29",75,156,true);
+    printf("paciente %d): dni : %d Nombre: %s  Apellido: %s \n",i+1,paciente->dni,paciente->nombre,paciente->apellido);
+*/
