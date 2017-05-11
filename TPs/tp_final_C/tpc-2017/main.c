@@ -17,30 +17,60 @@
 #include "turnos.c"
 
 PGconn *conn; //Instancia que permite manipular conexion con el servidor
-
+int comparaDNI(const void *a, const void *b){
+    return (*(obj_paciente**)a)->dni - (*(obj_paciente**)b)->dni;
+}
+int comparaApellido(const void *a, const void *b){
+    return strcmp((*(obj_paciente**)a)->apellido, (*(obj_paciente**)b)->apellido);
+}
+int comparaNombres(const void *a, const void *b){
+    return strcmp((*(obj_paciente**)a)->nombres, (*(obj_paciente**)b)->nombres);
+}
 int main(int argc, char *argv[])
 {  
-  char *port="5432",*servidor="localhost",*base="turnos", *usuario="postgres", *password="master";
-  obj_profesional *prof;
-  obj_obrasocial *os;
-  obj_especialidad *esp;
-  obj_paciente *pac;
-  obj_paciente_obrasocial *ospac;
-  obj_profesional_especialidad *profesp,*profesp_o;
-  obj_turnos *tr;
-  void *list; //para manejo generico de listado
-      int i=0, size=0, j;
-  
+    char *port="5432",*servidor="localhost",*base="turnos", *usuario="postgres", *password="master";
+    obj_profesional *prof;
+    obj_obrasocial *os;
+    obj_especialidad *esp;
+    obj_paciente *pac;
+    obj_paciente_obrasocial *ospac;
+    obj_profesional_especialidad *profesp,*profesp_o;
+    obj_turnos *tr;
+    void *list; //para manejo generico de listado
+    int i=0, size=0, j;
+
+    connectdb(servidor,port,base,usuario,password);
+      //obj_paciente *pac;
+      //void *list;
+      //int i,size=0;
+      pac = paciente_new();
+      //obj_paciente **ejemplo;
+      //if((pac->saveObj(pac, 38147366, "David", "Serruya Aloisi", "tambien al lado", "jiji", true )) == -1) printf("no se pudo insertar\n");
+      
+      if((size = pac->findAll(pac, &list, NULL)) == 0) 
+          printf("no recupero nada bolo\n"); // se invoca sin criterio - listar todos...
+      else
+          printf("%s | cantidad leida: %d\n", getFechaHora(), size);
+
+      qsort(list, size, sizeof(obj_paciente*), comparaNombres);
+
+      for(i=0; i < size; i++)
+      {
+          pac = ((obj_paciente**)list)[i];
+          printf("%-2d\t%-10d | %-20s | %-20s | %-20s\n", i, pac->dni, pac->apellido, pac->nombres, pac->telefono);
+      }
+      
+
+      /*
    obj_profesional *profesional;
   
-   connectdb(servidor,port,base,usuario,password);
-/*
    prof = profesional_new();
   if(prof->findbyid(prof, 1)!=-1)
   {	  
       printf("profesional id : %d Nombre: %s  Apellido: %s - matricula: %s\n",prof->id,prof->nombres,prof->apellido, prof->matricula);	  	  
   }
-  
+  */
+/*
   os = obrasocial_new();
    if(os->findbykey(os, 1)!=-1)
   {
@@ -83,6 +113,6 @@ int main(int argc, char *argv[])
   }
   */
   disconnectdb();
-  system("PAUSE");	
+  //system("PAUSE");	
   return 0;
 }
