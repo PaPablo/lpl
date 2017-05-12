@@ -1,51 +1,51 @@
 CC   = gcc
 RES  = 
-OBJ  = main.o paciente.o utils.o obrasocial.o pacienteobrasocial.o orm.o profespecialidad.o profesional.o especialidad.o turnos.o $(RES)
-LINKOBJ  = main.o utils.o $(RES)
+OBJ  = obj/main.o obj/paciente.o obj/utils.o obj/obrasocial.o obj/pacienteobrasocial.o obj/orm.o obj/profespecialidad.o obj/profesional.o obj/especialidad.o obj/turnos.o $(RES)
+LINKOBJ  = obj/main.o obj/utils.o $(RES)
 LIBS =  -L"/usr/lib"
 INCS =  -I"/usr/include/postgresql" 
-BIN  = tpfinalc
+BIN  = bin/TurnosAtencionApp
 
 CFLAGS = $(INCS) $(LIBS)  -lpq
 RM = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
 
-all: all-before tpfinalc all-after
+all: all-before bin/TurnosAtencionApp all-after
 
 
 clean: clean-custom
 	${RM} $(OBJ) $(BIN)
 
 $(BIN): $(OBJ)
-	$(CC) $(LINKOBJ) -o tpfinalc $(CFLAGS)
+	$(CC) $(LINKOBJ) -o $(BIN) $(CFLAGS)
 
-main.o: main.c
-	$(CC) -c main.c -o main.o $(CFLAGS)
+obj/main.o: src/main.c
+	$(CC) -c src/main.c -o obj/main.o $(CFLAGS)
 
-paciente.o: paciente.c
-	$(CC) -c paciente.c -o paciente.o $(CFLAGS)
+obj/paciente.o: src/paciente.c
+	$(CC) -c src/paciente.c -o obj/paciente.o $(CFLAGS)
 
-utils.o: utils.c
-	$(CC) -c utils.c -o utils.o $(CFLAGS)
+obj/utils.o: src/utils.c
+	$(CC) -c src/utils.c -o obj/utils.o $(CFLAGS)
 
-obrasocial.o: obrasocial.c
-	$(CC) -c obrasocial.c -o obrasocial.o $(CFLAGS)
+obj/obrasocial.o: src/obrasocial.c
+	$(CC) -c src/obrasocial.c -o obj/obrasocial.o $(CFLAGS)
 
-pacienteobrasocial.o: pacienteobrasocial.c
-	$(CC) -c pacienteobrasocial.c -o pacienteobrasocial.o $(CFLAGS)
+obj/pacienteobrasocial.o: src/pacienteobrasocial.c
+	$(CC) -c src/pacienteobrasocial.c -o obj/pacienteobrasocial.o $(CFLAGS)
 
-orm.o: orm.c
-	$(CC) -c orm.c -o orm.o $(CFLAGS)
+obj/orm.o: src/orm.c
+	$(CC) -c src/orm.c -o obj/orm.o $(CFLAGS)
 
-profespecialidad.o: profespecialidad.c
-	$(CC) -c profespecialidad.c -o profespecialidad.o $(CFLAGS)
+obj/profespecialidad.o: src/profespecialidad.c
+	$(CC) -c src/profespecialidad.c -o obj/profespecialidad.o $(CFLAGS)
 
-profesional.o: profesional.c
-	$(CC) -c profesional.c -o profesional.o $(CFLAGS)
+obj/profesional.o: src/profesional.c
+	$(CC) -c src/profesional.c -o obj/profesional.o $(CFLAGS)
 
-especialidad.o: especialidad.c
-	$(CC) -c especialidad.c -o especialidad.o $(CFLAGS)
+obj/especialidad.o: src/especialidad.c
+	$(CC) -c src/especialidad.c -o obj/especialidad.o $(CFLAGS)
 
-turnos.o: turnos.c
-	$(CC) -c turnos.c -o turnos.o $(CFLAGS)
+obj/turnos.o: src/turnos.c
+	$(CC) -c src/turnos.c -o obj/turnos.o $(CFLAGS)

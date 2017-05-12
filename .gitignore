@@ -69,6 +69,11 @@ dkms.conf
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
+#probanding
+#intentamos excluir carpetas bin/ y obj/
+bin/
+obj/
+
 ### Vim ###
 # swap
 [._]*.s[a-v][a-z]
