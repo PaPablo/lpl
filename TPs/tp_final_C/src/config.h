@@ -98,7 +98,7 @@ char *sql_select_str[CANT_TABLES]={
      "select dni,nombres,apellido,domicilio,telefono from pacientes %s;",
      "select codigo,nombre from obrasociales %s;",
 	 "select codigo,nombre from especialidades %s;",
-     "select id,matricula,fechamatricula,nombres,apellido,telefono,activo from profesionales %s;",
+     "select id,matricula,nombres,apellido,telefono,fechamatricula,activo from profesionales %s;",
      "select dnipaciente,codigoobrasocial,fechadesde from pacienteobrasocial %s;",
      "select codigoprofesional,codigoespecialidad,fechaalta,disponible,observaciones from profesionalespecialidad %s;",
      "select dnipaciente,codigoprofesional,asistio, fechahora from turnos %s;"};
