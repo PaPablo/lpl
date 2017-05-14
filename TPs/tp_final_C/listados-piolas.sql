@@ -12,6 +12,9 @@ SELECT T.fechahora, P.apellido, P.nombres, p.dni FROM turnos as T JOIN pacientes
 --fecha completa y datos de pacientes que se atendieron (sacaron turno y asistieron) durante 2015
 SELECT T.fechahora, P.apellido, P.nombres, p.dni FROM turnos as T JOIN pacientes as P ON T.dnipaciente=P.dni WHERE to_char(T.fechahora, 'YYYY-MM-DD HH:MM:SS') LIKE '2015%' and T.asistio=1 order by fechahora;
 
+--fecha completa y datos de pacientes que se atendieron (sacaron turno y asistieron) durante 2015 (con expresion regular)
+SELECT T.fechahora, P.apellido, P.nombres, p.dni FROM turnos as T JOIN pacientes as P ON T.dnipaciente=P.dni WHERE to_char(T.fechahora, 'YYYY-MM-DD HH:MM:SS') ~ '2015.*' and T.asistio=1 order by fechahora;
+
 --pacientes asociados a obras sociales
 SELECT O.dnipaciente, S.nombre, O.fechadesde, P.apellido, P.nombres from pacienteobrasocial as O JOIN pacientes as P ON O.dnipaciente=P.dni JOIN obrasociales as S ON O.codigoobrasocial=S.codigo order by S.nombre, O.dnipaciente;
 
