@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
       for(i=0; i < size; i++)
       {
           pac = ((obj_paciente**)list)[i];
-          printf("%-2d\t%-10d | %-20s | %-20s | %-20s\n", i, pac->dni, pac->apellido, pac->nombres, pac->telefono);
+          printf("%-2d\t%-10d|%-20s|%-20s|%-20s\n", i, pac->dni, pac->apellido, pac->nombres, pac->telefono);
       }
       
 
