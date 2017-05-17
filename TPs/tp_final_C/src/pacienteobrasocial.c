@@ -143,7 +143,7 @@ void *getObraSocial_Paciente_ObraSocialImpl(void *self){
     obj_obrasocial *os;
     o = (obj_paciente_obrasocial*) self;
     os = obrasocial_new();
-    os->findbykey(os,o->codigo);
+    os->findbykey(os,o->codigoobrasocial);
     return os;
 }
 //----------------------------------------------------

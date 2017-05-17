@@ -16,7 +16,11 @@
 #include "profespecialidad.c"
 #include "turnos.c"
 
+
 PGconn *conn; //Instancia que permite manipular conexion con el servidor
+
+
+
 int comparaDNI(const void *a, const void *b){
     return (*(obj_paciente**)a)->dni - (*(obj_paciente**)b)->dni;
 }
@@ -26,6 +30,14 @@ int comparaApellido(const void *a, const void *b){
 int comparaNombres(const void *a, const void *b){
     return strcmp((*(obj_paciente**)a)->nombres, (*(obj_paciente**)b)->nombres);
 }
+
+//probamos hacer el un listado nosotros
+void do_exit(PGconn *conn);
+void listado(PGconn *conn);
+
+
+
+
 int main(int argc, char *argv[])
 {  
     char *port="5432",*servidor="localhost",*base="turnos", *usuario="postgres", *password="master";
@@ -46,20 +58,25 @@ int main(int argc, char *argv[])
       pac = paciente_new();
       //obj_paciente **ejemplo;
       //if((pac->saveObj(pac, 38147366, "David", "Serruya Aloisi", "tambien al lado", "jiji", true )) == -1) printf("no se pudo insertar\n");
-      
+        
+      //tiramos nuestro listado
+      listado(conn);
+
+
+      /*      
       if((size = pac->findAll(pac, &list, NULL)) == 0) 
           printf("no recupero nada bolo\n"); // se invoca sin criterio - listar todos...
       else
           printf("%s | cantidad leida: %d\n", getFechaHora(), size);
 
-      qsort(list, size, sizeof(obj_paciente*), comparaNombres);
+      qsort(list, size, sizeof(obj_paciente*), comparaDNI);
 
       for(i=0; i < size; i++)
       {
           pac = ((obj_paciente**)list)[i];
-          printf("%-2d\t%-10d|%-20s|%-20s|%-20s\n", i, pac->dni, pac->apellido, pac->nombres, pac->telefono);
+          printf("%-2d\t%-10d | %-20s | %-20s | %-20s\n", i, pac->dni, pac->apellido, pac->nombres, pac->telefono);
       }
-      
+      */
 
       /*
    obj_profesional *profesional;
@@ -115,4 +132,56 @@ int main(int argc, char *argv[])
   disconnectdb();
   //system("PAUSE");	
   return 0;
+}
+
+
+
+void do_exit(PGconn *conn){
+    exit(1);
+}
+
+void listado(PGconn *conn){
+    
+    char query[] = "SELECT E.codigo, E.nombre, PE.fechaalta, P.apellido, P.nombres, CASE WHEN PE.disponible=1 THEN 'DISPONIBLE' ELSE 'NO DISPONIBLE' END FROM profesionalespecialidad as PE JOIN especialidades as E ON PE.codigoespecialidad=E.codigo JOIN profesionales as P ON PE.codigoprofesional=P.id order by E.nombre, P.apellido;";
+
+    PGresult *res = PQexec(conn, query);    
+
+    if (res == NULL && PQresultStatus(res) != PGRES_TUPLES_OK) {
+        printf("No data retrieved\n");        
+        PQclear(res);
+        do_exit(conn);
+    }    
+
+    int rows = PQntuples(res),
+        cols = PQnfields(res);
+
+    //imprimimos cabecera
+    printf("%-3s", "");
+    for(int i = 0; i < cols; i++){
+        printf("| %-10s ", PQfname(res, i));
+    }
+    printf("\n");
+    //printf("%s %s %s %s %s %s", PQgetvalue(res, 0, 0),PQgetvalue(res, 0, 1), PQgetvalue(res, 0, 2),PQgetvalue(res, 0, 3),PQgetvalue(res, 0, 4),PQgetvalue(res, 0, 5));
+
+    
+    for(int i=0; i<rows; i++){
+        printf("%-3d", i);
+        printf("| %-2s ", PQgetvalue(res, i, 0));
+        printf("| %-35s ", PQgetvalue(res, i, 1));
+        printf("| %-10s ", PQgetvalue(res, i, 2));
+        printf("| %-10s ", PQgetvalue(res, i, 3));
+        printf("| %-20s ", PQgetvalue(res, i, 4));
+        printf("| %-10s ", PQgetvalue(res, i, 5));
+
+        /*
+        for(int j = 0; j < cols; j++){
+            printf("%-3d");
+            printf("| %s ", PQgetvalue(res, i, j));
+        }
+        */
+        printf("\n");
+    }   
+    PQclear(res);
+
+    return;
 }
