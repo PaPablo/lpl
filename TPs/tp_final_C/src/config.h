@@ -12,6 +12,7 @@ enum t_bool{ false=0,true=1};
 #define MAX4 2
 #define MAX5 150
 #define MAXOBS 200
+#define MAX_FECHA 50
 #define CANT_TABLES 7
 #define MAX_SQL 800
 #define MAX_WHERE_SQL 600
@@ -54,7 +55,7 @@ typedef struct {
           char nombres[MAX];
           char apellido[MAX];
           char telefono[MAX];
-          char fecha_matricula[MAX2];
+          char fecha_matricula[MAX_FECHA];
 		  int activo;
         } t_data_set_profesional;
 //----------------------------------------------------  
@@ -62,22 +63,22 @@ typedef struct {
 typedef struct {  
           int dnipaciente;
 		  int codigoobrasocial;
-		  char fechadesde[MAX2];
+		  char fechadesde[MAX_FECHA];
         } t_data_set_paciente_obrasocial;
 //----------------------------------------------------  
 // estructura para relacion profesional especialidad
 typedef struct {  
           int codigoprofesional;
 		  int codigoespecialidad;
-		  char fechaalta[MAX1];
+		  char fechaalta[MAX_FECHA];
 		  int disponible;
 		  char observaciones[MAXOBS];
         } t_data_set_profesional_especialidad;
 //----------------------------------------------------  
 // estructura para turnos
 typedef struct {  
-          char fechahora[MAX1];
-		  int dnipaciente;
+          char fechahora[MAX_FECHA];
+              long dnipaciente;
 		  int codigoprofesional;
 		  int asistio;
         } t_data_set_turnos;
@@ -224,7 +225,7 @@ typedef struct
 	char nombres[MAX];
 	char apellido[MAX];
 	char telefono[MAX];
-	char fecha_matricula[MAX2];
+	char fecha_matricula[MAX_FECHA];
 	int activo;
 }obj_profesional;
 //----------------------------------------------------
@@ -238,7 +239,7 @@ typedef struct
 /*implementacion de relaciones*/
     int dnipaciente;
 	int codigoobrasocial;
-	char fechadesde[MAX2];
+	char fechadesde[MAX_FECHA];
 }obj_paciente_obrasocial;
 //----------------------------------------------------
 typedef struct
@@ -251,7 +252,7 @@ typedef struct
  void *(*get_especialidad)(void *self); 
 	int codigoprofesional;
 	int codigoespecialidad;
-	char fechaalta[MAX1];
+	char fechaalta[MAX_FECHA];
 	int disponible;
 	char observaciones[MAXOBS];
 }obj_profesional_especialidad;
@@ -268,7 +269,7 @@ typedef struct
 /*implementacion de relaciones*/
   void *(*get_profesional)(void *self); 
   void *(*get_paciente)(void *self); 
-  char fechahora[MAX1];
+  char fechahora[MAX_FECHA];
   int dnipaciente;
   int codigoprofesional;
   int asistio;

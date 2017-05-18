@@ -13,6 +13,7 @@ RM = rm -f
 
 all: all-before bin/TurnosAtencionApp all-after
 
+test: clean all
 
 clean: clean-custom
 	${RM} $(OBJ) $(BIN)

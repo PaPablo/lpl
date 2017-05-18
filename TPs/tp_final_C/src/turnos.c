@@ -8,7 +8,7 @@ void fillTurnosFromDB(void **rw , int rowi,PGresult *res)
     t_data_set_turnos *dsturnos;
     dsturnos = &(( (t_data_set_turnos *) *rw)[rowi]);
     //leer valor desde estructura obtenida de la BD
-	dsturnos->dnipaciente=atoi(PQgetvalue(res,rowi,0));
+	dsturnos->dnipaciente=atol(PQgetvalue(res,rowi,0));
 	dsturnos->codigoprofesional=atoi(PQgetvalue(res,rowi,1));
 	dsturnos->asistio=atoi(PQgetvalue(res,rowi,2));
 	strcpy( dsturnos->fechahora ,rtrim(PQgetvalue(res,rowi,3),' '));
@@ -186,7 +186,7 @@ void *getPaciente_TurnosImpl(void *self)
    obj_paciente *p;
    o = (obj_turnos*) self;   
    p = paciente_new();
-   p->findbykey(p,o->dnipaciente);     
+   p->findbykey(p, o->dnipaciente);
    return p;
 }
 //----------------------------------------------------

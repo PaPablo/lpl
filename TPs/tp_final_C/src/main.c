@@ -17,6 +17,9 @@
 #include "turnos.c"
 
 PGconn *conn; //Instancia que permite manipular conexion con el servidor
+
+
+/*
 int comparaDNI(const void *a, const void *b){
     return (*(obj_paciente**)a)->dni - (*(obj_paciente**)b)->dni;
 }
@@ -26,6 +29,9 @@ int comparaApellido(const void *a, const void *b){
 int comparaNombres(const void *a, const void *b){
     return strcmp((*(obj_paciente**)a)->nombres, (*(obj_paciente**)b)->nombres);
 }
+*/
+
+
 int main(int argc, char *argv[])
 {  
     char *port="5432",*servidor="localhost",*base="turnos", *usuario="postgres", *password="master";
@@ -40,24 +46,48 @@ int main(int argc, char *argv[])
     int i=0, size=0, j;
 
     connectdb(servidor,port,base,usuario,password);
-      //obj_paciente *pac;
-      //void *list;
-      //int i,size=0;
-      pac = paciente_new();
-      //obj_paciente **ejemplo;
-      //if((pac->saveObj(pac, 38147366, "David", "Serruya Aloisi", "tambien al lado", "jiji", true )) == -1) printf("no se pudo insertar\n");
+
+     
+    //busca y muestra los pacientes cuyos apellidos empiecen con T
+      pac = paciente_new(); 
+      size = pac->findAll(pac, &list, "apellido LIKE 'T%'");
+      for(int i = 0; i < size; i++){
+          pac = ((obj_paciente**)list)[i];
+          printf("%-2d\t%-20s\n", i, pac->apellido);
+      }
+
+
+      printf("\n\n");
+        obj_paciente *p = paciente_new();
+     if(p->findbykey(p,38802981) != -1)
+     {
+         printf("Apellido y Nombre:%s – Domicilio: %s - Telefono: %s \n",p->
+                 nombres, p->domicilio, p->telefono);
+     }
+
+
+      //busca y muestra los turnos del 2015 que fueron asistidos, los ordena por fechahora
+      printf("\n\n");
+      tr = turnos_new();
+      //size = tr->findAll(tr, &list, NULL);
+
       
-      if((size = pac->findAll(pac, &list, NULL)) == 0) 
+      if((size = tr->findAll(tr, &list, "to_char(turnos.fechahora, 'YYYY-MM-DD HH:MM:SS') LIKE '2015%' and turnos.asistio=1 order by fechahora")) == 0) 
           printf("no recupero nada bolo\n"); // se invoca sin criterio - listar todos...
       else
           printf("%s | cantidad leida: %d\n", getFechaHora(), size);
 
-      qsort(list, size, sizeof(obj_paciente*), comparaNombres);
-
+      obj_paciente *pac_tr;
+      
       for(i=0; i < size; i++)
       {
-          pac = ((obj_paciente**)list)[i];
-          printf("%-2d\t%-10d|%-20s|%-20s|%-20s\n", i, pac->dni, pac->apellido, pac->nombres, pac->telefono);
+          tr = ((obj_turnos**)list)[i];
+          pac_tr = (obj_paciente *) tr->get_paciente(tr);
+          printf("%-2d | %-15s | %-20s | %-20s | %-10d\n", 
+                  i, tr->fechahora, 
+                  pac_tr->apellido,
+                  pac_tr->nombres,
+                  pac_tr->dni);
       }
       
 
@@ -94,16 +124,23 @@ int main(int argc, char *argv[])
   {
 	  printf("OS Paciente dni : %d RazonSocial: %s, %s\n",ospac->dnipaciente,((obj_paciente*) ospac->get_paciente(ospac))->apellido,((obj_paciente*) ospac->get_paciente(ospac))->nombres);
   }
-  
+  */
+      /*
+      printf("\n");
   profesp = profesional_especialidad_new();
     size = profesp->findAll(profesp,&list,NULL); // se invoca sin criterio - listar todos...
   for(i=0;i<size;++i)
   {
     profesp_o = ((obj_profesional_especialidad**)list)[i];
      
-    printf("Especialidad/Profesional - Profesional: %s, %s - especialidad: %s\n",((obj_profesional*) profesp_o->get_profesional(profesp_o))->apellido,((obj_profesional*) profesp_o->get_profesional(profesp_o))->nombres,((obj_especialidad*) profesp_o->get_especialidad(profesp_o))->nombre);
+    printf("%-3d | %-30s | %-20s | %-20s\n", i,
+    ((obj_profesional*) profesp_o->get_profesional(profesp_o))->apellido,
+    ((obj_profesional*) profesp_o->get_profesional(profesp_o))->nombres,
+    ((obj_especialidad*) profesp_o->get_especialidad(profesp_o))->nombre);
   }
   */
+
+
   /*
   tr = turnos_new();
   
