@@ -135,6 +135,17 @@ void *getPaciente_Paciente_ObraSocialImpl(void *self)
    p->findbykey(p,o->dnipaciente);     
    return p;
 }
+//implementación de getObraSocial_Paciente_ObraSocial
+//
+void *getObraSocial_Paciente_ObraSocialImpl(void *self){
+    
+    obj_paciente_obrasocial* o;
+    obj_obrasocial *os;
+    o = (obj_paciente_obrasocial*) self;
+    os = obrasocial_new();
+    os->findbykey(os,o->codigoobrasocial);
+    return os;
+}
 //----------------------------------------------------
 void *init_paciente_obrasocial(void *self, data_set *ds)
 {
