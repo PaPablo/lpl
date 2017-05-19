@@ -32,13 +32,6 @@ int comparaNombres(const void *a, const void *b){
 }
 */
 
-//probamos hacer el un listado nosotros
-void do_exit(PGconn *conn);
-void listado(PGconn *conn);
-
-
-
-
 int main(int argc, char *argv[])
 {  
     char *port="5432",*servidor="localhost",*base="turnos", *usuario="postgres", *password="master";
@@ -79,8 +72,8 @@ int main(int argc, char *argv[])
 
       
       //busca y muestra los turnos del 2015 que fueron asistidos, los ordena por fechahora
-      if((size = tr->findAll(tr, &list, "to_char(turnos.fechahora, 'YYYY-MM-DD HH:MM:SS') LIKE '2015%' and turnos.asistio=1 order by fechahora")) == 0) 
-      pac = paciente_new();
+      if((size = tr->findAll(tr, &list, "to_char(turnos.fechahora, 'YYYY-MM-DD HH:MM:SS') LIKE '2015%' and turnos.asistio=1 order by fechahora")) == 0);
+      obj_paciente *pac_tr = paciente_new();
 
       for(i=0; i < size; i++) {
           tr = ((obj_turnos**)list)[i];
@@ -175,56 +168,4 @@ int main(int argc, char *argv[])
   disconnectdb();
   //system("PAUSE");	
   return 0;
-}
-
-
-
-void do_exit(PGconn *conn){
-    exit(1);
-}
-
-void listado(PGconn *conn){
-    
-    char query[] = "SELECT E.codigo, E.nombre, PE.fechaalta, P.apellido, P.nombres, CASE WHEN PE.disponible=1 THEN 'DISPONIBLE' ELSE 'NO DISPONIBLE' END FROM profesionalespecialidad as PE JOIN especialidades as E ON PE.codigoespecialidad=E.codigo JOIN profesionales as P ON PE.codigoprofesional=P.id order by E.nombre, P.apellido;";
-
-    PGresult *res = PQexec(conn, query);    
-
-    if (res == NULL && PQresultStatus(res) != PGRES_TUPLES_OK) {
-        printf("No data retrieved\n");        
-        PQclear(res);
-        do_exit(conn);
-    }    
-
-    int rows = PQntuples(res),
-        cols = PQnfields(res);
-
-    //imprimimos cabecera
-    printf("%-3s", "");
-    for(int i = 0; i < cols; i++){
-        printf("| %-10s ", PQfname(res, i));
-    }
-    printf("\n");
-    //printf("%s %s %s %s %s %s", PQgetvalue(res, 0, 0),PQgetvalue(res, 0, 1), PQgetvalue(res, 0, 2),PQgetvalue(res, 0, 3),PQgetvalue(res, 0, 4),PQgetvalue(res, 0, 5));
-
-    
-    for(int i=0; i<rows; i++){
-        printf("%-3d", i);
-        printf("| %-2s ", PQgetvalue(res, i, 0));
-        printf("| %-35s ", PQgetvalue(res, i, 1));
-        printf("| %-10s ", PQgetvalue(res, i, 2));
-        printf("| %-10s ", PQgetvalue(res, i, 3));
-        printf("| %-20s ", PQgetvalue(res, i, 4));
-        printf("| %-10s ", PQgetvalue(res, i, 5));
-
-        /*
-        for(int j = 0; j < cols; j++){
-            printf("%-3d");
-            printf("| %s ", PQgetvalue(res, i, j));
-        }
-        */
-        printf("\n");
-    }   
-    PQclear(res);
-
-    return;
 }

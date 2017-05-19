@@ -7,10 +7,10 @@ enum t_bool{ false=0,true=1};
 
 #define MAX 50
 #define MAX1 15
-#define MAX2 30
-#define MAX3 90
-#define MAX4 2
-#define MAX5 150
+//#define MAX2 30
+//#define MAX3 90
+//#define MAX4 2
+//#define MAX5 150
 #define MAXOBS 200
 #define MAX_FECHA 50
 #define CANT_TABLES 7
