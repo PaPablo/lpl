@@ -16,6 +16,7 @@
 #include "profespecialidad.c"
 #include "turnos.c"
 
+#include "argumentos.h"
 
 PGconn *conn; //Instancia que permite manipular conexion con el servidor
 
@@ -72,10 +73,16 @@ int main(int argc, char *argv[])
 
       
       //busca y muestra los turnos del 2015 que fueron asistidos, los ordena por fechahora
-      if((size = tr->findAll(tr, &list, "to_char(turnos.fechahora, 'YYYY-MM-DD HH:MM:SS') LIKE '2015%' and turnos.asistio=1 order by fechahora")) == 0);
-      obj_paciente *pac_tr = paciente_new();
+      
 
-      for(i=0; i < size; i++) {
+      if((size = tr->findAll(tr, &list, "to_char(turnos.fechahora, 'YYYY-MM-DD HH:MM:SS') LIKE '2015%' and turnos.asistio=1 order by fechahora")) == 0){
+        printf("no se recupero nada\n");
+      } else{
+        printf("size: %d\n", size);
+      }
+      obj_paciente *pac_tr = paciente_new();
+        
+      for(i=0; i < size; i++){
           tr = ((obj_turnos**)list)[i];
           pac_tr = (obj_paciente *) tr->get_paciente(tr);
           printf("%-2d | %-15s | %-20s | %-20s | %-10d\n", 
@@ -84,7 +91,6 @@ int main(int argc, char *argv[])
                   pac_tr->nombres,
                   pac_tr->dni);
       }
-
 
       //tiramos nuestro listado
       //listado(conn);
