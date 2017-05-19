@@ -7,6 +7,7 @@ argumento crear_nodo(char *nombre, argumento *hijos, int cant_hijos, t_puntero_f
 
     if(nuevo == NULL){
         MALLOC_ERROR();
+        printf("nuevo\n");
         exit(1);
     }
 
@@ -16,10 +17,6 @@ argumento crear_nodo(char *nombre, argumento *hijos, int cant_hijos, t_puntero_f
     }
     strcpy(nuevo->nombre, nombre);
 
-    if(hijos == NULL){
-        MALLOC_ERROR();
-        exit(1);
-    }
     nuevo->hijos = hijos;
 
     nuevo->cant_hijos = cant_hijos;
@@ -31,6 +28,7 @@ argumento construir_arbol(){
     arbol = (argumento)malloc(sizeof(struct t_arg));
     if(arbol == NULL){
         MALLOC_ERROR();
+        printf("arbol\n");
         exit(1);
     }
 
@@ -53,6 +51,7 @@ argumento construir_arbol(){
     arbol->hijos[3]->hijos[1] = crear_nodo("--prof-mat", NULL, 0, argumento_profmat);
     arbol->hijos[3]->hijos[2] = crear_nodo("--prof-id", NULL, 0, argumento_profid);
 
+    return arbol;
 }
 
 int match_arg(char *arg, int argc, argumento *hijos){

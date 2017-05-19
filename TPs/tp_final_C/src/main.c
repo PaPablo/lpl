@@ -17,6 +17,7 @@
 #include "turnos.c"
 
 #include "argumentos.h"
+#include "busca_argumentos.c"
 
 PGconn *conn; //Instancia que permite manipular conexion con el servidor
 
@@ -48,7 +49,8 @@ int main(int argc, char *argv[])
 
     connectdb(servidor,port,base,usuario,password);
 
-     
+    argumento arbol = construir_arbol(); 
+
     //busca y muestra los pacientes cuyos apellidos empiecen con T
       pac = paciente_new(); 
       size = pac->findAll(pac, &list, "apellido LIKE 'T%'");
@@ -80,7 +82,7 @@ int main(int argc, char *argv[])
       } else{
         printf("size: %d\n", size);
       }
-      obj_paciente *pac_tr = paciente_new();
+      obj_paciente *pac_tr;
         
       for(i=0; i < size; i++){
           tr = ((obj_turnos**)list)[i];
@@ -91,9 +93,6 @@ int main(int argc, char *argv[])
                   pac_tr->nombres,
                   pac_tr->dni);
       }
-
-      //tiramos nuestro listado
-      //listado(conn);
 
 
       /*      
@@ -147,21 +146,23 @@ int main(int argc, char *argv[])
 	  printf("OS Paciente dni : %d RazonSocial: %s, %s\n",ospac->dnipaciente,((obj_paciente*) ospac->get_paciente(ospac))->apellido,((obj_paciente*) ospac->get_paciente(ospac))->nombres);
   }
   */
-      /*
+
+  /*
       printf("\n");
   profesp = profesional_especialidad_new();
     size = profesp->findAll(profesp,&list,NULL); // se invoca sin criterio - listar todos...
+    obj_profesional *prof_espec;
   for(i=0;i<size;++i)
   {
     profesp_o = ((obj_profesional_especialidad**)list)[i];
-     
+    prof_espec = (obj_profesional *) profesp_o->get_profesional(profesp_o);
+
     printf("%-3d | %-30s | %-20s | %-20s\n", i,
-    ((obj_profesional*) profesp_o->get_profesional(profesp_o))->apellido,
-    ((obj_profesional*) profesp_o->get_profesional(profesp_o))->nombres,
+            prof_espec->apellido,
+            prof_espec->nombres,
     ((obj_especialidad*) profesp_o->get_especialidad(profesp_o))->nombre);
   }
-  */
-
+*/
 
   /*
   tr = turnos_new();
