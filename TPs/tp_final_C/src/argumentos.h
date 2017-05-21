@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef int (*t_puntero_funcion)(void);
+typedef int (*t_puntero_funcion)(int nivel, int argc, char*argv[]);
 
 struct t_arg{
     char *nombre;
@@ -16,7 +16,8 @@ struct t_arg{
 
 typedef struct t_arg *argumento;
 
-void buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[], t_puntero_funcion *funcion);
-argumento construir_arbol();
+//void buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[], t_puntero_funcion *funcion);
+//argumento construir_arbol(void);
+//argumento construir_f(void);
 
 #endif //ARG_H

@@ -1,12 +1,12 @@
 CC   = gcc
 RES  = 
-OBJ  = obj/main.o obj/paciente.o obj/utils.o obj/obrasocial.o obj/pacienteobrasocial.o obj/orm.o obj/profespecialidad.o obj/profesional.o obj/especialidad.o obj/turnos.o obj/busca_argumentos.o obj/funciones_argumentos.o $(RES)
+OBJ  = obj/main.o obj/paciente.o obj/utils.o obj/obrasocial.o obj/pacienteobrasocial.o obj/orm.o obj/profespecialidad.o obj/profesional.o obj/especialidad.o obj/turnos.o obj/funciones_argumentos.o obj/busca_argumentos.o $(RES)
 LINKOBJ  = obj/main.o obj/utils.o $(RES)
 LIBS =  -L"/usr/lib"
 INCS =  -I"/usr/include/postgresql" 
 BIN  = bin/TurnosAtencionApp
 
-CFLAGS = $(INCS) $(LIBS)  -lpq
+CFLAGS = $(INCS) $(LIBS) -lpq
 RM = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -51,8 +51,9 @@ obj/especialidad.o: src/especialidad.c
 obj/turnos.o: src/turnos.c
 	$(CC) -c src/turnos.c -o obj/turnos.o $(CFLAGS)
 
+obj/funciones_argumentos.o: src/funciones_argumentos.c
+	$(CC) -c src/funciones_argumentos.c -o obj/funciones_argumentos.o $(CFLAGS)
+
 obj/busca_argumentos.o: src/busca_argumentos.c
 	$(CC) -c src/busca_argumentos.c -o obj/busca_argumentos.o $(CFLAGS)
 
-obj/funciones_argumentos.o: src/funciones_argumentos.c
-	$(CC) -c src/funciones_argumentos.c -o obj/funciones_argumentos.o $(CFLAGS)

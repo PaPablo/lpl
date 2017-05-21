@@ -3,7 +3,6 @@
 #include <libpq-fe.h> 
 #include <string.h>
 #include <malloc.h>
-
 #include "config.h"
 #include "utils.h"
 // incluir fuente de la implementacion de cada objeto del modelo
@@ -16,27 +15,26 @@
 #include "profespecialidad.c"
 #include "turnos.c"
 
-#include "argumentos.h"
+//#include "argumentos.h"
 #include "busca_argumentos.c"
-
+#define my_printf(...) printf(__VA_ARGS__)
 PGconn *conn; //Instancia que permite manipular conexion con el servidor
 
 
-/*
-int comparaDNI(const void *a, const void *b){
-    return (*(obj_paciente**)a)->dni - (*(obj_paciente**)b)->dni;
-}
-int comparaApellido(const void *a, const void *b){
-    return strcmp((*(obj_paciente**)a)->apellido, (*(obj_paciente**)b)->apellido);
-}
-int comparaNombres(const void *a, const void *b){
-    return strcmp((*(obj_paciente**)a)->nombres, (*(obj_paciente**)b)->nombres);
-}
-*/
 
 int main(int argc, char *argv[])
 {  
+    my_printf("Hola %s va\n", "todo bien?");
+    if(argc == 1){
+        printf("USO: ./TurnosAplicacionApp <...>\n");
+        return 1;
+    }else{
+        for(int i = 1; i < argc; i++){
+            printf("%-2d %s\n", i, argv[i]);
+        }
+    }
     char *port="5432",*servidor="localhost",*base="turnos", *usuario="postgres", *password="master";
+    /*
     obj_profesional *prof;
     obj_obrasocial *os;
     obj_especialidad *esp;
@@ -46,132 +44,35 @@ int main(int argc, char *argv[])
     obj_turnos *tr;
     void *list; //para manejo generico de listado
     int i=0, size=0, j;
-
+    */
     connectdb(servidor,port,base,usuario,password);
 
-    argumento arbol = construir_arbol(); 
+    printf("ARGC = %d\n", argc);
+    //printf("vamos a crear arbol argumentos...\n");
+    argumento arbol_argumentos = construir_arbol(); 
+    /*
+    for(int i = 0; i < arbol_argumentos->cant_hijos; i++){
+        printf("%-2d %s\n", i, arbol_argumentos->hijos[i]->nombre);
+    }
+    */
+    //printf("arbol argumentos creado\n");
+    //argumento arbol_f = construir_f();
+    //printf("arbol f creado\n");
 
-    //busca y muestra los pacientes cuyos apellidos empiecen con T
-      pac = paciente_new(); 
-      size = pac->findAll(pac, &list, "apellido LIKE 'T%'");
-      for(int i = 0; i < size; i++){
-          pac = ((obj_paciente**)list)[i];
-          printf("%-2d\t%-20s\n", i, pac->apellido);
-      }
+    int nivel = 1;
+    t_puntero_funcion funcion;
 
+    //printf("vamos a buscar funcion...\n");
+    buscar_funcion(arbol_argumentos, &nivel, argc, argv, &funcion);
+ 
+    printf("salimos con una funcion, nivel = %d\n", nivel);
 
-      printf("\n\n");
-        obj_paciente *p = paciente_new();
-     if(p->findbykey(p,38802981) != -1)
-     {
-         printf("Apellido y Nombre:%s – Domicilio: %s - Telefono: %s \n",p->
-                 nombres, p->domicilio, p->telefono);
-     }
+    if(verificar_f(++nivel, argc, argv)){
+        printf("se debe redigirar la salida al archivo %s\n", argv[nivel+1]);
+        redireccionar_salida(argv[++nivel]);
+    }
+    funcion(nivel, argc, argv);
 
-
-      printf("\n\n");
-      tr = turnos_new();
-      //size = tr->findAll(tr, &list, NULL);
-
-      
-      //busca y muestra los turnos del 2015 que fueron asistidos, los ordena por fechahora
-      
-
-      if((size = tr->findAll(tr, &list, "to_char(turnos.fechahora, 'YYYY-MM-DD HH:MM:SS') LIKE '2015%' and turnos.asistio=1 order by fechahora")) == 0){
-        printf("no se recupero nada\n");
-      } else{
-        printf("size: %d\n", size);
-      }
-      obj_paciente *pac_tr;
-        
-      for(i=0; i < size; i++){
-          tr = ((obj_turnos**)list)[i];
-          pac_tr = (obj_paciente *) tr->get_paciente(tr);
-          printf("%-2d | %-15s | %-20s | %-20s | %-10d\n", 
-                  i, tr->fechahora, 
-                  pac_tr->apellido,
-                  pac_tr->nombres,
-                  pac_tr->dni);
-      }
-
-
-      /*      
-      if((size = pac->findAll(pac, &list, NULL)) == 0) 
-          printf("no recupero nada bolo\n"); // se invoca sin criterio - listar todos...
-      else
-          printf("%s | cantidad leida: %d\n", getFechaHora(), size);
-
-      obj_paciente *pac_tr;
-      
-
-
-      for(i=0; i < size; i++)
-      {
-          pac = ((obj_paciente**)list)[i];
-          printf("%-2d\t%-10d | %-20s | %-20s | %-20s\n", i, pac->dni, pac->apellido, pac->nombres, pac->telefono);
-      }
-      */
-
-      /*
-   obj_profesional *profesional;
-  
-   prof = profesional_new();
-  if(prof->findbyid(prof, 1)!=-1)
-  {	  
-      printf("profesional id : %d Nombre: %s  Apellido: %s - matricula: %s\n",prof->id,prof->nombres,prof->apellido, prof->matricula);	  	  
-  }
-  */
-/*
-  os = obrasocial_new();
-   if(os->findbykey(os, 1)!=-1)
-  {
-	  printf("Obra Social codigo : %d Nombre: %s\n",os->codigo,os->nombre);	  
-  }
-  
-  esp = especialidad_new();
-   if(esp->findbykey(esp, 1)!=-1)
-  {
-	  printf("Especialidad codigo : %d Nombre: %s\n",esp->codigo,esp->nombre);	  
-  }
-  
-  pac = paciente_new();
-   if(pac->findbykey(pac, 225544335)!=-1)
-  {
-	  printf("Paciente codigo : %d RazonSocial: %s %s\n",pac->dni,pac->apellido,pac->nombres);	  
-  }
-  
-  ospac = paciente_obrasocial_new();
-   if(ospac->findbykey(ospac, 225544335,1)!=-1)
-  {
-	  printf("OS Paciente dni : %d RazonSocial: %s, %s\n",ospac->dnipaciente,((obj_paciente*) ospac->get_paciente(ospac))->apellido,((obj_paciente*) ospac->get_paciente(ospac))->nombres);
-  }
-  */
-
-  /*
-      printf("\n");
-  profesp = profesional_especialidad_new();
-    size = profesp->findAll(profesp,&list,NULL); // se invoca sin criterio - listar todos...
-    obj_profesional *prof_espec;
-  for(i=0;i<size;++i)
-  {
-    profesp_o = ((obj_profesional_especialidad**)list)[i];
-    prof_espec = (obj_profesional *) profesp_o->get_profesional(profesp_o);
-
-    printf("%-3d | %-30s | %-20s | %-20s\n", i,
-            prof_espec->apellido,
-            prof_espec->nombres,
-    ((obj_especialidad*) profesp_o->get_especialidad(profesp_o))->nombre);
-  }
-*/
-
-  /*
-  tr = turnos_new();
-  
-   if(tr->findbyfechahhmm(tr, "2017-05-10",10,15)!=-1)
-  {
-	  printf("%s",tr->fechahora);
-  }
-  */
   disconnectdb();
   //system("PAUSE");	
   return 0;
