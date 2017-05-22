@@ -112,15 +112,74 @@ int argumento_custom (int nivel, int argc, char *argv[], FILE* salida){
 }
 int argumento_esp (int nivel, int argc, char *argv[], FILE* salida){
 
-    printf("argumento_esp\n");
+    int size;
+    void *list;
+    obj_profesional_especialidad *prof_esp = profesional_especialidad_new();
+    obj_profesional *prof;
+    obj_especialidad *esp;
+    if((size = prof_esp->findAll(prof_esp, &list, "codigoprofesional > 0 order by codigoprofesional")) == 0){ 
+        printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        return 1;
+    }
+
+    fprintf(salida, "%-3s | %-3s | %-12s | %-20s | %-24s | %-12s | %-10s | %-10s\n\n", "", "CP", "Apellido", "Nombres", "Especialidad", "Fecha alta", "Estado", "Observaciones");
+    for(int i = 0; i < size; i++){
+        prof_esp = ((obj_profesional_especialidad **)list)[i];
+        prof = (obj_profesional *)prof_esp->get_profesional(prof_esp); 
+        esp = (obj_especialidad *)prof_esp->get_especialidad(prof_esp);
+        fprintf(salida, "%-3d | %-3d | %-12s | %-20s | %-25.25s | %-12s | %-10s | %-10.10s\n", i, prof_esp->codigoprofesional, prof->apellido, prof->nombres, esp->nombre, prof_esp->fechaalta, (prof_esp->disponible == 1 ? "ACTIVO" : "INACTIVO"), prof_esp->observaciones);
+
+    }
+
+    return 0;
 }
 int argumento_act (int nivel, int argc, char *argv[], FILE* salida){
 
-    printf("argumento_act\n");
+    int size;
+    void *list;
+    obj_profesional_especialidad *prof_esp = profesional_especialidad_new();
+    obj_profesional *prof;
+    obj_especialidad *esp;
+    if((size = prof_esp->findAll(prof_esp, &list, "codigoprofesional > 0 order by codigoprofesional")) == 0){ 
+        printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        return 1;
+    }
+
+    fprintf(salida, "%-3s | %-3s | %-12s | %-20s | %-24s | %-12s | %-10s | %-10s\n\n", "", "CP", "Apellido", "Nombres", "Especialidad", "Fecha alta", "Estado", "Observaciones");
+    for(int i = 0; i < size; i++){
+        prof_esp = ((obj_profesional_especialidad **)list)[i];
+        if(prof_esp->disponible) continue;
+        prof = (obj_profesional *)prof_esp->get_profesional(prof_esp); 
+        esp = (obj_especialidad *)prof_esp->get_especialidad(prof_esp);
+        fprintf(salida, "%-3d | %-3d | %-12s | %-20s | %-25.25s | %-12s | %-10s | %-10.10s\n", i, prof_esp->codigoprofesional, prof->apellido, prof->nombres, esp->nombre, prof_esp->fechaalta, "ACTIVO", prof_esp->observaciones);
+
+    }
+
+    return 0;
 }
 int argumento_inact (int nivel, int argc, char *argv[], FILE* salida){
 
-    printf("argumento_inact\n");
+    int size;
+    void *list;
+    obj_profesional_especialidad *prof_esp = profesional_especialidad_new();
+    obj_profesional *prof;
+    obj_especialidad *esp;
+    if((size = prof_esp->findAll(prof_esp, &list, "codigoprofesional > 0 order by codigoprofesional")) == 0){ 
+        printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        return 1;
+    }
+
+    fprintf(salida, "%-3s | %-3s | %-12s | %-20s | %-24s | %-12s | %-10s | %-10s\n\n", "", "CP", "Apellido", "Nombres", "Especialidad", "Fecha alta", "Estado", "Observaciones");
+    for(int i = 0; i < size; i++){
+        prof_esp = ((obj_profesional_especialidad **)list)[i];
+        if(!(prof_esp->disponible)) continue;
+        prof = (obj_profesional *)prof_esp->get_profesional(prof_esp); 
+        esp = (obj_especialidad *)prof_esp->get_especialidad(prof_esp);
+        fprintf(salida, "%-3d | %-3d | %-12s | %-20s | %-25.25s | %-12s | %-10s | %-10.10s\n", i, prof_esp->codigoprofesional, prof->apellido, prof->nombres, esp->nombre, prof_esp->fechaalta, "INACTIVO", prof_esp->observaciones);
+
+    }
+
+    return 0;
 }
 int argumento_pdni (int nivel, int argc, char *argv[], FILE* salida){
 
