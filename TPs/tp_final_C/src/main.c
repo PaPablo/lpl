@@ -60,21 +60,23 @@ int main(int argc, char *argv[])
     //printf("arbol f creado\n");
 
     int nivel = 1;
-    t_puntero_funcion funcion;
+    t_puntero_funcion funcion = buscar_funcion(arbol_argumentos, &nivel, argc, argv); 
 
     //printf("vamos a buscar funcion...\n");
-    buscar_funcion(arbol_argumentos, &nivel, argc, argv, &funcion);
+    //buscar_funcion(arbol_argumentos, &nivel, argc, argv, &funcion);
  
     printf("salimos con una funcion, nivel = %d\n", nivel);
     
+    FILE *salida = stdout;
+
     if(verificar_f(++nivel, argc, argv)){
         printf("se debe redigirar la salida al archivo %s\n", argv[nivel+1]);
-        redireccionar_salida(argv[++nivel]);
+        salida = redireccionar_salida(argv[++nivel]);
     }
 
-    funcion(nivel, argc, argv);
+    funcion(nivel, argc, argv, salida);
 
-  disconnectdb();
-  //system("PAUSE");	
-  return 0;
+    disconnectdb();
+    //system("PAUSE");	
+    return 0;
 }

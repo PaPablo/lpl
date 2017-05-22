@@ -7,84 +7,91 @@
 #include "config.h"
 #include "utils.h"
 
-int argumento_f (int nivel, int argc, char *argv[]){
+/*
+int argumento_f (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_f\n");
 }
+*/
 
-
-int argumento_l (int nivel, int argc, char *argv[]){
+int argumento_l (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_l\n");
 }
-int argumento_paciente (int nivel, int argc, char *argv[]){
+int argumento_paciente (int nivel, int argc, char *argv[], FILE* salida){
     //imprime listado de pacientes
     int size;
     void *list;
     obj_paciente *pac;
     pac = paciente_new();
-    if((size = pac->findAll(pac, &list, NULL)) == 0) 
+    if((size = pac->findAll(pac, &list, NULL)) == 0){ 
         printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        return 1;
+    }
     else{
+        fprintf(salida, "%4s| %-10s | %-20s | %-20s\n\n", "", "DNI", "Apellido", "Nombres");
         for(int i = 0; i < size; i++){
             pac = ((obj_paciente**)list)[i];
-            printf("%4d|%-10d|%-20s|%-20s\n", i, pac->dni,pac->apellido,pac->nombres);
+            fprintf(salida, "%4d| %-10d | %-20s | %-20s\n", i, pac->dni,pac->apellido,pac->nombres);
         }
     }
 
     return 0;
 }
-int argumento_obrasocial (int nivel, int argc, char *argv[]){
+int argumento_obrasocial (int nivel, int argc, char *argv[], FILE* salida){
 
     //imprime listado de pacientes
     int size;
     void *list;
     obj_obrasocial *obs;
     obs = obrasocial_new();
-    if((size = obs->findAll(obs, &list, NULL)) == 0) 
+    if((size = obs->findAll(obs, &list, NULL)) == 0){ 
         printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        return 1;
+    }
     else{
+        fprintf(salida, "%4s| %-10s | %-20s\n\n", "", "Código", "Nombre");
         for(int i = 0; i < size; i++){
             obs = ((obj_obrasocial**)list)[i];
-            printf("%4d|%-10d|%-20s\n", i, obs->codigo,obs->nombre);
+            fprintf(salida, "%4d| %-10d | %-20s\n", i, obs->codigo,obs->nombre);
         }
     }
 
     return 0;
 }
-int argumento_profesional (int nivel, int argc, char *argv[]){
+int argumento_profesional (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_profesional\n");
 }
-int argumento_turnos (int nivel, int argc, char *argv[]){
+int argumento_turnos (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_turnos\n");
 }
-int argumento_custom (int nivel, int argc, char *argv[]){
+int argumento_custom (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_custom\n");
 }
-int argumento_esp (int nivel, int argc, char *argv[]){
+int argumento_esp (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_esp\n");
 }
-int argumento_act (int nivel, int argc, char *argv[]){
+int argumento_act (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_act\n");
 }
-int argumento_inact (int nivel, int argc, char *argv[]){
+int argumento_inact (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_inact\n");
 }
-int argumento_pdni (int nivel, int argc, char *argv[]){
+int argumento_pdni (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_pdni\n");
 }
-int argumento_profmat (int nivel, int argc, char *argv[]){
+int argumento_profmat (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_profmat\n");
 }
-int argumento_profid (int nivel, int argc, char *argv[]){
+int argumento_profid (int nivel, int argc, char *argv[], FILE* salida){
 
     printf("argumento_profid\n");
 }

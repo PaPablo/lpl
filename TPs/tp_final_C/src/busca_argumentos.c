@@ -57,6 +57,7 @@ argumento construir_arbol(void){
     return arbol;
 }
 
+/*
 argumento construir_f(void){
 
     argumento arbol;
@@ -65,7 +66,7 @@ argumento construir_f(void){
 
     return arbol;
 }
-
+*/
 
 int match_arg(char *arg, argumento nodo){
     printf("DENTRO DE MATCH_ARG, arg = %s, nodo = %s, cant_hijos = %d\n", arg, nodo->nombre, nodo->cant_hijos);
@@ -82,11 +83,8 @@ int match_arg(char *arg, argumento nodo){
     return -1;
 }
 
-void buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[], t_puntero_funcion *funcion){
-    /*se convirtió a una función que no devuelve nada porque si era una función que devolvía el puntero,
-     * nos estaba faltando el return al final para que la recursión devuelva algo.
-     * Osea, iba a chillar al momento de compilar porque la función declara que devuelve algo y al final de la ejecución
-     * no estaba devolviendo nada*/
+//void buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[], t_puntero_funcion *funcion){
+t_puntero_funcion buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[]){
 
     printf("DENTRO DE BUSCAR_FUNCION, nivel = %d\n", (*nivel));
     int pos = match_arg(argv[(*nivel)+1], nodo);
@@ -94,27 +92,29 @@ void buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[], t_punter
 
     //Si el nodo es hoja, o si no debemos bajar mas en el arbol, o si ninguno de los hijos matchean con el siguiente argumento
     //devolvemos el puntero a la funcion del nodo
-    if(((*nivel) == argc-1) || (nodo->cant_hijos == 0) || (pos == -1)){
+    if(((*nivel) == (argc-1)) || (nodo->cant_hijos == 0) || (pos == -1)){
         printf("BUSCAR_FUNCION: devuelve el metodo del nodo: %s\n", nodo->nombre);
-        *funcion = nodo->metodo;
-        return;
+        //*funcion = nodo->metodo;
+        //return;
+        return nodo->metodo;
     }
 
     (*nivel)++;
     printf("BUSCAR_FUNCION: LLAMADA RECURSIVA CON EL NODO %s\n", nodo->hijos[pos]->nombre);
-    buscar_funcion(nodo->hijos[pos], nivel, argc, argv, funcion);
+    //buscar_funcion(nodo->hijos[pos], nivel, argc, argv, funcion);
+    return buscar_funcion(nodo->hijos[pos], nivel, argc, argv);
 }
 
 int verificar_f(int nivel, int argc, char *argv[]){
     return (nivel < (argc - 1)) && (!strcmp(argv[nivel], "-f"));
 }
 
-int redireccionar_salida(char *nombre_archivo){
+FILE *redireccionar_salida(char *nombre_archivo){
 
-    int filefd = open(nombre_archivo, O_WRONLY | O_APPEND | O_CREAT, 0666);
+    FILE* filefd = fopen(nombre_archivo, "a");
 
-    close(1);
-    dup(filefd);
+    //close(1);
+    //dup(filefd);
 
     return filefd;
 }
