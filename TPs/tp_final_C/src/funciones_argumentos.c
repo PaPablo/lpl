@@ -65,7 +65,32 @@ int argumento_profesional (int nivel, int argc, char *argv[], FILE* salida){
 }
 int argumento_turnos (int nivel, int argc, char *argv[], FILE* salida){
 
-    printf("argumento_turnos\n");
+    //imprime listado de pacientes
+    int size;
+    void *list;
+    obj_turnos *tr;
+    tr = turnos_new();
+    obj_paciente *pac_tr = paciente_new();
+    obj_profesional *prof_tr = profesional_new();
+    if((size = tr->findAll(tr, &list, NULL)) == 0){ 
+        printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        return 1;
+    }
+    else {
+        fprintf(salida, "%-4s| %-15s | %-40s | %-20s | %-15s | %-10s | %-40s\n\n", 
+                        "", "Dni Paciente", "Nombre y Apellido Paciente", "Fecha y Hora",
+                        "ID Profesional", "Matricula", "Nombre Y Apellido Profesional");
+        for(int i = 0; i < size; i++){
+            tr = ((obj_turnos**)list)[i];
+            pac_tr = (obj_paciente *) tr->get_paciente(tr);
+            prof_tr = (obj_profesional *) tr->get_profesional(tr);
+            fprintf(salida, "%4d| %-15d | %-20s%-20s | %-20s | %-15d | %-10s | %-20s%-20s\n", 
+                        i, tr->dnipaciente, pac_tr->nombres, pac_tr->apellido, tr->fechahora, 
+                        tr->codigoprofesional, prof_tr->matricula, prof_tr->nombres,prof_tr->apellido);
+        }
+    }
+
+    return 0;
 }
 int argumento_custom (int nivel, int argc, char *argv[], FILE* salida){
 
