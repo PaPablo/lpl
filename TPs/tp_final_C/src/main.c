@@ -76,6 +76,8 @@ int main(int argc, char *argv[])
 
     funcion(nivel, argc, argv, salida);
 
+    fclose(salida);
+    eliminar_arbol(arbol_argumentos);
     disconnectdb();
     //system("PAUSE");	
     return 0;

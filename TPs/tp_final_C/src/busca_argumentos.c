@@ -30,6 +30,14 @@ argumento crear_nodo(char *nombre, int cant_hijos, t_puntero_funcion metodo){
     nuevo->metodo = metodo;
 }
 
+void eliminar_nodo(argumento nodo){
+    free(nodo->nombre);
+    free(nodo->hijos);
+    free(nodo);
+    //free(nodo->);
+    //free(nodo->);
+}
+
 argumento construir_arbol(void){
     argumento arbol;
 
@@ -55,6 +63,24 @@ argumento construir_arbol(void){
     arbol->hijos[3]->hijos[2] = crear_nodo("--prof-id", 0, argumento_profid);
 
     return arbol;
+}
+
+void eliminar_arbol(argumento arbol){
+    eliminar_nodo(arbol->hijos[3]->hijos[0]);
+    eliminar_nodo(arbol->hijos[3]->hijos[1]);
+    eliminar_nodo(arbol->hijos[3]->hijos[2]);
+
+    eliminar_nodo(arbol->hijos[2]->hijos[0]);
+    eliminar_nodo(arbol->hijos[2]->hijos[1]);
+    eliminar_nodo(arbol->hijos[2]->hijos[2]);
+
+    eliminar_nodo(arbol->hijos[0]);
+    eliminar_nodo(arbol->hijos[1]);
+    eliminar_nodo(arbol->hijos[2]);
+    eliminar_nodo(arbol->hijos[3]);
+    eliminar_nodo(arbol->hijos[4]);
+
+    eliminar_nodo(arbol);
 }
 
 /*
