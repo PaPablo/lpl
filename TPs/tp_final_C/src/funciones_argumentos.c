@@ -7,17 +7,17 @@
 #include "config.h"
 #include "utils.h"
 
-int argumento_f (int nivel, int argc, char *argv[], FILE *out){
+int argumento_f (int nivel, int argc, char *argv[]){
 
     printf("argumento_f\n");
 }
 
 
-int argumento_l (int nivel, int argc, char *argv[], FILE *out){
+int argumento_l (int nivel, int argc, char *argv[]){
 
     printf("argumento_l\n");
 }
-int argumento_paciente (int nivel, int argc, char *argv[], FILE *out){
+int argumento_paciente (int nivel, int argc, char *argv[]){
     //imprime listado de pacientes
     int size;
     void *list;
@@ -28,13 +28,13 @@ int argumento_paciente (int nivel, int argc, char *argv[], FILE *out){
     else{
         for(int i = 0; i < size; i++){
             pac = ((obj_paciente**)list)[i];
-            fprintf(out, "%4d|%-10d|%-20s|%-20s\n", i, pac->dni,pac->apellido,pac->nombres);
+            printf("%4d|%-10d|%-20s|%-20s\n", i, pac->dni,pac->apellido,pac->nombres);
         }
     }
 
     return 0;
 }
-int argumento_obrasocial (int nivel, int argc, char *argv[], FILE *out){
+int argumento_obrasocial (int nivel, int argc, char *argv[]){
 
     //imprime listado de pacientes
     int size;
@@ -46,45 +46,45 @@ int argumento_obrasocial (int nivel, int argc, char *argv[], FILE *out){
     else{
         for(int i = 0; i < size; i++){
             obs = ((obj_obrasocial**)list)[i];
-            fprintf(out, "%4d|%-10d|%-20s\n", i, obs->codigo,obs->nombre);
+            printf("%4d|%-10d|%-20s\n", i, obs->codigo,obs->nombre);
         }
     }
 
     return 0;
 }
-int argumento_profesional (int nivel, int argc, char *argv[], FILE *out){
+int argumento_profesional (int nivel, int argc, char *argv[]){
 
     printf("argumento_profesional\n");
 }
-int argumento_turnos (int nivel, int argc, char *argv[], FILE *out){
+int argumento_turnos (int nivel, int argc, char *argv[]){
 
     printf("argumento_turnos\n");
 }
-int argumento_custom (int nivel, int argc, char *argv[], FILE *out){
+int argumento_custom (int nivel, int argc, char *argv[]){
 
     printf("argumento_custom\n");
 }
-int argumento_esp (int nivel, int argc, char *argv[], FILE *out){
+int argumento_esp (int nivel, int argc, char *argv[]){
 
     printf("argumento_esp\n");
 }
-int argumento_act (int nivel, int argc, char *argv[], FILE *out){
+int argumento_act (int nivel, int argc, char *argv[]){
 
     printf("argumento_act\n");
 }
-int argumento_inact (int nivel, int argc, char *argv[], FILE *out){
+int argumento_inact (int nivel, int argc, char *argv[]){
 
     printf("argumento_inact\n");
 }
-int argumento_pdni (int nivel, int argc, char *argv[], FILE *out){
+int argumento_pdni (int nivel, int argc, char *argv[]){
 
     printf("argumento_pdni\n");
 }
-int argumento_profmat (int nivel, int argc, char *argv[], FILE *out){
+int argumento_profmat (int nivel, int argc, char *argv[]){
 
     printf("argumento_profmat\n");
 }
-int argumento_profid (int nivel, int argc, char *argv[], FILE *out){
+int argumento_profid (int nivel, int argc, char *argv[]){
 
     printf("argumento_profid\n");
 }

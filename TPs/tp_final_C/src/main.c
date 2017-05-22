@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
         redireccionar_salida(argv[++nivel]);
     }
 
-    funcion(nivel, argc, argv,stdout);
+    funcion(nivel, argc, argv);
 
   disconnectdb();
   //system("PAUSE");	
