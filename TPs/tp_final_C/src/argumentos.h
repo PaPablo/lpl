@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef int (*t_puntero_funcion)(int nivel, int argc, char*argv[]);
+typedef int (*t_puntero_funcion)(int nivel, int argc, char*argv[], FILE *out);
 
 struct t_arg{
     char *nombre;

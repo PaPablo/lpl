@@ -115,4 +115,6 @@ int redireccionar_salida(char *nombre_archivo){
 
     close(1);
     dup(filefd);
+
+    return filefd;
 }

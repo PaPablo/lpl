@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     obj_profesional *prof;
     obj_obrasocial *os;
     obj_especialidad *esp;
-    obj_paciente *pac;
+    apellido LIKE %T""obj_paciente *pac;
     obj_paciente_obrasocial *ospac;
     obj_profesional_especialidad *profesp,*profesp_o;
     obj_turnos *tr;
@@ -66,12 +66,13 @@ int main(int argc, char *argv[])
     buscar_funcion(arbol_argumentos, &nivel, argc, argv, &funcion);
  
     printf("salimos con una funcion, nivel = %d\n", nivel);
-
+    
     if(verificar_f(++nivel, argc, argv)){
         printf("se debe redigirar la salida al archivo %s\n", argv[nivel+1]);
         redireccionar_salida(argv[++nivel]);
     }
-    funcion(nivel, argc, argv);
+
+    funcion(nivel, argc, argv,stdout);
 
   disconnectdb();
   //system("PAUSE");	
