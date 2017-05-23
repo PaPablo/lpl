@@ -94,7 +94,7 @@ int argumento_turnos (int nivel, int argc, char *argv[], FILE* salida){
     tr = turnos_new();
     obj_paciente *pac_tr;
     obj_profesional *prof_tr;
-    if((size = tr->findAll(tr, &list, NULL)) == 0){ 
+    if((size = tr->findAll(tr, &list, "dnipaciente > 0 order by fechahora")) == 0){ 
         printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
         return 1;
     }
@@ -200,11 +200,64 @@ int argumento_inact (int nivel, int argc, char *argv[], FILE* salida){
 
 int argumento_pdni (int nivel, int argc, char *argv[], FILE* salida){
 
-    printf("argumento_pdni\n");
+    //imprime listado de pacientes
+    int size;
+    void *list;
+    obj_turnos *tr;
+    tr = turnos_new();
+    char criterio[50] = "dnipaciente = ";
+    strcat(criterio, argv[nivel]);
+    printf("%s\n",criterio);
+    obj_paciente *pac_tr;
+    obj_profesional *prof_tr;
+    if((size = tr->findAll(tr, &list, criterio)) == 0){ 
+        printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        return 1;
+    }
+    fprintf(salida, "%-4s| %-10s | %-32s | %-20s | %-4s | %-8s | %-30s\n\n", 
+                    "", "DNI", "Paciente", "Fecha y Hora",
+                    "ID", "Mát.", "Profesional");
+    for(int i = 0; i < size; i++){
+        tr = ((obj_turnos**)list)[i];
+        pac_tr = (obj_paciente *) tr->get_paciente(tr);
+        prof_tr = (obj_profesional *) tr->get_profesional(tr);
+        fprintf(salida, "%4d| %-10d | %-15.15s, %-15s | %-20s | %-4d | %-8s | %-15.15s, %-15s\n", 
+                    i, tr->dnipaciente, pac_tr->nombres, pac_tr->apellido, tr->fechahora, 
+                    tr->codigoprofesional, prof_tr->matricula, prof_tr->nombres,prof_tr->apellido);
+    }
+
+    return 0;
 }
 int argumento_profmat (int nivel, int argc, char *argv[], FILE* salida){
 
-    printf("argumento_profmat\n");
+    //imprime listado de pacientes
+    int size;
+    void *list;
+    obj_turnos *tr;
+    tr = turnos_new();
+    char criterio[50];
+    strcpy(criterio,argv[nivel]);
+    obj_paciente *pac_tr;
+    obj_profesional *prof_tr;
+    if((size = tr->findAll(tr, &list, NULL)) == 0){ 
+        printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        return 1;
+    }
+    fprintf(salida, "%-4s| %-10s | %-32s | %-20s | %-4s | %-8s | %-30s\n\n", 
+                    "", "DNI", "Paciente", "Fecha y Hora",
+                    "ID", "Mát.", "Profesional");
+    for(int i = 0; i < size; i++){
+        tr = ((obj_turnos**)list)[i];
+        pac_tr = (obj_paciente *) tr->get_paciente(tr);
+        prof_tr = (obj_profesional *) tr->get_profesional(tr);
+        printf("el prof mat %s\n",argv[nivel+2]);
+        if(!strcmp(prof_tr->matricula,argv[nivel+2])) continue; 
+        fprintf(salida, "%4d| %-10d | %-15.15s, %-15s | %-20s | %-4d | %-8s | %-15.15s, %-15s\n", 
+                    i, tr->dnipaciente, pac_tr->nombres, pac_tr->apellido, tr->fechahora, 
+                    tr->codigoprofesional, prof_tr->matricula, prof_tr->nombres,prof_tr->apellido);
+    }
+
+    return 0;
 }
 int argumento_profid (int nivel, int argc, char *argv[], FILE* salida){
 

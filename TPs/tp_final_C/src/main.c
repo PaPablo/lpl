@@ -68,7 +68,8 @@ int main(int argc, char *argv[])
     printf("salimos con una funcion, nivel = %d\n", nivel);
     
     FILE *salida = stdout;
-
+    
+    printf("%s\n",argv[nivel]);
     if(verificar_f(++nivel, argc, argv)){
         printf("se debe redigirar la salida al archivo %s\n", argv[nivel+1]);
         salida = redireccionar_salida(argv[++nivel]);
@@ -77,7 +78,7 @@ int main(int argc, char *argv[])
     funcion(nivel, argc, argv, salida);
 
     fclose(salida);
-    eliminar_arbol(arbol_argumentos);
+    //eliminar_arbol(arbol_argumentos);
     disconnectdb();
     //system("PAUSE");	
     return 0;
