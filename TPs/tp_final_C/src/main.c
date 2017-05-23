@@ -10,15 +10,12 @@
 #include "profesional.c"
 #include "paciente.c"
 #include "obrasocial.c"
-#include "especialidad.c"
-#include "pacienteobrasocial.c"
-#include "profespecialidad.c"
-#include "turnos.c"
-
-#include "busca_argumentos.c"
-PGconn *conn; //Instancia que permite manipular conexion con el servidor
-
-
+#include "especialidad.c" 
+#include "pacienteobrasocial.c" 
+#include "profespecialidad.c" 
+#include "turnos.c" 
+#include "busca_argumentos.c" 
+PGconn *conn; //Instancia que permite manipular conexion con el servidor 
 
 int main(int argc, char *argv[])
 {  
