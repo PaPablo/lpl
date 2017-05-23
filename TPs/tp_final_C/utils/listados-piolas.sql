@@ -22,12 +22,10 @@ SELECT O.dnipaciente, S.nombre, O.fechadesde, P.apellido, P.nombres from pacient
 SELECT E.codigo, E.nombre, PE.fechaalta, PE.disponible, P.apellido, P.nombres from profesionalespecialidad as PE JOIN especialidades as E ON PE.codigoespecialidad=E.codigo JOIN profesionales as P ON PE.codigoprofesional=P.id order by E.nombre, P.apellido;
 
 --ahi quedo mas cheta
-SELECT E.codigo, E.nombre, PE.fechaalta, P.apellido, P.nombres, CASE WHEN PE.disponible=1 THEN 'DISPONIBLE' ELSE 'NO DISPONIBLE' END FROM profesionalespecialidad as PE JOIN especialidades as E ON PE.codigoespecialidad=E.codigo JOIN profesionales as P ON PE.codigoprofesional=P.id order by E.nombre, P.apellido;
+SELECT E.codigo, E.nombre, PE.fechaalta, P.apellido, P.nombres, CASE WHEN PE.disponible=1 THEN 'DISPONIBLE' ELSE 'NO DISPONIBLE' END as "Disponible" FROM profesionalespecialidad as PE JOIN especialidades as E ON PE.codigoespecialidad=E.codigo JOIN profesionales as P ON PE.codigoprofesional=P.id order by E.nombre, P.apellido;
 
 --profesionales que ejercen cada especialidad (estan disponibles)
 SELECT E.codigo, E.nombre, PE.fechaalta, P.apellido, P.nombres from profesionalespecialidad as PE JOIN especialidades as E ON PE.codigoespecialidad=E.codigo JOIN profesionales as P ON PE.codigoprofesional=P.id where PE.disponible=1 order by E.nombre, P.apellido;
 
 --consulta con salida tipo CSV
-SELECT dni||','apellido "DNI y apellido de los pacientes registrados" from pacientes order by apellido;
-
-
+SELECT dni||','||apellido "DNI y apellido de los pacientes registrados" from pacientes order by apellido;

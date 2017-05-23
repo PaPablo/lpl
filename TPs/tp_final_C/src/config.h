@@ -12,7 +12,7 @@ enum t_bool{ false=0,true=1};
 //#define MAX4 2
 //#define MAX5 150
 #define MAXOBS 200
-#define MAX_FECHA 50
+#define MAX_FECHA 70
 #define CANT_TABLES 7
 #define MAX_SQL 800
 #define MAX_WHERE_SQL 600
@@ -109,7 +109,7 @@ char *sql_insert_param_str[CANT_TABLES]={
      "%d,'%s','%s','%s','%s'",   // insert paciente
      "%d,'%s'",  //insert obra social
      "%d,'%s'", // insert especialidad
-     "'%s','%s','%s','%s','%s'", // insert profesional
+     "'%s','%s','%s','%s','%s', %d", // insert profesional
      "%d,%d,date_trunc('second', now())", // insert pacienteobrasocial -ultima columna es fecha - hora actual desde la base de datos
      "%d,%d,date_trunc('second', now()),%d,'%s'", // insert profesionalespecialidad
      "'%s',%d,%d,%d" // insert turnos
@@ -120,7 +120,7 @@ char *sql_update_param_str[CANT_TABLES]={
      "nombres = '%s', apellido ='%s', domicilio='%s', telefono='%s'", // campos actualizables de paciente
      "nombre = '%s'",// campos actualizables de obra social
      "nombre = '%s'", // campos actualizables de especialidad
-     "matricula ='%s', fechamatricula='%s',nombres ='%s', apellido ='%s', telefono='%s'", // campos actualizables de profesional
+     "matricula ='%s', fechamatricula='%s',nombres ='%s', apellido ='%s', telefono='%s', activo=%d", // campos actualizables de profesional
      "", // campos actualizables de paciente obrasocial
      "disponible=%d,observaciones='%s'", // campos actualizables de profesionales especialidad
      "asistio=%d|"}; // campos actualizables de  turnos

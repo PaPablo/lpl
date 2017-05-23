@@ -13,13 +13,11 @@ argumento crear_nodo(char *nombre, int cant_hijos, t_puntero_funcion metodo){
 
     if(nuevo == NULL){
         MALLOC_ERROR();
-        printf("nuevo");
         exit(1);
     }
 
     if((nuevo->nombre = (char *)malloc(strlen(nombre) + 1)) == NULL){
         MALLOC_ERROR();
-        printf("nombre");
         exit(1);
     }
     strcpy(nuevo->nombre, nombre);
@@ -30,12 +28,10 @@ argumento crear_nodo(char *nombre, int cant_hijos, t_puntero_funcion metodo){
     nuevo->metodo = metodo;
 }
 
-void eliminar_nodo(argumento nodo){
+void eliminar_hoja(argumento nodo){
     free(nodo->nombre);
     free(nodo->hijos);
     free(nodo);
-    //free(nodo->);
-    //free(nodo->);
 }
 
 argumento construir_arbol(void){
@@ -66,81 +62,66 @@ argumento construir_arbol(void){
 }
 
 void eliminar_arbol(argumento arbol){
-    eliminar_nodo(arbol->hijos[3]->hijos[0]);
-    eliminar_nodo(arbol->hijos[3]->hijos[1]);
-    eliminar_nodo(arbol->hijos[3]->hijos[2]);
 
-    eliminar_nodo(arbol->hijos[2]->hijos[0]);
-    eliminar_nodo(arbol->hijos[2]->hijos[1]);
-    eliminar_nodo(arbol->hijos[2]->hijos[2]);
+    eliminar_hoja(arbol->hijos[2]->hijos[0]);
+    eliminar_hoja(arbol->hijos[2]->hijos[1]);
+    eliminar_hoja(arbol->hijos[2]->hijos[2]);
 
-    eliminar_nodo(arbol->hijos[0]);
-    eliminar_nodo(arbol->hijos[1]);
-    eliminar_nodo(arbol->hijos[2]);
-    eliminar_nodo(arbol->hijos[3]);
-    eliminar_nodo(arbol->hijos[4]);
+    eliminar_hoja(arbol->hijos[3]->hijos[0]);
+    eliminar_hoja(arbol->hijos[3]->hijos[1]);
+    eliminar_hoja(arbol->hijos[3]->hijos[2]);
 
-    eliminar_nodo(arbol);
+    eliminar_hoja(arbol->hijos[0]);
+    eliminar_hoja(arbol->hijos[1]);
+    eliminar_hoja(arbol->hijos[2]);
+    eliminar_hoja(arbol->hijos[3]);
+    eliminar_hoja(arbol->hijos[4]);
+
+    eliminar_hoja(arbol);
 }
 
-/*
-argumento construir_f(void){
-
-    argumento arbol;
-
-    arbol = crear_nodo("-f", 0, argumento_f);
-
-    return arbol;
-}
-*/
 
 int match_arg(char *arg, argumento nodo){
-    printf("DENTRO DE MATCH_ARG, arg = %s, nodo = %s, cant_hijos = %d\n", arg, nodo->nombre, nodo->cant_hijos);
+    //printf("DENTRO DE MATCH_ARG, arg = %s, nodo = %s, cant_hijos = %d\n", arg, nodo->nombre, nodo->cant_hijos);
     if(arg == NULL) return -1;
 
     for(int i = 0; i < nodo->cant_hijos; i++){
         if(strcmp(arg, nodo->hijos[i]->nombre) == 0){
-            printf("el arg = %s matchea con el nombre %s del nodo %s. Devuelve %d\n", arg, nodo->hijos[i]->nombre, nodo->nombre, i);
+            //printf("el arg = %s matchea con el nombre %s del nodo %s. Devuelve %d\n", arg, nodo->hijos[i]->nombre, nodo->nombre, i);
             return i;
         }
     }
 
-    printf("AFUERA DE MATCH_ARG\n");
+    //printf("AFUERA DE MATCH_ARG\n");
     return -1;
 }
 
 //void buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[], t_puntero_funcion *funcion){
 t_puntero_funcion buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[]){
 
-    printf("DENTRO DE BUSCAR_FUNCION, nivel = %d\n", (*nivel));
+    //printf("DENTRO DE BUSCAR_FUNCION, nivel = %d\n", (*nivel));
     int pos = match_arg(argv[(*nivel)+1], nodo);
-    //printf("BUSCAR_FUNCION, POS = %d\n", pos);
 
     //Si el nodo es hoja, o si no debemos bajar mas en el arbol, o si ninguno de los hijos matchean con el siguiente argumento
     //devolvemos el puntero a la funcion del nodo
     if(((*nivel) == (argc-1)) || (nodo->cant_hijos == 0) || (pos == -1)){
-        printf("BUSCAR_FUNCION: devuelve el metodo del nodo: %s\n", nodo->nombre);
-        //*funcion = nodo->metodo;
-        //return;
+        //printf("BUSCAR_FUNCION: devuelve el metodo del nodo: %s\n", nodo->nombre);
         return nodo->metodo;
     }
 
     (*nivel)++;
-    printf("BUSCAR_FUNCION: LLAMADA RECURSIVA CON EL NODO %s\n", nodo->hijos[pos]->nombre);
-    //buscar_funcion(nodo->hijos[pos], nivel, argc, argv, funcion);
+    //printf("BUSCAR_FUNCION: LLAMADA RECURSIVA CON EL NODO %s\n", nodo->hijos[pos]->nombre);
     return buscar_funcion(nodo->hijos[pos], nivel, argc, argv);
 }
 
-int verificar_f(int nivel, int argc, char *argv[]){
-    return (nivel < (argc - 1)) && (!strcmp(argv[nivel], "-f"));
+int verificar_f(int argc, char *argv[]){
+    return (!strcmp(argv[argc-2], "-f")) && argv[argc-1] != NULL;
+    //return (nivel < (argc - 1)) && (!strcmp(argv[nivel], "-f"));
 }
 
 FILE *redireccionar_salida(char *nombre_archivo){
 
     FILE* filefd = fopen(nombre_archivo, "a");
 
-    //close(1);
-    //dup(filefd);
-
-    return filefd;
+    return (filefd == NULL ? stdout : filefd);
 }

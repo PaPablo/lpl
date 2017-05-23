@@ -1,12 +1,15 @@
 #!/bin/bash
-#
-# This program reads lines from a file.
-#
+
+#script para ejecutar una consulta a la base de datos "turnos" corriendo en localhost
+#si se lo ejecuta sin parametros, hay que tirarle la consulta, enter, y un EOF
+#tambien se le puede tirar un archivo de texto que tenga la consulta
+#   ./execute_query.sh consulta.sql
 
 SERVER="localhost"
 USER="postgres"
 DB="turnos"
-echo $#
+
+
 if [ $# -eq 0 ]; then
     end_of_file=0
     SQL=""
@@ -23,7 +26,6 @@ if [ $# -eq 0 ]; then
 else   
     QUERY=$1
     psql -h "$SERVER" -U "$USER" -d "$DB" -f "$QUERY" -a
-    echo "chau"
 fi
 
 exit 0

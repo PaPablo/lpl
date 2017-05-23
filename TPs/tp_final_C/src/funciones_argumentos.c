@@ -7,16 +7,10 @@
 #include "config.h"
 #include "utils.h"
 
-/*
-int argumento_f (int nivel, int argc, char *argv[], FILE* salida){
-
-    printf("argumento_f\n");
-}
-*/
 
 int argumento_l (int nivel, int argc, char *argv[], FILE* salida){
 
-    printf("argumento_l\n");
+    printf("\nAYUDA -l\n\t./TurnosAtencionApp -l <paciente | obrasocial | profesional | turnos | custom>\n\n");
 }
 
 
@@ -87,28 +81,23 @@ int argumento_profesional (int nivel, int argc, char *argv[], FILE* salida){
 
 int argumento_turnos (int nivel, int argc, char *argv[], FILE* salida){
 
-    //imprime listado de pacientes
     int size;
     void *list;
     obj_turnos *tr;
     tr = turnos_new();
+    
     obj_paciente *pac_tr;
     obj_profesional *prof_tr;
     if((size = tr->findAll(tr, &list, NULL)) == 0){ 
         printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
         return 1;
     }
-    fprintf(salida, "%-4s| %-10s | %-32s | %-20s | %-4s | %-8s | %-30s\n\n", 
-                    "", "DNI", "Paciente", "Fecha y Hora",
-                    "ID", "Mát.", "Profesional");
+    fprintf(salida, "%-4s| %-10s | %-32s | %-20s | %-4s | %-8s | %-32s\n\n", "", "DNI", "Paciente", "Fecha y Hora", "ID", "Mát.", "Profesional");
     for(int i = 0; i < size; i++){
         tr = ((obj_turnos**)list)[i];
-        pac_tr = (obj_paciente *) tr->get_paciente(tr);
-        prof_tr = (obj_profesional *) tr->get_profesional(tr);
-
-        fprintf(salida, "%4d| %-10d | %-15.15s, %-15s | %-20s | %-4d | %-8s | %-15.15s, %-15s\n", 
-                    i, tr->dnipaciente, pac_tr->nombres, pac_tr->apellido, tr->fechahora, 
-                    tr->codigoprofesional, prof_tr->matricula, prof_tr->nombres,prof_tr->apellido);
+        pac_tr = (obj_paciente *)tr->get_paciente(tr);
+        prof_tr = (obj_profesional *)tr->get_profesional(tr);
+        fprintf(salida, "%-4d| %-10d | %-15.15s, %-15.15s | %-20s | %-4d | %-8s | %-15.15s, %-15.15s\n", i, tr->dnipaciente, pac_tr->nombres, pac_tr->apellido, tr->fechahora, tr->codigoprofesional, prof_tr->matricula, prof_tr->nombres, prof_tr->apellido);
     }
 
     return 0;
