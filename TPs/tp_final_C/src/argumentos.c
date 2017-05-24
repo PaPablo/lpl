@@ -28,16 +28,18 @@ argumento crear_nodo(char *nombre, int cant_hijos, t_puntero_funcion metodo){
     nuevo->metodo = metodo;
 }
 
+
 void eliminar_hoja(argumento nodo){
     free(nodo->nombre);
     free(nodo->hijos);
     free(nodo);
 }
 
+
 argumento construir_arbol(void){
     argumento arbol;
 
-    arbol = crear_nodo("-l", 5, argumento_l);
+    arbol = crear_nodo("-l", 4, argumento_l);
 
     /*una vez que tenemos creado el arbol, tenemos que ir creando los nodos hijos 
      * e ir asignandoles sus respectivos nombres e hijos*/
@@ -47,8 +49,7 @@ argumento construir_arbol(void){
     arbol->hijos[0] = crear_nodo("paciente", 0, argumento_paciente);
     arbol->hijos[1] = crear_nodo("obrasocial", 0, argumento_obrasocial);
     arbol->hijos[2] = crear_nodo("profesional", 3, argumento_profesional);
-    arbol->hijos[3] = crear_nodo("turnos", 3, argumento_turnos);
-    arbol->hijos[4] = crear_nodo("custom", 0, argumento_custom);
+    arbol->hijos[3] = crear_nodo("turnos", 4, argumento_turnos);
 
     arbol->hijos[2]->hijos[0] = crear_nodo("-esp", 0, argumento_esp);
     arbol->hijos[2]->hijos[1] = crear_nodo("-act", 0, argumento_act);
@@ -57,9 +58,11 @@ argumento construir_arbol(void){
     arbol->hijos[3]->hijos[0] = crear_nodo("-pdni", 0, argumento_pdni);
     arbol->hijos[3]->hijos[1] = crear_nodo("--prof-mat", 0, argumento_profmat);
     arbol->hijos[3]->hijos[2] = crear_nodo("--prof-id", 0, argumento_profid);
+    arbol->hijos[3]->hijos[3] = crear_nodo("-anio", 0, argumento_anio);
 
     return arbol;
 }
+
 
 void eliminar_arbol(argumento arbol){
 
@@ -70,54 +73,48 @@ void eliminar_arbol(argumento arbol){
     eliminar_hoja(arbol->hijos[3]->hijos[0]);
     eliminar_hoja(arbol->hijos[3]->hijos[1]);
     eliminar_hoja(arbol->hijos[3]->hijos[2]);
+    eliminar_hoja(arbol->hijos[3]->hijos[3]);
 
     eliminar_hoja(arbol->hijos[0]);
     eliminar_hoja(arbol->hijos[1]);
     eliminar_hoja(arbol->hijos[2]);
     eliminar_hoja(arbol->hijos[3]);
-    eliminar_hoja(arbol->hijos[4]);
 
     eliminar_hoja(arbol);
 }
 
 
 int match_arg(char *arg, argumento nodo){
-    //printf("DENTRO DE MATCH_ARG, arg = %s, nodo = %s, cant_hijos = %d\n", arg, nodo->nombre, nodo->cant_hijos);
     if(arg == NULL) return -1;
 
     for(int i = 0; i < nodo->cant_hijos; i++){
         if(strcmp(arg, nodo->hijos[i]->nombre) == 0){
-            //printf("el arg = %s matchea con el nombre %s del nodo %s. Devuelve %d\n", arg, nodo->hijos[i]->nombre, nodo->nombre, i);
             return i;
         }
     }
-
-    //printf("AFUERA DE MATCH_ARG\n");
     return -1;
 }
 
-//void buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[], t_puntero_funcion *funcion){
+
 t_puntero_funcion buscar_funcion(argumento nodo, int *nivel, int argc, char* argv[]){
 
-    //printf("DENTRO DE BUSCAR_FUNCION, nivel = %d\n", (*nivel));
     int pos = match_arg(argv[(*nivel)+1], nodo);
 
     //Si el nodo es hoja, o si no debemos bajar mas en el arbol, o si ninguno de los hijos matchean con el siguiente argumento
     //devolvemos el puntero a la funcion del nodo
     if(((*nivel) == (argc-1)) || (nodo->cant_hijos == 0) || (pos == -1)){
-        //printf("BUSCAR_FUNCION: devuelve el metodo del nodo: %s\n", nodo->nombre);
         return nodo->metodo;
     }
 
     (*nivel)++;
-    //printf("BUSCAR_FUNCION: LLAMADA RECURSIVA CON EL NODO %s\n", nodo->hijos[pos]->nombre);
     return buscar_funcion(nodo->hijos[pos], nivel, argc, argv);
 }
 
+
 int verificar_f(int argc, char *argv[]){
     return (!strcmp(argv[argc-2], "-f")) && argv[argc-1] != NULL;
-    //return (nivel < (argc - 1)) && (!strcmp(argv[nivel], "-f"));
 }
+
 
 FILE *redireccionar_salida(char *nombre_archivo){
 

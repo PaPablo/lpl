@@ -14,7 +14,8 @@
 #include "pacienteobrasocial.c" 
 #include "profespecialidad.c" 
 #include "turnos.c" 
-#include "busca_argumentos.c" 
+
+#include "argumentos.c" 
 PGconn *conn; //Instancia que permite manipular conexion con el servidor 
 
 int main(int argc, char *argv[])

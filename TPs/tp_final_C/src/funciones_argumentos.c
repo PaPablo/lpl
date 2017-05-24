@@ -21,8 +21,8 @@ int argumento_l (char *arg, FILE* salida){
     \t\t[-pdni <DNI>] : lista los turnos del paciente con el DNI ingresado\n \
     \t\t[--prof-mat <MAT>] : lista los turnos que se le asignaron al profesional con la matrícula ingresada\n \
     \t\t[--prof-id <ID>] : lista los turnos que se le asignaron al profesional con el ID ingresado\n \
-    \t%s <custom> <AÑO> : lista todos los turnos que fueron atendidos en el año ingresado\n\n", 
-    nombre, nombre, nombre, nombre, nombre); 
+    \t\t[-anio <AÑO>] : lista todos los turnos que fueron atendidos en el año ingresado\n\n", 
+    nombre, nombre, nombre, nombre); 
 
 }
 
@@ -117,14 +117,12 @@ int argumento_turnos (char *arg, FILE* salida){
 }
 
 
-int argumento_custom (char *arg, FILE* salida){
+int argumento_anio (char *arg, FILE* salida){
 
     if(arg == NULL){
         printf("\nERROR: No se ingresó ningún año\n");
         return 1;
     }
-
-    /*to_char(turnos.fechahora, 'YYYY-MM-DD HH:MM:SS') ~ '2015.*' and turnos.asistio=1 order by fechahora;*/
 
     int size;
     void *list;
@@ -146,8 +144,6 @@ int argumento_custom (char *arg, FILE* salida){
         fprintf(salida, "%-4d| %-10d | %-15.15s, %-15.15s | %-20s | %-4d | %-8s | %-15.15s, %-15.15s\n", i, tr->dnipaciente, pac_tr->nombres, pac_tr->apellido, tr->fechahora, tr->codigoprofesional, prof_tr->matricula, prof_tr->nombres, prof_tr->apellido);
     }
 
-
-    //printf("argumento_custom\n");
 }
 
 
