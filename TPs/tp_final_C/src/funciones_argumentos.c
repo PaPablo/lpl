@@ -8,14 +8,27 @@
 #include "utils.h"
 
 
-int argumento_l (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_l (char *arg, FILE* salida){
 
-    printf("\nAYUDA -l\n\t./TurnosAtencionApp -l <paciente | obrasocial | profesional | turnos | custom>\n\n");
+    char nombre[] = "./TurnosAtencionApp";
+    printf("\nAYUDA\n\t%s <paciente> : lista todos los pacientes registrados\n \
+    \t%s <obrasocial> : lista todas las obras sociales registradas\n \
+    \t%s <profesional> : lista todos los profesionales registrados\n \
+    \t\t[-esp] : lista los profesionales con sus especialidades\n \
+    \t\t[-act] : lista los profesionales con sus especialidades activas\n \
+    \t\t[-inact] : lista los profesionales con sus especialidades inactivas\n \
+    \t%s <turnos> : lista todos los turnos registrados\n \
+    \t\t[-pdni <DNI>] : lista los turnos del paciente con el DNI ingresado\n \
+    \t\t[--prof-mat <MAT>] : lista los turnos que se le asignaron al profesional con la matrícula ingresada\n \
+    \t\t[--prof-id <ID>] : lista los turnos que se le asignaron al profesional con el ID ingresado\n \
+    \t%s <custom> <AÑO> : lista todos los turnos que fueron atendidos en el año ingresado\n\n", 
+    nombre, nombre, nombre, nombre, nombre); 
+
 }
 
 
-int argumento_paciente (int nivel, int argc, char *argv[], FILE* salida){
-    //imprime listado de pacientes
+
+int argumento_paciente (char *arg, FILE* salida){
     int size;
     void *list;
     obj_paciente *pac;
@@ -36,7 +49,7 @@ int argumento_paciente (int nivel, int argc, char *argv[], FILE* salida){
 }
 
 
-int argumento_obrasocial (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_obrasocial (char *arg, FILE* salida){
 
     int size;
     void *list;
@@ -57,7 +70,7 @@ int argumento_obrasocial (int nivel, int argc, char *argv[], FILE* salida){
 }
 
 
-int argumento_profesional (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_profesional (char *arg, FILE* salida){
 
     int size;
     void *list;
@@ -79,7 +92,7 @@ int argumento_profesional (int nivel, int argc, char *argv[], FILE* salida){
 }
 
 
-int argumento_turnos (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_turnos (char *arg, FILE* salida){
 
     int size;
     void *list;
@@ -104,13 +117,41 @@ int argumento_turnos (int nivel, int argc, char *argv[], FILE* salida){
 }
 
 
-int argumento_custom (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_custom (char *arg, FILE* salida){
 
-    printf("argumento_custom\n");
+    if(arg == NULL){
+        printf("\nERROR: No se ingresó ningún año\n");
+        return 1;
+    }
+
+    /*to_char(turnos.fechahora, 'YYYY-MM-DD HH:MM:SS') ~ '2015.*' and turnos.asistio=1 order by fechahora;*/
+
+    int size;
+    void *list;
+    obj_turnos *tr;
+    tr = turnos_new();
+    obj_paciente *pac_tr;
+    obj_profesional *prof_tr;
+    char criterio[256];
+    sprintf(criterio, "to_char(turnos.fechahora, 'YYYY-MM-DD HH:MM:SS') ~ '%s.*' and turnos.asistio=1 order by fechahora;", arg);
+    if((size = tr->findAll(tr, &list, criterio)) == 0){ 
+        printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        return 1;
+    }
+    fprintf(salida, "%-4s| %-10s | %-32s | %-20s | %-4s | %-8s | %-32s\n\n", "", "DNI", "Paciente", "Fecha y Hora", "ID", "Mát.", "Profesional");
+    for(int i = 0; i < size; i++){
+        tr = ((obj_turnos**)list)[i];
+        pac_tr = (obj_paciente *)tr->get_paciente(tr);
+        prof_tr = (obj_profesional *)tr->get_profesional(tr);
+        fprintf(salida, "%-4d| %-10d | %-15.15s, %-15.15s | %-20s | %-4d | %-8s | %-15.15s, %-15.15s\n", i, tr->dnipaciente, pac_tr->nombres, pac_tr->apellido, tr->fechahora, tr->codigoprofesional, prof_tr->matricula, prof_tr->nombres, prof_tr->apellido);
+    }
+
+
+    //printf("argumento_custom\n");
 }
 
 
-int argumento_esp (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_esp (char *arg, FILE* salida){
 
     int size;
     void *list;
@@ -135,7 +176,7 @@ int argumento_esp (int nivel, int argc, char *argv[], FILE* salida){
 }
 
 
-int argumento_act (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_act (char *arg, FILE* salida){
 
     int size;
     void *list;
@@ -161,7 +202,7 @@ int argumento_act (int nivel, int argc, char *argv[], FILE* salida){
 }
 
 
-int argumento_inact (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_inact (char *arg, FILE* salida){
 
     int size;
     void *list;
@@ -187,20 +228,24 @@ int argumento_inact (int nivel, int argc, char *argv[], FILE* salida){
 }
 
 
-int argumento_pdni (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_pdni (char *arg, FILE* salida){
 
-    //imprime listado de pacientes
+    if(arg == NULL){
+        printf("\nERROR: No se ingresó ningún DNI\n");
+        return 1;
+    }
+
     int size;
     void *list;
     obj_turnos *tr;
     tr = turnos_new();
     char criterio[50] = "dnipaciente = ";
-    strcat(criterio, argv[nivel+1]);
+    strcat(criterio, arg);
 
     obj_paciente *pac_tr;
     obj_profesional *prof_tr;
     if((size = tr->findAll(tr, &list, criterio)) == 0){ 
-        printf("No recuperó nada\n"); // se invoca sin criterio - listar todos...
+        printf("El paciente con DNI = %s no tiene turnos registrados\n", arg); // se invoca sin criterio - listar todos...
         return 1;
     }
     fprintf(salida, "%-4s| %-10s | %-32s | %-20s | %-4s | %-8s | %-30s\n\n", 
@@ -217,15 +262,19 @@ int argumento_pdni (int nivel, int argc, char *argv[], FILE* salida){
 
     return 0;
 }
-int argumento_profmat (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_profmat (char *arg, FILE* salida){
 
-    //imprime listado de pacientes
+    if(arg == NULL){
+        printf("\nERROR: No se ingresó ninguna matrícula\n");
+        return 1;
+    }
+
     int size;
     void *list;
     obj_turnos *tr;
     tr = turnos_new();
     char criterio[50];
-    strcpy(criterio,argv[nivel+1]);
+    strcpy(criterio,arg);
     obj_paciente *pac_tr;
     obj_profesional *prof_tr;
     if((size = tr->findAll(tr, &list, NULL)) == 0){ 
@@ -247,15 +296,19 @@ int argumento_profmat (int nivel, int argc, char *argv[], FILE* salida){
 
     return 0;
 }
-int argumento_profid (int nivel, int argc, char *argv[], FILE* salida){
+int argumento_profid (char *arg, FILE* salida){
 
-    //imprime listado de pacientes
+    if(arg == NULL){
+        printf("\nERROR: No se ingresó ningún ID\n");
+        return 1;
+    }
+
     int size;
     void *list;
     obj_turnos *tr;
     tr = turnos_new();
     char criterio[50] = "codigoprofesional = ";
-    strcat(criterio, argv[nivel+1]);
+    strcat(criterio, arg);
 
     obj_paciente *pac_tr;
     obj_profesional *prof_tr;

@@ -1,9 +1,0 @@
-    | DNI        | Paciente                         | Fecha y Hora         | ID   | Mát.    | Profesional                   
-
- 118| 7494975    | Elsa Victoria  , Pabon           | 2015-06-24 13:29:03  | 53   | ss0662   | Julia Ramona   , Peterson       
- 121| 32513715   | Sofya          , Alfonso         | 2016-10-25 12:09:00  | 53   | ss0662   | Julia Ramona   , Peterson       
- 163| 6700059    | Maria Maura    , Santamaria      | 2016-09-26 03:32:35  | 53   | ss0662   | Julia Ramona   , Peterson       
- 171| 37547712   | Covadonga      , Quintanilla     | 2016-01-24 11:43:27  | 53   | ss0662   | Julia Ramona   , Peterson       
- 386| 39460346   | Jordan Andres  , Corrales        | 2016-09-06 13:16:59  | 53   | ss0662   | Julia Ramona   , Peterson       
- 490| 21621844   | James Charles  , Aguayo          | 2016-12-12 16:56:00  | 53   | ss0662   | Julia Ramona   , Peterson       
- 499| 11802944   | Lucas Esteban  , Almaraz         | 2016-03-09 09:52:48  | 53   | ss0662   | Julia Ramona   , Peterson       
