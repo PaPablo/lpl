@@ -67,5 +67,10 @@ namespace WinTurnos.Formularios
             FormTestModel frm = new  FormTestModel();
             frm.Show();
         }
+
+        private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
