@@ -81,5 +81,7 @@ namespace LibTurnos.db
         {
             return String.Format("dnipaciente = {0} and  codigoobrasocial = {1} and to_char(fecha, 'YYYY-MM-DD')= '{2}'", this.DniPaciente, this.CodigoObraSocial, this.FechaDesde);
         }
+
+
     }
 }
