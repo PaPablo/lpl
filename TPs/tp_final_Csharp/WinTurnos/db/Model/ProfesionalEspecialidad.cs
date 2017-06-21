@@ -12,6 +12,7 @@ namespace LibTurnos.db
 		private int _codigoespecialidad;
 		private bool _disponible;
         private string _observaciones;
+        private Profesional _objProfesional = null;
         private DateTime _fechaAlta;
 		#endregion
         
@@ -43,8 +44,59 @@ namespace LibTurnos.db
             get { return _disponible; }
             set { _disponible = value; }
         }
-        
+
+        #region Relacion con Profesional
+        public Profesional MyProperty
+        {
+            get
+            {
+                if (_objProfesional == null && this._codigoprofesional != 0)
+                {
+                    _objProfesional = ManagerDB<Profesional>.findbyKey(this._codigoprofesional);
+                }
+                return _objProfesional;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    _codigoprofesional = 0;
+                }
+                else
+                    _codigoprofesional = value.Id;
+                _objProfesional = value;
+            }
+        }
+
+        private Especialidad _objEspecialidad;
+
+        public Especialidad EspecialidadObj
+        {
+            get
+            {
+                if(_objEspecialidad == null && this._codigoespecialidad != 0)
+                {
+                    _objEspecialidad = ManagerDB<Especialidad>.findbyKey(this._codigoespecialidad);
+                }
+                return _objEspecialidad;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    _codigoespecialidad = 0;
+                }
+                else
+                    _codigoespecialidad = value.Codigo;
+                _objEspecialidad = value;
+            }
+        }
+
         #endregion
-        
+        #endregion
+
+
+
     }
 }
