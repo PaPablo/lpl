@@ -36,11 +36,13 @@ namespace WinTurnos.Formularios
         }     
                 
         private void SearchDniBtn_Click(object sender, EventArgs e)
-        {/*
+        {
+            /*
             Paciente p = new Paciente();
             p.findbykey(this.DniSearchTxt.Text);
             PacientesAMFrm fampac = new PacientesAMFrm();
-            fampac.ShowPaciente(p);*/
+            fampac.ShowPaciente(p);
+            */
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,6 +72,8 @@ namespace WinTurnos.Formularios
 
         private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            PacientesResultsFrm p = new PacientesResultsFrm();
+            p.ResultadosPaciente();
 
         }
     }

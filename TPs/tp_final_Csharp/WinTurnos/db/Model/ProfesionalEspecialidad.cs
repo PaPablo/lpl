@@ -46,7 +46,7 @@ namespace LibTurnos.db
         }
 
         #region Relacion con Profesional
-        public Profesional MyProperty
+        public Profesional ProfesionalObj
         {
             get
             {
