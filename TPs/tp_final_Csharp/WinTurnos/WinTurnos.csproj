@@ -82,6 +82,12 @@
     <Compile Include="Formularios\PacienteBusqFrm.Designer.cs">
       <DependentUpon>PacienteBusqFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\ProfesionalAMFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ProfesionalAMFrm.Designer.cs">
+      <DependentUpon>ProfesionalAMFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\PacientesAMFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PacienteBusqFrm.resx">
       <DependentUpon>PacienteBusqFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ProfesionalAMFrm.resx">
+      <DependentUpon>ProfesionalAMFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PacientesAMFrm.resx">
       <DependentUpon>PacientesAMFrm.cs</DependentUpon>

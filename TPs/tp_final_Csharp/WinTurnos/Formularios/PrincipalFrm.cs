@@ -72,5 +72,12 @@ namespace WinTurnos.Formularios
         {
 
         }
+
+        private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ProfesionalAMFrm profalta = new ProfesionalAMFrm();
+            profalta.NewProfesional(null);
+            profalta.Show();
+        }
     }
 }

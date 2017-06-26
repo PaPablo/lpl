@@ -41,6 +41,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.FechaMatricula = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
+            this.IdLbl = new System.Windows.Forms.Label();
+            this.IdValue = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // AceptarBtn
@@ -66,45 +68,41 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 56);
+            this.label5.Location = new System.Drawing.Point(28, 81);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Nombre:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // NombreTxt
             // 
-            this.NombreTxt.Location = new System.Drawing.Point(115, 53);
+            this.NombreTxt.Location = new System.Drawing.Point(118, 78);
             this.NombreTxt.Name = "NombreTxt";
             this.NombreTxt.Size = new System.Drawing.Size(200, 20);
             this.NombreTxt.TabIndex = 9;
-            this.NombreTxt.TextChanged += new System.EventHandler(this.TelefonoTxt_TextChanged);
             // 
             // MatriculaTxt
             // 
-            this.MatriculaTxt.Location = new System.Drawing.Point(115, 27);
+            this.MatriculaTxt.Location = new System.Drawing.Point(118, 52);
             this.MatriculaTxt.Name = "MatriculaTxt";
             this.MatriculaTxt.Size = new System.Drawing.Size(200, 20);
             this.MatriculaTxt.TabIndex = 18;
-            this.MatriculaTxt.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // EsActivo
             // 
             this.EsActivo.AutoSize = true;
             this.EsActivo.BackColor = System.Drawing.SystemColors.Control;
-            this.EsActivo.Location = new System.Drawing.Point(57, 165);
+            this.EsActivo.Location = new System.Drawing.Point(60, 190);
             this.EsActivo.Name = "EsActivo";
             this.EsActivo.Size = new System.Drawing.Size(56, 17);
             this.EsActivo.TabIndex = 20;
             this.EsActivo.Text = "Activo";
             this.EsActivo.UseVisualStyleBackColor = false;
-            this.EsActivo.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 30);
+            this.label1.Location = new System.Drawing.Point(28, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 21;
@@ -113,7 +111,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 82);
+            this.label2.Location = new System.Drawing.Point(28, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 22;
@@ -121,15 +119,14 @@
             // 
             // ApellidoTxt
             // 
-            this.ApellidoTxt.Location = new System.Drawing.Point(115, 79);
+            this.ApellidoTxt.Location = new System.Drawing.Point(118, 104);
             this.ApellidoTxt.Name = "ApellidoTxt";
             this.ApellidoTxt.Size = new System.Drawing.Size(200, 20);
             this.ApellidoTxt.TabIndex = 23;
-            this.ApellidoTxt.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // TelefonoTxt
             // 
-            this.TelefonoTxt.Location = new System.Drawing.Point(115, 106);
+            this.TelefonoTxt.Location = new System.Drawing.Point(118, 131);
             this.TelefonoTxt.Name = "TelefonoTxt";
             this.TelefonoTxt.Size = new System.Drawing.Size(200, 20);
             this.TelefonoTxt.TabIndex = 24;
@@ -137,7 +134,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 109);
+            this.label3.Location = new System.Drawing.Point(28, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 26;
@@ -145,7 +142,7 @@
             // 
             // FechaMatricula
             // 
-            this.FechaMatricula.Location = new System.Drawing.Point(115, 133);
+            this.FechaMatricula.Location = new System.Drawing.Point(118, 158);
             this.FechaMatricula.Name = "FechaMatricula";
             this.FechaMatricula.Size = new System.Drawing.Size(200, 20);
             this.FechaMatricula.TabIndex = 27;
@@ -153,17 +150,38 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 133);
+            this.label4.Location = new System.Drawing.Point(28, 158);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 13);
             this.label4.TabIndex = 28;
             this.label4.Text = "Fecha Matrícula:";
+            // 
+            // IdLbl
+            // 
+            this.IdLbl.AutoSize = true;
+            this.IdLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.IdLbl.Location = new System.Drawing.Point(28, 33);
+            this.IdLbl.Name = "IdLbl";
+            this.IdLbl.Size = new System.Drawing.Size(16, 13);
+            this.IdLbl.TabIndex = 29;
+            this.IdLbl.Text = "Id";
+            // 
+            // IdValue
+            // 
+            this.IdValue.AutoSize = true;
+            this.IdValue.Location = new System.Drawing.Point(118, 33);
+            this.IdValue.Name = "IdValue";
+            this.IdValue.Size = new System.Drawing.Size(43, 13);
+            this.IdValue.TabIndex = 30;
+            this.IdValue.Text = "0";
             // 
             // ProfesionalAMFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 300);
+            this.Controls.Add(this.IdValue);
+            this.Controls.Add(this.IdLbl);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.FechaMatricula);
             this.Controls.Add(this.label3);
@@ -202,5 +220,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker FechaMatricula;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label IdLbl;
+        private System.Windows.Forms.Label IdValue;
     }
 }
