@@ -27,6 +27,8 @@ namespace WinTurnos.Formularios
                 */            
                 this.gridPacientes.AutoGenerateColumns = false;
                 List<Paciente> lista = ManagerDB<Paciente>.findAll();
+                //lista.Sort((p1, p2) => p1.Dni.CompareTo(p2.Dni));
+                lista.Sort((p1, p2) => String.Compare(p1.Apellido, p2.Apellido));
                 this.gridPacientes.DataSource = lista;
                 Cursor.Current = Cursors.Default;
             }
@@ -66,6 +68,7 @@ namespace WinTurnos.Formularios
 
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
+                MessageBox.Show("Dot Net Perls is awesome.");
                 PacientesAMFrm frm = new PacientesAMFrm();
                 frm.ShowPaciente(grid.Rows[e.RowIndex].DataBoundItem as Paciente,this);
             }
@@ -79,7 +82,7 @@ namespace WinTurnos.Formularios
                 DataGridViewCell cell;
                 p = (row.DataBoundItem as Paciente);
                 cell = row.Cells[1];
-                cell.Value = String.Format("{0}, {1}", p.Nombres, p.Apellido);
+                cell.Value = String.Format("{0}, {1}", p.Apellido.ToUpper(), p.Nombres);
             }
         }
 
