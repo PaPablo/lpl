@@ -7,6 +7,7 @@ namespace LibTurnos.db
 {
     public partial class PacienteObraSocial
     {
+        public override event ValidacionIngreso Validar;   
         public PacienteObraSocial()
         {
             

@@ -7,6 +7,7 @@ namespace LibTurnos.db
 {
     public partial class Paciente
     {
+        public override event ValidacionIngreso Validar;
         #region variables locales
         private int _dni;
         private string _nombres;

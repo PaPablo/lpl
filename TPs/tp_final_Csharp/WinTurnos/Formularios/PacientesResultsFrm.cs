@@ -19,39 +19,42 @@ namespace WinTurnos.Formularios
 
         public void ResultadosPaciente(int dni=-1, string apellido=null)
         {
+            this.gridPacientes.AutoGenerateColumns = false;
+            List<Paciente> lista;
             if (dni == -1 && apellido == null)
             {
                 /*
                 * Se requiere este seteo para que se posibilite el mapeo de columnas que se Agregaron
                 * desde el diseñador, Click con boton derecho sobre seleccion de grilla -> Edit Columns
                 */            
-                this.gridPacientes.AutoGenerateColumns = false;
-                List<Paciente> lista = ManagerDB<Paciente>.findAll();
+                lista = ManagerDB<Paciente>.findAll();
                 //lista.Sort((p1, p2) => p1.Dni.CompareTo(p2.Dni));
                 lista.Sort((p1, p2) => String.Compare(p1.Apellido, p2.Apellido));
-                this.gridPacientes.DataSource = lista;
                 Cursor.Current = Cursors.Default;
             }
-            if (dni != -1 && apellido == null)
+            else if (dni != -1 && apellido == null)
             {
-                this.gridPacientes.AutoGenerateColumns = false;
-                List<Paciente> lista = ManagerDB<Paciente>.findAll(String.Format("dni={0}",dni));
-                this.gridPacientes.DataSource = lista;
+                lista = ManagerDB<Paciente>.findAll(String.Format("dni={0}",dni));
             }
-            if (dni == -1 && apellido != null)
+            else if (dni == -1 && apellido != null)
             {
-                this.gridPacientes.AutoGenerateColumns = false;
-                List<Paciente> lista = ManagerDB<Paciente>.findAll(String.Format("apellido like '%{0}%'", apellido));
-                this.gridPacientes.DataSource = lista;
+                lista = ManagerDB<Paciente>.findAll(String.Format("apellido like '%{0}%'", apellido));
             }
-            if (dni != -1 && apellido != null)
+            else 
             {
-                this.gridPacientes.AutoGenerateColumns = false;
-                List<Paciente> lista = ManagerDB<Paciente>.findAll(String.Format("dni= {0} and apellido like '%{1}%'", dni,apellido));
-                this.gridPacientes.DataSource = lista;
+                lista = ManagerDB<Paciente>.findAll(String.Format("dni= {0} and apellido like '%{1}%'", dni,apellido));
             }
+
+            if (lista == null)
+            {
+                MessageBox.Show("No se encontró nada");
+                return;
+            }
+
+            this.gridPacientes.DataSource = lista;
             this.ShowDialog();
         }
+
         private void PacienteFrm_Load(object sender, EventArgs e)
         {
            
@@ -68,9 +71,13 @@ namespace WinTurnos.Formularios
 
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                MessageBox.Show("Dot Net Perls is awesome.");
                 PacientesAMFrm frm = new PacientesAMFrm();
                 frm.ShowPaciente(grid.Rows[e.RowIndex].DataBoundItem as Paciente,this);
+            }
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewTextBoxColumn)
+            {
+                MessageBox.Show(String.Format("pulsaste la celda {0}, {1}", e.ColumnIndex, e.RowIndex));
             }
         }
 

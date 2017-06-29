@@ -7,6 +7,7 @@ namespace LibTurnos.db
 {
     public partial class Turno
     {
+        public override event ValidacionIngreso Validar;
         private DateTime _fechahora;
         private int _dnipaciente;
 		private int _codigoprofesional;

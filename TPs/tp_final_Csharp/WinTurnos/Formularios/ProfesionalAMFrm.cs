@@ -18,7 +18,7 @@ namespace WinTurnos.Formularios
         }
 
 
-        public void ShowPaciente(Profesional profesional, IFormGridReload frmGrid)
+        public void ShowProfesional(Profesional profesional, IFormGridReload frmGrid)
         {
             _frmGrid = frmGrid;
             this.operacion = OperacionForm.frmModificacion;
@@ -51,7 +51,7 @@ namespace WinTurnos.Formularios
            try
              {
 
-                MessageBox.Show(Convert.ToString(this.operacion), "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(Convert.ToString(this.operacion), "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
 
                 if (this.operacion == OperacionForm.frmAlta)
@@ -61,7 +61,11 @@ namespace WinTurnos.Formularios
                         Matricula = this.MatriculaTxt.Text
                     };
                 }
-
+                if(string.IsNullOrWhiteSpace(NombreTxt.Text))
+                    {
+                        MessageBox.Show("Que hace man");
+                        return;
+                    }
                 p.Nombres = this.NombreTxt.Text;
                 p.Apellido = this.ApellidoTxt.Text;
                 p.FechaMatricula = Convert.ToDateTime(this.FechaMatricula.Value);
@@ -70,11 +74,11 @@ namespace WinTurnos.Formularios
 
                 if (!p.saveObj())
                 {
-                    MessageBox.Show(operacion == OperacionForm.frmAlta ? "Error al intentar ingresar nuevo Profesional " : "Error al intentar editar informacion de Paciente", "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(operacion == OperacionForm.frmAlta ? "Error al intentar ingresar nuevo Profesional " : "Error al intentar editar informacion de Profesional", "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                MessageBox.Show(operacion == OperacionForm.frmAlta ?"Nuevo Paciente dado de alta":"Actualizacion de informacion de Paciente", operacion == OperacionForm.frmAlta ?"Ingreso de paciente...":"Actualizacion de informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(operacion == OperacionForm.frmAlta ?"Nuevo Profesional dado de alta":"Actualizacion de informacion de Profesional", operacion == OperacionForm.frmAlta ?"Ingreso de Profesional...":"Actualizacion de informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
              }
              catch (Exception ex)
              {

@@ -7,6 +7,7 @@ namespace LibTurnos.db
 {
     public partial class Profesional
     {
+        public override event ValidacionIngreso Validar;
         #region variables locales
         private int _id;
         private string _matricula;

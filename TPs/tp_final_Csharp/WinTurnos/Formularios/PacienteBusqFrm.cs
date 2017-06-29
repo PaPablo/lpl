@@ -43,7 +43,8 @@ namespace WinTurnos.Formularios
             string apellido = null;
             if(!ListTodoChk.Checked && !this.ApellidoChk.Checked && ! this.DniChk.Checked)
             {
-                MessageBox.Show("Tiene que ingresar criterio de busqueda","Faltan criterios...",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Tiene que ingresar criterio de busqueda","Faltan criterios",
+                    MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 return;
             }
             if (!ListTodoChk.Checked && this.DniChk.Checked)

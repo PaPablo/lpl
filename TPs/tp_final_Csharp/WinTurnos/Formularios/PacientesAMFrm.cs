@@ -31,7 +31,6 @@ namespace WinTurnos.Formularios
             this.DniMsk.Text = p.Dni.ToString();
             this.DomicilioTxt.Text = p.Domicilio;
             this.TelefonoTxt.Text = p.Telefono;
-            
             this.ShowDialog();
         }
         public void NewPaciente(IFormGridReload frmGrid)
@@ -62,17 +61,25 @@ namespace WinTurnos.Formularios
                  p.Telefono = this.TelefonoTxt.Text;
                  if (!p.saveObj())
                  {
-                     MessageBox.Show(operacion == OperacionForm.frmAlta ? "Error al intentar ingresar nuevo Paciente" : "Error al intentar editar informacion de Paciente", "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     MessageBox.Show(operacion == OperacionForm.frmAlta ? 
+                         "Error al intentar ingresar nuevo Paciente" : 
+                         "Error al intentar editar informacion de Paciente", 
+                         "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                      return;
                  }
-                 MessageBox.Show(operacion == OperacionForm.frmAlta ?"Nuevo Paciente dado de alta":"Actualizacion de informacion de Paciente", operacion == OperacionForm.frmAlta ?"Ingreso de paciente...":"Actualizacion de informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 MessageBox.Show(operacion == OperacionForm.frmAlta ?"Nuevo Paciente dado de alta":
+                     "Actualizacion de informacion de Paciente", 
+                     operacion == OperacionForm.frmAlta ? "Ingreso de paciente":
+                     "Actualizacion de informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
              }
              catch (Exception ex)
              {
-                 MessageBox.Show("Error al intentar " + (operacion == OperacionForm.frmAlta ?"ingresar nuevo Paciente":"actualizar informacion") + ex.Message, "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 MessageBox.Show("Error al intentar " + (operacion == OperacionForm.frmAlta ?
+                     "ingresar nuevo Paciente":"actualizar informacion") 
+                     + ex.Message, "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                  return;
              }
-           _frmGrid.ReloadGrid();
+            _frmGrid.ReloadGrid();
             this.Dispose();
         }
 

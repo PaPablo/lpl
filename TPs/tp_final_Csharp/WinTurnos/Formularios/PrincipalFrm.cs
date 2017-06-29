@@ -47,7 +47,8 @@ namespace WinTurnos.Formularios
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dgresult = MessageBox.Show("Desea salir del sistema?", "salir....", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            DialogResult dgresult = MessageBox.Show("Desea salir del sistema?", "salir....",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dgresult == System.Windows.Forms.DialogResult.Yes)
                 this.Dispose();
         }
@@ -55,13 +56,16 @@ namespace WinTurnos.Formularios
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PacientesAMFrm frmPacAlta = new PacientesAMFrm();
-            frmPacAlta.NewPaciente(null);
+            frmPacAlta.NewPaciente(new PacientesResultsFrm());
         }
 
         private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PacienteBusqFrm pbusq = new PacienteBusqFrm();
-            pbusq.Show();
+            /*
+            PacientesAMFrm frmPacAlta = new PacientesAMFrm();
+            frmPacAlta.ShowPaciente(new Paciente(), null);
+            */
+        
         }
 
         private void FormTestBtn_Click(object sender, EventArgs e)
@@ -72,16 +76,13 @@ namespace WinTurnos.Formularios
 
         private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PacientesResultsFrm p = new PacientesResultsFrm();
-            p.ResultadosPaciente();
-
+            new PacienteBusqFrm().Show();
         }
 
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ProfesionalAMFrm profalta = new ProfesionalAMFrm();
             profalta.NewProfesional(null);
-            profalta.Show();
         }
     }
 }
