@@ -23,7 +23,7 @@ namespace WinTurnos.Formularios
         {
             _frmGrid = frmGrid;
             this.operacion = OperacionForm.frmModificacion;
-            this.Text = "Modificacion de informacion de paciente";
+            this.Text = "Modificación de información de paciente";
             p = paciente;
             this.DniMsk.Enabled = false;
             this.ApellidoTxt.Text = p.Apellido;
@@ -53,6 +53,7 @@ namespace WinTurnos.Formularios
                  if (this.operacion == OperacionForm.frmAlta)
                  {
                      p = new Paciente();
+                    p.Validar += new CommonObj.ValidacionIngreso(Validar_paciente);
                      p.Dni = Convert.ToInt32(this.DniMsk.Text);
                  }
                  p.Apellido = this.ApellidoTxt.Text;
@@ -63,24 +64,29 @@ namespace WinTurnos.Formularios
                  {
                      MessageBox.Show(operacion == OperacionForm.frmAlta ? 
                          "Error al intentar ingresar nuevo Paciente" : 
-                         "Error al intentar editar informacion de Paciente", 
+                         "Error al intentar editar información de Paciente", 
                          "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                      return;
                  }
                  MessageBox.Show(operacion == OperacionForm.frmAlta ?"Nuevo Paciente dado de alta":
-                     "Actualizacion de informacion de Paciente", 
+                     "Actualización de información de Paciente", 
                      operacion == OperacionForm.frmAlta ? "Ingreso de paciente":
-                     "Actualizacion de informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     "Actualización de información", MessageBoxButtons.OK, MessageBoxIcon.Information);
              }
              catch (Exception ex)
              {
                  MessageBox.Show("Error al intentar " + (operacion == OperacionForm.frmAlta ?
-                     "ingresar nuevo Paciente":"actualizar informacion") 
-                     + ex.Message, "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     "ingresar nuevo Paciente":"actualizar información") 
+                     + String.Format("\n{0}",ex.Message), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                  return;
              }
             _frmGrid.ReloadGrid();
             this.Dispose();
+        }
+
+        private void Validar_paciente(object sender, string msg)
+        {
+            throw new Exception(msg);
         }
 
         private void PacientesAMFrm_Load(object sender, EventArgs e)

@@ -41,8 +41,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.FechaMatricula = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.IdLbl = new System.Windows.Forms.Label();
-            this.IdValue = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // AceptarBtn
@@ -156,32 +154,11 @@
             this.label4.TabIndex = 28;
             this.label4.Text = "Fecha Matrícula:";
             // 
-            // IdLbl
-            // 
-            this.IdLbl.AutoSize = true;
-            this.IdLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.IdLbl.Location = new System.Drawing.Point(28, 33);
-            this.IdLbl.Name = "IdLbl";
-            this.IdLbl.Size = new System.Drawing.Size(16, 13);
-            this.IdLbl.TabIndex = 29;
-            this.IdLbl.Text = "Id";
-            // 
-            // IdValue
-            // 
-            this.IdValue.AutoSize = true;
-            this.IdValue.Location = new System.Drawing.Point(118, 33);
-            this.IdValue.Name = "IdValue";
-            this.IdValue.Size = new System.Drawing.Size(43, 13);
-            this.IdValue.TabIndex = 30;
-            this.IdValue.Text = "0";
-            // 
             // ProfesionalAMFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 300);
-            this.Controls.Add(this.IdValue);
-            this.Controls.Add(this.IdLbl);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.FechaMatricula);
             this.Controls.Add(this.label3);
@@ -199,7 +176,7 @@
             this.MinimizeBox = false;
             this.Name = "ProfesionalAMFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Formulario de Paciente";
+            this.Text = "Formulario de Profesional";
             this.Load += new System.EventHandler(this.ProfesionalAMFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -220,7 +197,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker FechaMatricula;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label IdLbl;
-        private System.Windows.Forms.Label IdValue;
     }
 }

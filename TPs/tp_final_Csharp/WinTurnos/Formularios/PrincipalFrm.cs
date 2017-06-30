@@ -37,17 +37,11 @@ namespace WinTurnos.Formularios
                 
         private void SearchDniBtn_Click(object sender, EventArgs e)
         {
-            /*
-            Paciente p = new Paciente();
-            p.findbykey(this.DniSearchTxt.Text);
-            PacientesAMFrm fampac = new PacientesAMFrm();
-            fampac.ShowPaciente(p);
-            */
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dgresult = MessageBox.Show("Desea salir del sistema?", "salir....",
+            DialogResult dgresult = MessageBox.Show("¿Desea salir del sistema?", "SALIR",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dgresult == System.Windows.Forms.DialogResult.Yes)
                 this.Dispose();
@@ -61,11 +55,12 @@ namespace WinTurnos.Formularios
 
         private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            new PacienteIngreso().Show();
             /*
             PacientesAMFrm frmPacAlta = new PacientesAMFrm();
             frmPacAlta.ShowPaciente(new Paciente(), null);
             */
-        
+
         }
 
         private void FormTestBtn_Click(object sender, EventArgs e)
@@ -81,8 +76,19 @@ namespace WinTurnos.Formularios
 
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            /*
             ProfesionalAMFrm profalta = new ProfesionalAMFrm();
-            profalta.NewProfesional(null);
+            profalta.NewProfesional(new ProfesionalesResultsFrm());
+            */
+            List<Profesional> lista = ManagerDB<Profesional>.findAll();
+            Profesional p = (Profesional)ManagerDB<Profesional>.findbyKey("70");
+            MessageBox.Show(String.Format("{0}, {1}", p.Apellido.ToUpper(), p.Nombres));
+
+        }
+
+        private void listadoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new ProfesionalBusqFrm().Show();
         }
     }
 }

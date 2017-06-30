@@ -44,9 +44,9 @@
             this.DniChk.AutoSize = true;
             this.DniChk.Location = new System.Drawing.Point(26, 29);
             this.DniChk.Name = "DniChk";
-            this.DniChk.Size = new System.Drawing.Size(45, 17);
+            this.DniChk.Size = new System.Drawing.Size(48, 17);
             this.DniChk.TabIndex = 0;
-            this.DniChk.Text = "Dni:";
+            this.DniChk.Text = "DNI:";
             this.DniChk.UseVisualStyleBackColor = true;
             this.DniChk.CheckedChanged += new System.EventHandler(this.DniChk_CheckedChanged);
             // 

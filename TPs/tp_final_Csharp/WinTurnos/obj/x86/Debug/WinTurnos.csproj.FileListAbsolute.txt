@@ -83,7 +83,6 @@ C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\bin\Debug\ja
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\bin\Debug\zh-CN\Npgsql.resources.dll
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.csprojResolveAssemblyReference.cache
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.FormTestModel.resources
-C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.PacienteBusqFrm.resources
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.ProfesionalAMFrm.resources
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.PacientesAMFrm.resources
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.PacientesResultsFrm.resources
@@ -92,3 +91,7 @@ C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debu
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.csproj.GenerateResource.Cache
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.exe
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.pdb
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.PacienteIngreso.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.PacienteBusqFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.ProfesionalesResultsFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.ProfesionalBusqFrm.resources

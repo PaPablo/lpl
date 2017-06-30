@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Text.RegularExpressions;
 namespace LibTurnos.db
 {
     public partial class Profesional
@@ -35,7 +35,24 @@ namespace LibTurnos.db
         public string Matricula
         {
             get { return _matricula; }
-            set { _matricula = value; }
+            set {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    Validar(this, "Mátricula no puede estar vacía");
+                    return;
+                }
+
+                string pat = "[a-z]{2}[0-9]{4}";
+                Regex r = new Regex(pat, RegexOptions.IgnoreCase);
+                Match m = r.Match(value);
+                if (!m.Success)
+                {
+                    Validar(this, "Mátricula debe estar compuesta por dos letras y seguida de cuatro números");
+                    return;
+                }
+
+                _matricula = value;
+            }
         }
 
         public string Apellido

@@ -11,6 +11,8 @@ namespace LibTurnos.db
         private DateTime _fechahora;
         private int _dnipaciente;
 		private int _codigoprofesional;
+        private Profesional _objProfesional = null;
+        private Paciente _objPaciente = null;
 		private bool _asistio;
 		
 		
@@ -38,5 +40,58 @@ namespace LibTurnos.db
             get { return _fechahora; }
             set { _fechahora = value; }
         }
+
+
+
+        #region Relacion con Profesional
+        public Profesional ProfesionalObj
+        {
+            get
+            {
+                if (_objProfesional == null && this._codigoprofesional != 0)
+                {
+                    _objProfesional = ManagerDB<Profesional>.findbyKey(this._codigoprofesional);
+                }
+                return _objProfesional;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    _codigoprofesional = 0;
+                }
+                else
+                    _codigoprofesional = value.Id;
+                _objProfesional = value;
+            }
+        }
+
+        #endregion
+        #region relacion con paciente
+
+        public Paciente PacienteObj
+        {
+            get
+            {
+                if(_objPaciente == null && this._dnipaciente != 0)
+                {
+                    _objPaciente = ManagerDB<Paciente>.findbyKey(this._dnipaciente);
+                }
+                return _objPaciente;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    _dnipaciente = 0;
+                }
+                else
+                    _dnipaciente = value.Dni;
+                _objPaciente = value;
+            }
+        }
+
+        #endregion
     }
 }

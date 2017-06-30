@@ -24,7 +24,7 @@ namespace WinTurnos.Formularios
             this.operacion = OperacionForm.frmModificacion;
             this.Text = "Modificacion de informacion de profesional";
             p = profesional;
-            this.IdValue.Text = Convert.ToString(p.Id);
+            //this.IdValue.Text = Convert.ToString(p.Id);
             this.MatriculaTxt.Text = p.Matricula;
             this.FechaMatricula.Value = p.FechaMatricula;
             this.NombreTxt.Text = p.Nombres;
@@ -51,21 +51,12 @@ namespace WinTurnos.Formularios
            try
              {
 
-                //MessageBox.Show(Convert.ToString(this.operacion), "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-
                 if (this.operacion == OperacionForm.frmAlta)
                 {
-                    p = new Profesional()
-                    {
-                        Matricula = this.MatriculaTxt.Text
-                    };
+                    p = new Profesional();
+                    p.Validar += new CommonObj.ValidacionIngreso(Validar_profesional);
+                    p.Matricula = this.MatriculaTxt.Text;
                 }
-                if(string.IsNullOrWhiteSpace(NombreTxt.Text))
-                    {
-                        MessageBox.Show("Que hace man");
-                        return;
-                    }
                 p.Nombres = this.NombreTxt.Text;
                 p.Apellido = this.ApellidoTxt.Text;
                 p.FechaMatricula = Convert.ToDateTime(this.FechaMatricula.Value);
@@ -74,20 +65,33 @@ namespace WinTurnos.Formularios
 
                 if (!p.saveObj())
                 {
-                    MessageBox.Show(operacion == OperacionForm.frmAlta ? "Error al intentar ingresar nuevo Profesional " : "Error al intentar editar informacion de Profesional", "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(operacion == OperacionForm.frmAlta ? 
+                        "Error al intentar ingresar nuevo Profesional " :
+                        "Error al intentar editar informacion de Profesional", "ERROR",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                MessageBox.Show(operacion == OperacionForm.frmAlta ?"Nuevo Profesional dado de alta":"Actualizacion de informacion de Profesional", operacion == OperacionForm.frmAlta ?"Ingreso de Profesional...":"Actualizacion de informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(operacion == OperacionForm.frmAlta ? "Nuevo Profesional dado de alta":
+                    "Actualizacion de informacion de Profesional",
+                    operacion == OperacionForm.frmAlta ? "Ingreso de profesional":
+                    "Actualización de información", MessageBoxButtons.OK, MessageBoxIcon.Information);
              }
              catch (Exception ex)
              {
 
-                 MessageBox.Show("Error al intentar " + (operacion == OperacionForm.frmAlta ?"ingresar nuevo Profesional":"actualizar informacion") + ex.Message, "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 MessageBox.Show("Error al intentar " +
+                     (operacion == OperacionForm.frmAlta ?"ingresar nuevo Profesional":
+                     "actualizar informacion") + String.Format("\n{0}", ex.Message),
+                     "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                  return;
              }
             _frmGrid.ReloadGrid();
             this.Dispose();
+        }
+
+        private void Validar_profesional(object sender, string msg) {
+            throw new Exception(msg);
         }
 
         private void ProfesionalAMFrm_Load(object sender, EventArgs e)

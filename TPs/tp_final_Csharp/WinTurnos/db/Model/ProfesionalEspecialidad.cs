@@ -14,6 +14,7 @@ namespace LibTurnos.db
 		private bool _disponible;
         private string _observaciones;
         private Profesional _objProfesional = null;
+        private Especialidad _objEspecialidad = null;
         private DateTime _fechaAlta;
 		#endregion
         
@@ -69,7 +70,8 @@ namespace LibTurnos.db
             }
         }
 
-        private Especialidad _objEspecialidad;
+        #endregion
+        #region relacion con especialidad
 
         public Especialidad EspecialidadObj
         {

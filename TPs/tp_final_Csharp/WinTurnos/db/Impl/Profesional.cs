@@ -51,7 +51,9 @@ namespace LibTurnos.db
 			this._apellido = dr[_columns[3]].ToString().Trim();
             this._telefono = dr[_columns[4]].ToString().Trim();
             this._fechamatricula = DateTime.Parse(dr[_columns[5]].ToString());
-            this._activo = Boolean.Parse(dr[_columns[6]].ToString());
+            //this._activo = Boolean.Parse(dr[_columns[6]].ToString());
+            bool result;
+            this._activo = Boolean.TryParse(dr[_columns[6]].ToString(), out result);
             this.IsNew = false;
         }
         public string[] columns

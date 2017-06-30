@@ -76,28 +76,46 @@
     <Compile Include="Formularios\FormTestModel.Designer.cs">
       <DependentUpon>FormTestModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\PacienteBusqFrm.cs">
+    <Compile Include="Formularios\Paciente\PacienteBusqFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\PacienteBusqFrm.Designer.cs">
+    <Compile Include="Formularios\Paciente\PacienteBusqFrm.Designer.cs">
       <DependentUpon>PacienteBusqFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\ProfesionalAMFrm.cs">
+    <Compile Include="Formularios\Paciente\PacienteIngresoFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\ProfesionalAMFrm.Designer.cs">
+    <Compile Include="Formularios\Paciente\PacienteIngresoFrm.Designer.cs">
+      <DependentUpon>PacienteIngresoFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ProfesionalBusqFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ProfesionalBusqFrm.Designer.cs">
+      <DependentUpon>ProfesionalBusqFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ProfesionalesResultsFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ProfesionalesResultsFrm.Designer.cs">
+      <DependentUpon>ProfesionalesResultsFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ProfesionalAMFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ProfesionalAMFrm.Designer.cs">
       <DependentUpon>ProfesionalAMFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\PacientesAMFrm.cs">
+    <Compile Include="Formularios\Paciente\PacientesAMFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\PacientesAMFrm.Designer.cs">
+    <Compile Include="Formularios\Paciente\PacientesAMFrm.Designer.cs">
       <DependentUpon>PacientesAMFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\PacientesResultsFrm.cs">
+    <Compile Include="Formularios\Paciente\PacientesResultsFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\PacientesResultsFrm.Designer.cs">
+    <Compile Include="Formularios\Paciente\PacientesResultsFrm.Designer.cs">
       <DependentUpon>PacientesResultsFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\PrincipalFrm.cs">
@@ -112,16 +130,25 @@
     <EmbeddedResource Include="Formularios\FormTestModel.resx">
       <DependentUpon>FormTestModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\PacienteBusqFrm.resx">
+    <EmbeddedResource Include="Formularios\Paciente\PacienteBusqFrm.resx">
       <DependentUpon>PacienteBusqFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\ProfesionalAMFrm.resx">
+    <EmbeddedResource Include="Formularios\Paciente\PacienteIngresoFrm.resx">
+      <DependentUpon>PacienteIngresoFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Profesional\ProfesionalBusqFrm.resx">
+      <DependentUpon>ProfesionalBusqFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Profesional\ProfesionalesResultsFrm.resx">
+      <DependentUpon>ProfesionalesResultsFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Profesional\ProfesionalAMFrm.resx">
       <DependentUpon>ProfesionalAMFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\PacientesAMFrm.resx">
+    <EmbeddedResource Include="Formularios\Paciente\PacientesAMFrm.resx">
       <DependentUpon>PacientesAMFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\PacientesResultsFrm.resx">
+    <EmbeddedResource Include="Formularios\Paciente\PacientesResultsFrm.resx">
       <DependentUpon>PacientesResultsFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PrincipalFrm.resx">
@@ -147,6 +174,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
