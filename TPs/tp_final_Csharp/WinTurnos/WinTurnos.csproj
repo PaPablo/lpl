@@ -88,6 +88,18 @@
     <Compile Include="Formularios\Paciente\PacienteIngresoFrm.Designer.cs">
       <DependentUpon>PacienteIngresoFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Paciente\PacienteTurnosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Paciente\PacienteTurnosFrm.Designer.cs">
+      <DependentUpon>PacienteTurnosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ModProfEspFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ModProfEspFrm.Designer.cs">
+      <DependentUpon>ModProfEspFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Profesional\ProfesionalBusqFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +136,18 @@
     <Compile Include="Formularios\PrincipalFrm.Designer.cs">
       <DependentUpon>PrincipalFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Profesional\ProfesionalIngresoFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ProfesionalIngresoFrm.Designer.cs">
+      <DependentUpon>ProfesionalIngresoFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ProfEspFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Profesional\ProfEspFrm.Designer.cs">
+      <DependentUpon>ProfEspFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\IFormGridReload.cs" />
@@ -135,6 +159,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Paciente\PacienteIngresoFrm.resx">
       <DependentUpon>PacienteIngresoFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Paciente\PacienteTurnosFrm.resx">
+      <DependentUpon>PacienteTurnosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Profesional\ModProfEspFrm.resx">
+      <DependentUpon>ModProfEspFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Profesional\ProfesionalBusqFrm.resx">
       <DependentUpon>ProfesionalBusqFrm.cs</DependentUpon>
@@ -153,6 +183,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PrincipalFrm.resx">
       <DependentUpon>PrincipalFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Profesional\ProfesionalIngresoFrm.resx">
+      <DependentUpon>ProfesionalIngresoFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Profesional\ProfEspFrm.resx">
+      <DependentUpon>ProfEspFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

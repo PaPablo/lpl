@@ -14,8 +14,18 @@ namespace LibTurnos.db
         private Profesional _objProfesional = null;
         private Paciente _objPaciente = null;
 		private bool _asistio;
-		
-		
+
+        public override string ToString()
+        {
+            return String.Format("PACIENTE: {0}\n" +
+                "PROFESIONAL: {1}\n" +
+                "FECHA: {2}\n" +
+                "ASISTIO: {3}\n", this.PacienteObj.ToString(),
+                this.ProfesionalObj.ToString(),
+                this.FechaHora.ToString(),
+                this.Asistio ? "SI" : "NO");
+        }
+
         public int DniPaciente
         {
             get { return _dnipaciente; }

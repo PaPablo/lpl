@@ -24,12 +24,12 @@ namespace WinTurnos.Formularios
             this.operacion = OperacionForm.frmModificacion;
             this.Text = "Modificacion de informacion de profesional";
             p = profesional;
-            //this.IdValue.Text = Convert.ToString(p.Id);
             this.MatriculaTxt.Text = p.Matricula;
             this.FechaMatricula.Value = p.FechaMatricula;
             this.NombreTxt.Text = p.Nombres;
             this.ApellidoTxt.Text = p.Apellido;
             this.TelefonoTxt.Text = p.Telefono;
+            this.EsActivo.Checked = p.Activo;
             
             this.ShowDialog();
         }
@@ -61,6 +61,7 @@ namespace WinTurnos.Formularios
                 p.Apellido = this.ApellidoTxt.Text;
                 p.FechaMatricula = Convert.ToDateTime(this.FechaMatricula.Value);
                 p.Telefono = this.TelefonoTxt.Text;
+                p.Activo = this.EsActivo.Checked;
 
 
                 if (!p.saveObj())

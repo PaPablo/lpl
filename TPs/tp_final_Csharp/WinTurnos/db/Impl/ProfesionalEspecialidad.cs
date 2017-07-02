@@ -44,7 +44,7 @@ namespace LibTurnos.db
             this._codigoprofesional = Int32.Parse(dr[_columns[0]].ToString());
             this._codigoespecialidad = Int32.Parse(dr[_columns[1]].ToString());
             this._fechaAlta = Convert.ToDateTime(dr[_columns[2]].ToString());
-            this._disponible = Convert.ToBoolean(dr[_columns[3]].ToString());
+            this._disponible = dr[_columns[3]].ToString() == "1" ? true : false;
             this._observaciones = dr[_columns[4]].ToString().Trim();
 			this.IsNew = false;
         }

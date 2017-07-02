@@ -33,7 +33,7 @@ namespace WinTurnos.Formularios
             }
             else if (matricula != null && apellido == null)
             {
-                lista = ManagerDB<Profesional>.findAll(String.Format("matricula={0}",matricula));
+                lista = ManagerDB<Profesional>.findAll(String.Format("matricula = '{0}'", matricula));
             }
             else if (matricula == null && apellido != null)
             {
@@ -42,7 +42,7 @@ namespace WinTurnos.Formularios
             else 
             {
                 lista = ManagerDB<Profesional>.findAll(String.Format
-                    ("matricula= {0} and apellido like '%{1}%'", matricula,apellido));
+                    ("matricula = '{0}' and apellido like '%{1}%'", matricula, apellido));
             }
 
             if (lista == null)
@@ -86,10 +86,10 @@ namespace WinTurnos.Formularios
             Profesional p;
             foreach (DataGridViewRow row in gridProfesionales.Rows)
             {                
-                DataGridViewCell cell;
                 p = (row.DataBoundItem as Profesional);
-                cell = row.Cells[1];
-                cell.Value = String.Format("{0}, {1}", p.Apellido.ToUpper(), p.Nombres);
+                row.Cells[0].Value = p.Matricula;
+                row.Cells[1].Value = String.Format("{0}, {1}", p.Apellido.ToUpper(), p.Nombres);
+                row.Cells[4].Value = p.Activo;
             }
         }
 

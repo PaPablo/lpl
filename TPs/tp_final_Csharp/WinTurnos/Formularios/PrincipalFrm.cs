@@ -26,8 +26,7 @@ namespace WinTurnos.Formularios
 
         private void PacienteBtn_Click(object sender, EventArgs e)
         {
-            PacientesResultsFrm frm = new PacientesResultsFrm();
-            frm.ShowDialog();
+            new PacientesResultsFrm().ShowDialog();
         }
 
         private void ListadosBtn_Click(object sender, EventArgs e)
@@ -49,18 +48,12 @@ namespace WinTurnos.Formularios
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PacientesAMFrm frmPacAlta = new PacientesAMFrm();
-            frmPacAlta.NewPaciente(new PacientesResultsFrm());
+            new PacientesAMFrm().NewPaciente(new PacientesResultsFrm());
         }
 
         private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new PacienteIngreso().Show();
-            /*
-            PacientesAMFrm frmPacAlta = new PacientesAMFrm();
-            frmPacAlta.ShowPaciente(new Paciente(), null);
-            */
-
+            new PacienteIngresoFrm().Show();
         }
 
         private void FormTestBtn_Click(object sender, EventArgs e)
@@ -76,19 +69,22 @@ namespace WinTurnos.Formularios
 
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            /*
-            ProfesionalAMFrm profalta = new ProfesionalAMFrm();
-            profalta.NewProfesional(new ProfesionalesResultsFrm());
-            */
-            List<Profesional> lista = ManagerDB<Profesional>.findAll();
-            Profesional p = (Profesional)ManagerDB<Profesional>.findbyKey("70");
-            MessageBox.Show(String.Format("{0}, {1}", p.Apellido.ToUpper(), p.Nombres));
+            //List<Turno> lista = ManagerDB<Turno>.findAll();
+            //List<ObraSocial> listaOS = ManagerDB<ObraSocial>.findAll();
+            //List<PacienteObraSocial> listaPOS = ManagerDB<PacienteObraSocial>.findAll();
+
+            new ProfesionalAMFrm().NewProfesional(new ProfesionalesResultsFrm());
 
         }
-
         private void listadoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new ProfesionalBusqFrm().Show();
+        }
+
+        private void modificacionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new ProfesionalIngresoFrm().Show();
+
         }
     }
 }

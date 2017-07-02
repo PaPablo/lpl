@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.MatriculaChk = new System.Windows.Forms.CheckBox();
-            this.DniMsk = new System.Windows.Forms.MaskedTextBox();
+            this.MatriculaMsk = new System.Windows.Forms.MaskedTextBox();
             this.BuscarBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ListTodoChk = new System.Windows.Forms.CheckBox();
@@ -50,14 +50,14 @@
             this.MatriculaChk.UseVisualStyleBackColor = true;
             this.MatriculaChk.CheckedChanged += new System.EventHandler(this.DniChk_CheckedChanged);
             // 
-            // DniMsk
+            // MatriculaMsk
             // 
-            this.DniMsk.Enabled = false;
-            this.DniMsk.Location = new System.Drawing.Point(106, 26);
-            this.DniMsk.Mask = "LL0000";
-            this.DniMsk.Name = "DniMsk";
-            this.DniMsk.Size = new System.Drawing.Size(75, 20);
-            this.DniMsk.TabIndex = 1;
+            this.MatriculaMsk.Enabled = false;
+            this.MatriculaMsk.Location = new System.Drawing.Point(106, 26);
+            this.MatriculaMsk.Mask = "LL0000";
+            this.MatriculaMsk.Name = "MatriculaMsk";
+            this.MatriculaMsk.Size = new System.Drawing.Size(75, 20);
+            this.MatriculaMsk.TabIndex = 1;
             // 
             // BuscarBtn
             // 
@@ -75,7 +75,7 @@
             this.groupBox1.Controls.Add(this.ApellidoTxt);
             this.groupBox1.Controls.Add(this.ApellidoChk);
             this.groupBox1.Controls.Add(this.MatriculaChk);
-            this.groupBox1.Controls.Add(this.DniMsk);
+            this.groupBox1.Controls.Add(this.MatriculaMsk);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(424, 125);
@@ -145,7 +145,7 @@
         #endregion
 
         private System.Windows.Forms.CheckBox MatriculaChk;
-        private System.Windows.Forms.MaskedTextBox DniMsk;
+        private System.Windows.Forms.MaskedTextBox MatriculaMsk;
         private System.Windows.Forms.Button BuscarBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox ApellidoTxt;

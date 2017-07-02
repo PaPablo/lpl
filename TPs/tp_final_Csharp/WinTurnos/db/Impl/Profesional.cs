@@ -7,7 +7,7 @@ namespace LibTurnos.db
 {
     public partial class Profesional : CommonObj, IAccessDB<Profesional>, ITable
     {
-        private string[] _columns = { "id","matricula","nombres","apellido","telefono","fechamatricula","activo"};
+        private string[] _columns = {"id","matricula","nombres","apellido","telefono","fechamatricula","activo"};
         public List<Profesional> findAll()
         {
             return this.findAll(null);
@@ -33,6 +33,7 @@ namespace LibTurnos.db
             return ManagerDB<Profesional>.saveObject(this);
         }
 
+
         public string TableName
         {
             get { return "profesionales"; }
@@ -51,9 +52,7 @@ namespace LibTurnos.db
 			this._apellido = dr[_columns[3]].ToString().Trim();
             this._telefono = dr[_columns[4]].ToString().Trim();
             this._fechamatricula = DateTime.Parse(dr[_columns[5]].ToString());
-            //this._activo = Boolean.Parse(dr[_columns[6]].ToString());
-            bool result;
-            this._activo = Boolean.TryParse(dr[_columns[6]].ToString(), out result);
+            this._activo = dr[_columns[6]].ToString() == "1" ? true : false;
             this.IsNew = false;
         }
         public string[] columns

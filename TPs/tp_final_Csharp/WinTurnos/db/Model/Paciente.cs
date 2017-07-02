@@ -16,14 +16,24 @@ namespace LibTurnos.db
 		private string _telefono;
         #endregion
 
+        public override string ToString()
+        {
+            return String.Format("NOMBRE: {0}\n" +
+                "APELLIDO: {1}\n" +
+                "DNI: {2}\n",
+                this.Nombres, this.Apellido, this.Dni.ToString());
+        }
         #region propiedades publicas
         public int Dni
         {
             get { return _dni; }
             set {
                 if (value == 0) {
-                    Validar(this, "DNI no puede ser 0");
-                    return;
+                    if (this.Validar != null)
+                    {
+                        Validar(this, "DNI no puede ser 0");
+                        return;
+                    }
                 }
                 _dni = value;
             }
@@ -35,8 +45,11 @@ namespace LibTurnos.db
             set {
                 if(string.IsNullOrWhiteSpace(value))
                 {
-                    Validar(this, "Nombres no pueden estar vacíos");
-                    return;
+                    if (this.Validar != null)
+                    {
+                        Validar(this, "Nombres no pueden estar vacíos");
+                        return;
+                    }
                 }
                 _nombres = value;
             }
@@ -48,8 +61,11 @@ namespace LibTurnos.db
             set {
                 if(string.IsNullOrWhiteSpace(value))
                 {
-                    Validar(this, "Apellido no puede estar vacío");
-                    return;
+                    if (this.Validar != null)
+                    {
+                        Validar(this, "Apellido no puede estar vacío");
+                        return;
+                    }
                 }
                 _apellido = value;
             }

@@ -45,7 +45,7 @@ namespace LibTurnos.db
             this._fechahora = Convert.ToDateTime(dr[_columns[0]].ToString());
             this._dnipaciente =  Int32.Parse(dr[_columns[1]].ToString());
 			this._codigoprofesional =  Int32.Parse(dr[_columns[2]].ToString());
-			this._asistio = Convert.ToBoolean(dr[_columns[2]].ToString());
+			this._asistio = dr[_columns[3]].ToString() == "1" ? true : false;
 			this.IsNew = false;
         }
         public string[] columns

@@ -32,7 +32,6 @@
             this.CancelarBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.NombreTxt = new System.Windows.Forms.TextBox();
-            this.MatriculaTxt = new System.Windows.Forms.TextBox();
             this.EsActivo = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.FechaMatricula = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
+            this.MatriculaTxt = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // AceptarBtn
@@ -78,13 +78,6 @@
             this.NombreTxt.Name = "NombreTxt";
             this.NombreTxt.Size = new System.Drawing.Size(200, 20);
             this.NombreTxt.TabIndex = 9;
-            // 
-            // MatriculaTxt
-            // 
-            this.MatriculaTxt.Location = new System.Drawing.Point(118, 52);
-            this.MatriculaTxt.Name = "MatriculaTxt";
-            this.MatriculaTxt.Size = new System.Drawing.Size(200, 20);
-            this.MatriculaTxt.TabIndex = 18;
             // 
             // EsActivo
             // 
@@ -154,11 +147,20 @@
             this.label4.TabIndex = 28;
             this.label4.Text = "Fecha Matrícula:";
             // 
+            // MatriculaTxt
+            // 
+            this.MatriculaTxt.Location = new System.Drawing.Point(118, 48);
+            this.MatriculaTxt.Mask = "LL9999";
+            this.MatriculaTxt.Name = "MatriculaTxt";
+            this.MatriculaTxt.Size = new System.Drawing.Size(200, 20);
+            this.MatriculaTxt.TabIndex = 29;
+            // 
             // ProfesionalAMFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 300);
+            this.Controls.Add(this.MatriculaTxt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.FechaMatricula);
             this.Controls.Add(this.label3);
@@ -167,7 +169,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.EsActivo);
-            this.Controls.Add(this.MatriculaTxt);
             this.Controls.Add(this.CancelarBtn);
             this.Controls.Add(this.AceptarBtn);
             this.Controls.Add(this.NombreTxt);
@@ -188,7 +189,6 @@
         private System.Windows.Forms.Button CancelarBtn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox NombreTxt;
-        private System.Windows.Forms.TextBox MatriculaTxt;
         private System.Windows.Forms.CheckBox EsActivo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -197,5 +197,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker FechaMatricula;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.MaskedTextBox MatriculaTxt;
     }
 }

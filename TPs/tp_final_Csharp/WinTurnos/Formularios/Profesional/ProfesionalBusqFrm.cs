@@ -18,11 +18,11 @@ namespace WinTurnos.Formularios
 
         private void DniChk_CheckedChanged(object sender, EventArgs e)
         {
-            this.DniMsk.Enabled = this.MatriculaChk.Checked;
+            this.MatriculaMsk.Enabled = this.MatriculaChk.Checked;
             if (this.MatriculaChk.Checked)
             {
                 this.ListTodoChk.Checked = false;
-                this.DniMsk.Focus();
+                this.MatriculaMsk.Focus();
             }
         }
 
@@ -48,7 +48,7 @@ namespace WinTurnos.Formularios
                 return;
             }
             if (!ListTodoChk.Checked && this.MatriculaChk.Checked)
-                matricula = this.DniMsk.Text;
+                matricula = this.MatriculaMsk.Text;
             if (!ListTodoChk.Checked && this.ApellidoChk.Checked)
                 apellido = this.ApellidoTxt.Text;
             pfrm = new ProfesionalesResultsFrm();

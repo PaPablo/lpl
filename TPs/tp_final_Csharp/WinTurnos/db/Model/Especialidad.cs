@@ -12,8 +12,13 @@ namespace LibTurnos.db
         #region variables locales
         private int _codigo;
         private string _nombre;
-		#endregion
-        
+        #endregion
+
+        public override string ToString()
+        {
+            return String.Format("NOMBRE: {0}\nCODIGO: {1}", this.Nombre, this.Codigo);
+        }
+
         #region propiedades publicas
         public string Nombre
         {

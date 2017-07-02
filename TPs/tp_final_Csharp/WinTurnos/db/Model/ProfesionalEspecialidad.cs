@@ -16,8 +16,16 @@ namespace LibTurnos.db
         private Profesional _objProfesional = null;
         private Especialidad _objEspecialidad = null;
         private DateTime _fechaAlta;
-		#endregion
-        
+        #endregion
+
+        public override string ToString()
+        {
+            return String.Format("PROFESIONAL: {0}\nESPECIALIDAD: {1}\nDISPONIBLE: {2}\n" +
+                "FECHA ALTA: {3}\nOBSERVACIONES: {4}\n",
+                this.ProfesionalObj.ToString(), this.EspecialidadObj.ToString(),
+                this.Disponible ? "SI" : "NO", this.FechaAlta.ToShortDateString(),
+                this.Observaciones);
+        }
         #region propiedades publicas
         public DateTime FechaAlta
         {

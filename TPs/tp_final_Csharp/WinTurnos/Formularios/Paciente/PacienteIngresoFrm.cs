@@ -10,9 +10,9 @@ using LibTurnos.db;
 
 namespace WinTurnos.Formularios
 {
-    public partial class PacienteIngreso : Form
+    public partial class PacienteIngresoFrm : Form
     {
-        public PacienteIngreso()
+        public PacienteIngresoFrm()
         {
             InitializeComponent();
         }
@@ -31,13 +31,39 @@ namespace WinTurnos.Formularios
                 MessageBox.Show("No se encontró nada", "ERROR");
                 return;
             }
-            PacientesAMFrm fampac = new PacientesAMFrm();
-            fampac.ShowPaciente(p, new PacientesResultsFrm());
+
+            if (this.modificarChk.Checked)
+            {
+                new PacientesAMFrm().ShowPaciente(p, new PacientesResultsFrm());
+            }
+            else {
+                new PacienteTurnosFrm().ShowTurnos(p);
+            }
+            this.Dispose();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+
+        private void modificarChk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.modificarChk.Checked) {
+                this.turnosChk.Checked = false;
+            }
+
+        }
+
+        private void turnosChk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.turnosChk.Checked)
+            {
+                this.modificarChk.Checked = false;
+            }
+
         }
     }
 }
