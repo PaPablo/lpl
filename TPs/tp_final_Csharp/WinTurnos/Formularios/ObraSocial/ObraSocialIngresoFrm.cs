@@ -10,14 +10,62 @@ using LibTurnos.db;
 
 namespace WinTurnos.Formularios
 {
-    public partial class PacienteIngresoFrm : Form
+    public partial class ObraSocialIngresoFrm : Form
     {
-        public PacienteIngresoFrm()
+        public ObraSocialIngresoFrm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void ModificarChk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.ModificarChk.Checked)
+            {
+                this.PacientesChk.Checked = false;
+            }
+        }
+
+        private void PacientesChk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.PacientesChk.Checked)
+            {
+                this.ModificarChk.Checked = false;
+            }
+        }
+
+        private void AceptarBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.CodigoTxt.Text))
+            {
+                MessageBox.Show("Se debe ingresar un código válido", "ERROR");
+                return;
+            }
+            ObraSocial os = (ObraSocial)ManagerDB<ObraSocial>.findbyKey(this.CodigoTxt.Text);
+            if (os == null)
+            {
+                MessageBox.Show("No se encontró nada", "ERROR");
+                return;
+            }
+
+            if (this.ModificarChk.Checked)
+            {
+                new ObraSocialAMFrm().ShowObraSocial(os, new ObraSocialResultsFrm());
+            }
+            else {
+                new ObraSocialPacienteFrm().ShowObrasSociales(os);
+            }
+            this.Dispose();
+
+
+        }
+
+        private void ObraSocialIngresoFrm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        /*private void button1_Click(object sender, EventArgs e)
         {
 
             if (string.IsNullOrWhiteSpace(this.maskedDNI.Text))
@@ -69,6 +117,6 @@ namespace WinTurnos.Formularios
         private void PacienteIngresoFrm_Load(object sender, EventArgs e)
         {
 
-        }
+        }*/
     }
 }

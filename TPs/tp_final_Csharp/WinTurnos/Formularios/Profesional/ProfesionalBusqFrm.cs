@@ -71,5 +71,10 @@ namespace WinTurnos.Formularios
         {
             this.Dispose();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

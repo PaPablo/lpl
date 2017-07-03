@@ -15,7 +15,18 @@ namespace LibTurnos.db
         public string Nombre
         {
             get { return _nombre; }
-            set { _nombre = value; }
+            set
+            {
+                if (value == "")
+                {
+                    if(this.Validar != null)
+                    {
+                        Validar(this, "Nombre no puede estar vacío");
+                        return;
+                    }
+                }
+                _nombre = value;
+            }
         }
 
         public int Codigo

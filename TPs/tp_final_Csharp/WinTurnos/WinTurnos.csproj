@@ -76,6 +76,36 @@
     <Compile Include="Formularios\FormTestModel.Designer.cs">
       <DependentUpon>FormTestModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialAMFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialAMFrm.Designer.cs">
+      <DependentUpon>ObraSocialAMFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialBusqFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialBusqFrm.Designer.cs">
+      <DependentUpon>ObraSocialBusqFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialIngresoFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialIngresoFrm.Designer.cs">
+      <DependentUpon>ObraSocialIngresoFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialPacienteFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialPacienteFrm.Designer.cs">
+      <DependentUpon>ObraSocialPacienteFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialResultsFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ObraSocial\ObraSocialResultsFrm.Designer.cs">
+      <DependentUpon>ObraSocialResultsFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Paciente\PacienteBusqFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +123,12 @@
     </Compile>
     <Compile Include="Formularios\Paciente\PacienteTurnosFrm.Designer.cs">
       <DependentUpon>PacienteTurnosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\PrincipalFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\PrincipalFrm.Designer.cs">
+      <DependentUpon>PrincipalFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Profesional\ModProfEspFrm.cs">
       <SubType>Form</SubType>
@@ -130,12 +166,6 @@
     <Compile Include="Formularios\Paciente\PacientesResultsFrm.Designer.cs">
       <DependentUpon>PacientesResultsFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\PrincipalFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\PrincipalFrm.Designer.cs">
-      <DependentUpon>PrincipalFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\Profesional\ProfesionalIngresoFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +184,21 @@
     <EmbeddedResource Include="Formularios\FormTestModel.resx">
       <DependentUpon>FormTestModel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ObraSocial\ObraSocialAMFrm.resx">
+      <DependentUpon>ObraSocialAMFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ObraSocial\ObraSocialBusqFrm.resx">
+      <DependentUpon>ObraSocialBusqFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ObraSocial\ObraSocialIngresoFrm.resx">
+      <DependentUpon>ObraSocialIngresoFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ObraSocial\ObraSocialPacienteFrm.resx">
+      <DependentUpon>ObraSocialPacienteFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ObraSocial\ObraSocialResultsFrm.resx">
+      <DependentUpon>ObraSocialResultsFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Paciente\PacienteBusqFrm.resx">
       <DependentUpon>PacienteBusqFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Paciente\PacienteTurnosFrm.resx">
       <DependentUpon>PacienteTurnosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\PrincipalFrm.resx">
+      <DependentUpon>PrincipalFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Profesional\ModProfEspFrm.resx">
       <DependentUpon>ModProfEspFrm.cs</DependentUpon>
@@ -180,9 +228,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Paciente\PacientesResultsFrm.resx">
       <DependentUpon>PacientesResultsFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\PrincipalFrm.resx">
-      <DependentUpon>PrincipalFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Profesional\ProfesionalIngresoFrm.resx">
       <DependentUpon>ProfesionalIngresoFrm.cs</DependentUpon>

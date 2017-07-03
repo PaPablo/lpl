@@ -14,7 +14,7 @@ namespace WinTurnos.Formularios
         public PacienteBusqFrm()
         {
             InitializeComponent();
-        }
+        } 
 
         private void DniChk_CheckedChanged(object sender, EventArgs e)
         {
@@ -70,6 +70,11 @@ namespace WinTurnos.Formularios
         private void CancelarBtn_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

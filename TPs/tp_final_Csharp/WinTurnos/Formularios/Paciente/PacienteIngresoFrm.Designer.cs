@@ -108,6 +108,7 @@
             this.Controls.Add(this.maskedDNI);
             this.Name = "PacienteIngresoFrm";
             this.Text = "Ingreso de paciente";
+            this.Load += new System.EventHandler(this.PacienteIngresoFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

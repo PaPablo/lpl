@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.gridTurnos = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.nombrePaciente = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dniPaciente = new System.Windows.Forms.TextBox();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profesional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Asistio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nombrePaciente = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dniPaciente = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridTurnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +54,28 @@
             this.gridTurnos.TabIndex = 0;
             this.gridTurnos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.gridTurnos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 160;
+            // 
+            // Profesional
+            // 
+            this.Profesional.HeaderText = "Profesional";
+            this.Profesional.Name = "Profesional";
+            this.Profesional.Width = 250;
+            // 
+            // Matricula
+            // 
+            this.Matricula.HeaderText = "Matrícula";
+            this.Matricula.Name = "Matricula";
+            // 
+            // Asistio
+            // 
+            this.Asistio.HeaderText = "¿Asistió?";
+            this.Asistio.Name = "Asistio";
             // 
             // label1
             // 
@@ -88,28 +110,6 @@
             this.dniPaciente.ReadOnly = true;
             this.dniPaciente.Size = new System.Drawing.Size(120, 20);
             this.dniPaciente.TabIndex = 4;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.Width = 160;
-            // 
-            // Profesional
-            // 
-            this.Profesional.HeaderText = "Profesional";
-            this.Profesional.Name = "Profesional";
-            this.Profesional.Width = 250;
-            // 
-            // Matricula
-            // 
-            this.Matricula.HeaderText = "Matrícula";
-            this.Matricula.Name = "Matricula";
-            // 
-            // Asistio
-            // 
-            this.Asistio.HeaderText = "¿Asistió?";
-            this.Asistio.Name = "Asistio";
             // 
             // PacienteTurnosFrm
             // 

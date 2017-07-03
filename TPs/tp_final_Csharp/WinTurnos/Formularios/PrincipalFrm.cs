@@ -86,5 +86,20 @@ namespace WinTurnos.Formularios
             new ProfesionalIngresoFrm().Show();
 
         }
+
+        private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new ObraSocialAMFrm().NewObraSocial(new ObraSocialResultsFrm());
+        }
+
+        private void modificacionToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new ObraSocialIngresoFrm().Show();
+        }
+
+        private void listadoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new ObraSocialBusqFrm().Show();
+        }
     }
 }
