@@ -58,9 +58,9 @@ namespace WinTurnos.Formularios
                 return;
             }
             if (!ListarTodoChk.Checked && this.CodigoChk.Checked)
-                codigo = Convert.ToInt32(this.CodigoChk.Text);
+                codigo = Convert.ToInt32(this.CodigoTxt.Text);
             if (!ListarTodoChk.Checked && this.NombreChk.Checked)
-                nombre = this.NombreChk.Text;
+                nombre = this.NombreTxt.Text;
             osfrm = new ObraSocialResultsFrm();
             Cursor.Current = Cursors.WaitCursor;
             this.Visible = false;

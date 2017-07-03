@@ -69,12 +69,7 @@ namespace WinTurnos.Formularios
 
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //List<Turno> lista = ManagerDB<Turno>.findAll();
-            //List<ObraSocial> listaOS = ManagerDB<ObraSocial>.findAll();
-            //List<PacienteObraSocial> listaPOS = ManagerDB<PacienteObraSocial>.findAll();
-
             new ProfesionalAMFrm().NewProfesional(new ProfesionalesResultsFrm());
-
         }
         private void listadoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -84,7 +79,6 @@ namespace WinTurnos.Formularios
         private void modificacionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new ProfesionalIngresoFrm().Show();
-
         }
 
         private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -100,6 +94,17 @@ namespace WinTurnos.Formularios
         private void listadoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             new ObraSocialBusqFrm().Show();
+        }
+
+        private void altaToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            new TurnoAMFrm().NewTurno();
+        }
+
+        private void listadoToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            new TurnoBusqFrm().Show();
+
         }
     }
 }

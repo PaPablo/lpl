@@ -70,7 +70,7 @@ namespace LibTurnos.db
             {
                 string vvalues = String.Join(",", this.list_values());
                 string sqliu = (this.IsNew ? "insert into {0} ({1}) values ({2})" : "update  {0} set {1} where {2}");
-                return String.Format(sqliu, this.TableName, (this.IsNew ? String.Join(",", _columns) : vvalues), (this.IsNew ? vvalues : String.Format("codigoprofesional = {0} and codigoespecialidad = {1} and fechaalta = {1}", this.CodigoProfesional, this.CodigoEspecialidad, this.FechaAlta)));
+                return String.Format(sqliu, this.TableName, (this.IsNew ? String.Join(",", _columns) : vvalues), (this.IsNew ? vvalues : String.Format("codigoprofesional = {0} and codigoespecialidad = {1} and fechaalta = {2}", this.CodigoProfesional, this.CodigoEspecialidad, String.Format("'{0}'",this._fechaAlta.ToString("yyyy-MM-dd")))));
             }
         }
         // propiedad seteada por implementar IAutoIncrement

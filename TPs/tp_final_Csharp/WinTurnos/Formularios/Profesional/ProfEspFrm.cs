@@ -22,6 +22,8 @@ namespace WinTurnos.Formularios {
 
             this.prof = p;
 
+            this.nombreProfesional.Text = String.Format("{0}, {1}", this.prof.Apellido.ToUpper(), this.prof.Nombres);
+            this.matriculaProfesional.Text = this.prof.Matricula;
             this.codigoEspecialidad.Enabled = true;
             this.codigoEspecialidad.Checked = true;
             this.textNombre.Enabled = false;
@@ -39,6 +41,7 @@ namespace WinTurnos.Formularios {
             List<ProfesionalEspecialidad> listaProfEsp = ManagerDB<ProfesionalEspecialidad>.findAll(
                 String.Format("codigoprofesional = {0}", p.Id));
 
+            listaProfEsp.Sort((pe1, pe2) => pe1.CodigoEspecialidad.CompareTo(pe2.CodigoEspecialidad));
             this.gridEspecialidades.DataSource = listaProfEsp;
 
             Cursor.Current = Cursors.Default;
@@ -56,11 +59,12 @@ namespace WinTurnos.Formularios {
             foreach (DataGridViewRow row in this.gridEspecialidades.Rows)
             {                
                 pe = (row.DataBoundItem as ProfesionalEspecialidad);
-                row.Cells[0].Value = pe.EspecialidadObj.Nombre;
-                row.Cells[1].Value = pe.FechaAlta.ToShortDateString();
-                row.Cells[2].Value = pe.Disponible ? "SÍ" : "NO";
-                row.Cells[3].Value = pe.Observaciones;
-                row.Cells[4].Value = "Editar";
+                row.Cells[0].Value = pe.EspecialidadObj.Codigo;
+                row.Cells[1].Value = pe.EspecialidadObj.Nombre;
+                row.Cells[2].Value = pe.FechaAlta.ToShortDateString();
+                row.Cells[3].Value = pe.Disponible ? "SÍ" : "NO";
+                row.Cells[4].Value = pe.Observaciones;
+                row.Cells[5].Value = "Editar";
             }
         }
 

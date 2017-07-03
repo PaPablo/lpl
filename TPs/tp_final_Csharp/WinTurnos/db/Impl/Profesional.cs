@@ -62,8 +62,8 @@ namespace LibTurnos.db
         private string[] list_values()
         {
             // "nombres","matricula","apellido", "telefono","activo"
-            string[] values = { (this.IsNew?"":_columns[1] + "=")+String.Format("'{0}'",this._nombres), //formato cadena ''
-                                (this.IsNew?"":_columns[2] + "=")+String.Format("'{0}'",this._matricula), //formato cadena ''
+            string[] values = { (this.IsNew?"":_columns[1] + "=")+String.Format("'{0}'",this._matricula), //formato cadena ''
+                                (this.IsNew?"":_columns[2] + "=")+String.Format("'{0}'",this._nombres), //formato cadena ''
                                 (this.IsNew?"":_columns[3] + "=")+String.Format("'{0}'",this._apellido),//formato cadena ''
                                 (this.IsNew?"":_columns[4] + "=")+String.Format("'{0}'",this._telefono),//formato cadena ''
                                 (this.IsNew?"":_columns[5] + "=")+String.Format("'{0}'",this._fechamatricula.ToString("yyyy-MM-dd")),//formato cadena 

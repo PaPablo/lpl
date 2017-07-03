@@ -32,10 +32,10 @@
             this.CerrarBtn = new System.Windows.Forms.Button();
             this.codigoObraSocialLbl = new System.Windows.Forms.Label();
             this.NombreObraSocialLbl = new System.Windows.Forms.Label();
-            this.DniPacienteGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombrePacienteGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreObraSocial = new System.Windows.Forms.TextBox();
             this.CodigoObraSocial = new System.Windows.Forms.TextBox();
+            this.DniPacienteGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombrePacienteGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GridPacienteObraSocial)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,17 +47,17 @@
             this.NombrePacienteGrid});
             this.GridPacienteObraSocial.Location = new System.Drawing.Point(12, 55);
             this.GridPacienteObraSocial.Name = "GridPacienteObraSocial";
-            this.GridPacienteObraSocial.Size = new System.Drawing.Size(659, 230);
+            this.GridPacienteObraSocial.Size = new System.Drawing.Size(394, 209);
             this.GridPacienteObraSocial.TabIndex = 0;
             this.GridPacienteObraSocial.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.GridPacienteObraSocial_DataBindingComplete);
             // 
             // CerrarBtn
             // 
-            this.CerrarBtn.Location = new System.Drawing.Point(588, 300);
+            this.CerrarBtn.Location = new System.Drawing.Point(365, 300);
             this.CerrarBtn.Name = "CerrarBtn";
             this.CerrarBtn.Size = new System.Drawing.Size(83, 31);
             this.CerrarBtn.TabIndex = 1;
-            this.CerrarBtn.Text = "CerrarBtn";
+            this.CerrarBtn.Text = "Cerrar";
             this.CerrarBtn.UseVisualStyleBackColor = true;
             this.CerrarBtn.Click += new System.EventHandler(this.CerrarBtn_Click);
             // 
@@ -80,16 +80,6 @@
             this.NombreObraSocialLbl.Text = "Nombre";
             this.NombreObraSocialLbl.Click += new System.EventHandler(this.nombrePacienteLbl_Click);
             // 
-            // DniPacienteGrid
-            // 
-            this.DniPacienteGrid.HeaderText = "DNI";
-            this.DniPacienteGrid.Name = "DniPacienteGrid";
-            // 
-            // NombrePacienteGrid
-            // 
-            this.NombrePacienteGrid.HeaderText = "Nombre";
-            this.NombrePacienteGrid.Name = "NombrePacienteGrid";
-            // 
             // NombreObraSocial
             // 
             this.NombreObraSocial.Location = new System.Drawing.Point(328, 10);
@@ -106,11 +96,22 @@
             this.CodigoObraSocial.Size = new System.Drawing.Size(120, 20);
             this.CodigoObraSocial.TabIndex = 7;
             // 
+            // DniPacienteGrid
+            // 
+            this.DniPacienteGrid.HeaderText = "DNI";
+            this.DniPacienteGrid.Name = "DniPacienteGrid";
+            // 
+            // NombrePacienteGrid
+            // 
+            this.NombrePacienteGrid.HeaderText = "Nombre";
+            this.NombrePacienteGrid.Name = "NombrePacienteGrid";
+            this.NombrePacienteGrid.Width = 250;
+            // 
             // ObraSocialPacienteFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 357);
+            this.ClientSize = new System.Drawing.Size(468, 348);
             this.Controls.Add(this.CodigoObraSocial);
             this.Controls.Add(this.NombreObraSocial);
             this.Controls.Add(this.NombreObraSocialLbl);
@@ -132,9 +133,9 @@
         private System.Windows.Forms.Button CerrarBtn;
         private System.Windows.Forms.Label codigoObraSocialLbl;
         private System.Windows.Forms.Label NombreObraSocialLbl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DniPacienteGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePacienteGrid;
         private System.Windows.Forms.TextBox NombreObraSocial;
         private System.Windows.Forms.TextBox CodigoObraSocial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DniPacienteGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePacienteGrid;
     }
 }

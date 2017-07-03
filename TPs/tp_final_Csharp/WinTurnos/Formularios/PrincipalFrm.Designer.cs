@@ -47,7 +47,6 @@
             this.listadoToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.turnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificacionToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FormTestBtn = new System.Windows.Forms.Button();
@@ -144,7 +143,7 @@
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(160, 22);
             this.altaToolStripMenuItem2.Text = "Alta";
             this.altaToolStripMenuItem2.Click += new System.EventHandler(this.altaToolStripMenuItem2_Click);
             // 
@@ -195,7 +194,6 @@
             // 
             this.turnosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaToolStripMenuItem4,
-            this.modificacionToolStripMenuItem4,
             this.listadoToolStripMenuItem4});
             this.turnosToolStripMenuItem.Name = "turnosToolStripMenuItem";
             this.turnosToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
@@ -204,20 +202,16 @@
             // altaToolStripMenuItem4
             // 
             this.altaToolStripMenuItem4.Name = "altaToolStripMenuItem4";
-            this.altaToolStripMenuItem4.Size = new System.Drawing.Size(144, 22);
+            this.altaToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.altaToolStripMenuItem4.Text = "Alta";
-            // 
-            // modificacionToolStripMenuItem4
-            // 
-            this.modificacionToolStripMenuItem4.Name = "modificacionToolStripMenuItem4";
-            this.modificacionToolStripMenuItem4.Size = new System.Drawing.Size(144, 22);
-            this.modificacionToolStripMenuItem4.Text = "Modificacion";
+            this.altaToolStripMenuItem4.Click += new System.EventHandler(this.altaToolStripMenuItem4_Click);
             // 
             // listadoToolStripMenuItem4
             // 
             this.listadoToolStripMenuItem4.Name = "listadoToolStripMenuItem4";
-            this.listadoToolStripMenuItem4.Size = new System.Drawing.Size(144, 22);
+            this.listadoToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.listadoToolStripMenuItem4.Text = "Listado";
+            this.listadoToolStripMenuItem4.Click += new System.EventHandler(this.listadoToolStripMenuItem4_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -278,7 +272,6 @@
         private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem turnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.Button FormTestBtn;

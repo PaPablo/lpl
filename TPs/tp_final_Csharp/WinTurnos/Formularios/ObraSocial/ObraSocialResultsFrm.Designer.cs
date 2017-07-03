@@ -41,16 +41,16 @@
             this.gridObrasSociales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.Nombre});
-            this.gridObrasSociales.Location = new System.Drawing.Point(2, 12);
+            this.gridObrasSociales.Location = new System.Drawing.Point(12, 33);
             this.gridObrasSociales.Name = "gridObrasSociales";
-            this.gridObrasSociales.Size = new System.Drawing.Size(625, 316);
+            this.gridObrasSociales.Size = new System.Drawing.Size(345, 316);
             this.gridObrasSociales.TabIndex = 0;
             this.gridObrasSociales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridObraSocial_CellContentClick);
             this.gridObrasSociales.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridObraSocial_DataBindingComplete);
             // 
             // CerrarBtn
             // 
-            this.CerrarBtn.Location = new System.Drawing.Point(498, 367);
+            this.CerrarBtn.Location = new System.Drawing.Point(273, 355);
             this.CerrarBtn.Name = "CerrarBtn";
             this.CerrarBtn.Size = new System.Drawing.Size(84, 27);
             this.CerrarBtn.TabIndex = 14;
@@ -68,13 +68,13 @@
             // 
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
-            this.Nombre.Width = 150;
+            this.Nombre.Width = 200;
             // 
             // ObraSocialResultsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 406);
+            this.ClientSize = new System.Drawing.Size(380, 394);
             this.Controls.Add(this.CerrarBtn);
             this.Controls.Add(this.gridObrasSociales);
             this.MaximizeBox = false;

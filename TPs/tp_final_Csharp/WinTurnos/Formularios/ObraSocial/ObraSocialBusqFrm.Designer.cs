@@ -31,19 +31,19 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ListarTodoChk = new System.Windows.Forms.CheckBox();
             this.NombreTxt = new System.Windows.Forms.TextBox();
-            this.CodigoTxt = new System.Windows.Forms.TextBox();
             this.NombreChk = new System.Windows.Forms.CheckBox();
             this.CodigoChk = new System.Windows.Forms.CheckBox();
             this.AceptarBtn = new System.Windows.Forms.Button();
             this.CancelarBtn = new System.Windows.Forms.Button();
+            this.CodigoTxt = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CodigoTxt);
             this.groupBox1.Controls.Add(this.ListarTodoChk);
             this.groupBox1.Controls.Add(this.NombreTxt);
-            this.groupBox1.Controls.Add(this.CodigoTxt);
             this.groupBox1.Controls.Add(this.NombreChk);
             this.groupBox1.Controls.Add(this.CodigoChk);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -71,14 +71,6 @@
             this.NombreTxt.Name = "NombreTxt";
             this.NombreTxt.Size = new System.Drawing.Size(107, 20);
             this.NombreTxt.TabIndex = 3;
-            // 
-            // CodigoTxt
-            // 
-            this.CodigoTxt.Enabled = false;
-            this.CodigoTxt.Location = new System.Drawing.Point(79, 35);
-            this.CodigoTxt.Name = "CodigoTxt";
-            this.CodigoTxt.Size = new System.Drawing.Size(108, 20);
-            this.CodigoTxt.TabIndex = 2;
             // 
             // NombreChk
             // 
@@ -121,6 +113,14 @@
             this.CancelarBtn.Text = "Cancelar";
             this.CancelarBtn.UseVisualStyleBackColor = true;
             // 
+            // CodigoTxt
+            // 
+            this.CodigoTxt.Location = new System.Drawing.Point(80, 32);
+            this.CodigoTxt.Mask = "999";
+            this.CodigoTxt.Name = "CodigoTxt";
+            this.CodigoTxt.Size = new System.Drawing.Size(108, 20);
+            this.CodigoTxt.TabIndex = 5;
+            // 
             // ObraSocialBusqFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,11 +141,11 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox NombreTxt;
-        private System.Windows.Forms.TextBox CodigoTxt;
         private System.Windows.Forms.CheckBox NombreChk;
         private System.Windows.Forms.CheckBox CodigoChk;
         private System.Windows.Forms.CheckBox ListarTodoChk;
         private System.Windows.Forms.Button AceptarBtn;
         private System.Windows.Forms.Button CancelarBtn;
+        private System.Windows.Forms.MaskedTextBox CodigoTxt;
     }
 }

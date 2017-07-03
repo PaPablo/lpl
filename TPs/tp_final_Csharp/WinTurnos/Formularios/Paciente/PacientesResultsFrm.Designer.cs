@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.gridPacientes = new System.Windows.Forms.DataGridView();
-            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edicion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CerrarBtn = new System.Windows.Forms.Button();
+            this.Edicion = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridPacientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +41,6 @@
             // 
             this.gridPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPacientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Dni,
             this.NombreApellido,
             this.Domicilio,
             this.Telefono,
@@ -54,37 +52,6 @@
             this.gridPacientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPacientes_CellContentClick);
             this.gridPacientes.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridPacientes_DataBindingComplete);
             // 
-            // Dni
-            // 
-            this.Dni.DataPropertyName = "DNI";
-            this.Dni.HeaderText = "DNI";
-            this.Dni.Name = "DNI";
-            // 
-            // NombreApellido
-            // 
-            this.NombreApellido.HeaderText = "Nombre y Apellido";
-            this.NombreApellido.Name = "NombreApellido";
-            this.NombreApellido.Width = 150;
-            // 
-            // Domicilio
-            // 
-            this.Domicilio.DataPropertyName = "Domicilio";
-            this.Domicilio.HeaderText = "Domicilio";
-            this.Domicilio.Name = "Domicilio";
-            // 
-            // Telefono
-            // 
-            this.Telefono.DataPropertyName = "Telefono";
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
-            // 
-            // Edicion
-            // 
-            this.Edicion.HeaderText = "Editar";
-            this.Edicion.Name = "Edicion";
-            this.Edicion.Text = "Editar";
-            this.Edicion.UseColumnTextForButtonValue = true;
-            // 
             // CerrarBtn
             // 
             this.CerrarBtn.Location = new System.Drawing.Point(498, 367);
@@ -94,6 +61,31 @@
             this.CerrarBtn.Text = "Cerrar";
             this.CerrarBtn.UseVisualStyleBackColor = true;
             this.CerrarBtn.Click += new System.EventHandler(this.CerrarBtn_Click);
+            // 
+            // Edicion
+            // 
+            this.Edicion.HeaderText = "Editar";
+            this.Edicion.Name = "Edicion";
+            this.Edicion.Text = "Editar";
+            this.Edicion.UseColumnTextForButtonValue = true;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            // 
+            // Domicilio
+            // 
+            this.Domicilio.DataPropertyName = "Domicilio";
+            this.Domicilio.HeaderText = "Domicilio";
+            this.Domicilio.Name = "Domicilio";
+            // 
+            // NombreApellido
+            // 
+            this.NombreApellido.HeaderText = "Nombre y Apellido";
+            this.NombreApellido.Name = "NombreApellido";
+            this.NombreApellido.Width = 150;
             // 
             // PacientesResultsFrm
             // 
