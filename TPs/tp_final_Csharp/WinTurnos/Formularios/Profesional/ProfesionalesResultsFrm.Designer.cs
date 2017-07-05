@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.gridProfesionales = new System.Windows.Forms.DataGridView();
-            this.CerrarBtn = new System.Windows.Forms.Button();
             this.Mátricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edicion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CerrarBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridProfesionales)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,16 +54,6 @@
             this.gridProfesionales.TabIndex = 0;
             this.gridProfesionales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridProfesionales_CellContentClick);
             this.gridProfesionales.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridProfesionales_DataBindingComplete);
-            // 
-            // CerrarBtn
-            // 
-            this.CerrarBtn.Location = new System.Drawing.Point(498, 367);
-            this.CerrarBtn.Name = "CerrarBtn";
-            this.CerrarBtn.Size = new System.Drawing.Size(84, 27);
-            this.CerrarBtn.TabIndex = 14;
-            this.CerrarBtn.Text = "Cerrar";
-            this.CerrarBtn.UseVisualStyleBackColor = true;
-            this.CerrarBtn.Click += new System.EventHandler(this.CerrarBtn_Click);
             // 
             // Mátricula
             // 
@@ -95,6 +85,16 @@
             this.Activo.HeaderText = "Activo";
             this.Activo.Name = "Activo";
             this.Activo.ReadOnly = true;
+            // 
+            // CerrarBtn
+            // 
+            this.CerrarBtn.Location = new System.Drawing.Point(498, 367);
+            this.CerrarBtn.Name = "CerrarBtn";
+            this.CerrarBtn.Size = new System.Drawing.Size(84, 27);
+            this.CerrarBtn.TabIndex = 14;
+            this.CerrarBtn.Text = "Cerrar";
+            this.CerrarBtn.UseVisualStyleBackColor = true;
+            this.CerrarBtn.Click += new System.EventHandler(this.CerrarBtn_Click);
             // 
             // ProfesionalesResultsFrm
             // 

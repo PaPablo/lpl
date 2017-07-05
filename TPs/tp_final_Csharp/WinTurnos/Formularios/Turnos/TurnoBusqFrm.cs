@@ -58,5 +58,27 @@ namespace WinTurnos.Formularios
             this.dniPaciente.Enabled = false;
             this.dateTimePicker1.Enabled = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TurnoResultsFrm tfrm;
+            if(!this.todoChk.Checked && !this.dniChk.Checked && ! this.matriculaChk.Checked)
+            {
+                MessageBox.Show("Tiene que ingresar criterio de busqueda","Faltan criterios",
+                MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (!this.todoChk.Checked && this.matriculaChk.Checked)
+                matricula = this.matriculaProfesional.Text;
+            if (!this.todoChk.Checked && this.dniChk.Checked)
+                dni = Convert.ToInt32(this.dniPaciente.Text);
+            tfrm = new TurnoResultsFrm();
+            Cursor.Current = Cursors.WaitCursor;
+            this.Visible = false;
+            tfrm.ResultadosTurno(dni, matricula);
+            this.Dispose(); 
+
+        }
     }
 }

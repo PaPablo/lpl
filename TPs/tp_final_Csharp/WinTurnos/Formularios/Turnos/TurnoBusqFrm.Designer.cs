@@ -35,6 +35,8 @@
             this.dniPaciente = new System.Windows.Forms.MaskedTextBox();
             this.matriculaProfesional = new System.Windows.Forms.MaskedTextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.AceptarBtn = new System.Windows.Forms.Button();
+            this.CancelarBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dniChk
@@ -104,11 +106,32 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 6;
             // 
+            // AceptarBtn
+            // 
+            this.AceptarBtn.Location = new System.Drawing.Point(13, 264);
+            this.AceptarBtn.Name = "AceptarBtn";
+            this.AceptarBtn.Size = new System.Drawing.Size(83, 31);
+            this.AceptarBtn.TabIndex = 7;
+            this.AceptarBtn.Text = "Buscar";
+            this.AceptarBtn.UseVisualStyleBackColor = true;
+            this.AceptarBtn.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // CancelarBtn
+            // 
+            this.CancelarBtn.Location = new System.Drawing.Point(245, 264);
+            this.CancelarBtn.Name = "CancelarBtn";
+            this.CancelarBtn.Size = new System.Drawing.Size(83, 31);
+            this.CancelarBtn.TabIndex = 8;
+            this.CancelarBtn.Text = "Cancelar";
+            this.CancelarBtn.UseVisualStyleBackColor = true;
+            // 
             // TurnoBusqFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 318);
+            this.Controls.Add(this.CancelarBtn);
+            this.Controls.Add(this.AceptarBtn);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.matriculaProfesional);
             this.Controls.Add(this.dniPaciente);
@@ -133,5 +156,7 @@
         private System.Windows.Forms.MaskedTextBox dniPaciente;
         private System.Windows.Forms.MaskedTextBox matriculaProfesional;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button AceptarBtn;
+        private System.Windows.Forms.Button CancelarBtn;
     }
 }

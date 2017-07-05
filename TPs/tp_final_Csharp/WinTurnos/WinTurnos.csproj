@@ -259,6 +259,9 @@
     <EmbeddedResource Include="Formularios\Turnos\TurnoBusqFrm.resx">
       <DependentUpon>TurnoBusqFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Turnos\TurnoResultsFrm.resx">
+      <DependentUpon>TurnoResultsFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
