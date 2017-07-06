@@ -107,12 +107,6 @@
     <Compile Include="Formularios\Especialidad\EspecialidadResultsFrm.Designer.cs">
       <DependentUpon>EspecialidadResultsFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormTestModel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\FormTestModel.Designer.cs">
-      <DependentUpon>FormTestModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\ObraSocial\ObraSocialAMFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,9 +271,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Especialidad\EspecialidadResultsFrm.resx">
       <DependentUpon>EspecialidadResultsFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormTestModel.resx">
-      <DependentUpon>FormTestModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ObraSocial\ObraSocialAMFrm.resx">
       <DependentUpon>ObraSocialAMFrm.cs</DependentUpon>

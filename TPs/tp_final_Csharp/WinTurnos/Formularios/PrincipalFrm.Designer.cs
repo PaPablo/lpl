@@ -54,7 +54,9 @@
             this.listadoToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.FormTestBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -257,7 +259,7 @@
             // ayudaToolStripMenuItem4
             // 
             this.ayudaToolStripMenuItem4.Name = "ayudaToolStripMenuItem4";
-            this.ayudaToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.ayudaToolStripMenuItem4.Size = new System.Drawing.Size(112, 22);
             this.ayudaToolStripMenuItem4.Text = "Ayuda";
             this.ayudaToolStripMenuItem4.Click += new System.EventHandler(this.ayudaToolStripMenuItem4_Click);
             // 
@@ -268,28 +270,49 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // FormTestBtn
+            // label1
             // 
-            this.FormTestBtn.Location = new System.Drawing.Point(12, 72);
-            this.FormTestBtn.Name = "FormTestBtn";
-            this.FormTestBtn.Size = new System.Drawing.Size(90, 46);
-            this.FormTestBtn.TabIndex = 35;
-            this.FormTestBtn.Text = "Form Test Model";
-            this.FormTestBtn.UseVisualStyleBackColor = true;
-            this.FormTestBtn.Click += new System.EventHandler(this.FormTestBtn_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(46, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(403, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Trabajo práctico final C#, Laboratorio de Programación y Lenguajes, UNPSJB, 2017";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(46, 185);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(181, 39);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Grupo:\r\n            SERRUYA ALOISI, Luciano\r\n            TOLEDO MARGALEF, Pablo\r\n" +
+    "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(190, 39);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Cátedra:\r\n              Profesor: Lic. Diego Firmenich\r\n              JTP: Lic. M" +
+    "arcelo Santander";
             // 
             // PrincipalFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 470);
-            this.Controls.Add(this.FormTestBtn);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "PrincipalFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Formulario Principal";
+            this.Text = "WinTurnos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PrincipalFrm_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -322,12 +345,14 @@
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.Button FormTestBtn;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

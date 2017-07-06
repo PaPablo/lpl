@@ -56,11 +56,6 @@ namespace WinTurnos.Formularios
             new PacienteIngresoFrm().Show();
         }
 
-        private void FormTestBtn_Click(object sender, EventArgs e)
-        {
-            FormTestModel frm = new  FormTestModel();
-            frm.Show();
-        }
 
         private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
