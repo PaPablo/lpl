@@ -51,6 +51,7 @@ namespace WinTurnos.Formularios
                 return;
             }
 
+            lista.Sort((p1, p2) => p1.Apellido.CompareTo(p2.Apellido));
             this.gridPacientes.DataSource = lista;
             this.ShowDialog();
         }
@@ -75,10 +76,6 @@ namespace WinTurnos.Formularios
                 frm.ShowPaciente(grid.Rows[e.RowIndex].DataBoundItem as Paciente,this);
             }
 
-            if (grid.Columns[e.ColumnIndex] is DataGridViewTextBoxColumn)
-            {
-                MessageBox.Show(String.Format("pulsaste la celda {0}, {1}", e.ColumnIndex, e.RowIndex));
-            }
         }
 
         private void gridPacientes_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -86,10 +83,11 @@ namespace WinTurnos.Formularios
             Paciente p;
             foreach (DataGridViewRow row in gridPacientes.Rows)
             {                
-                DataGridViewCell cell;
                 p = (row.DataBoundItem as Paciente);
-                cell = row.Cells[1];
-                cell.Value = String.Format("{0}, {1}", p.Apellido.ToUpper(), p.Nombres);
+                row.Cells[0].Value = p.Dni;
+                row.Cells[1].Value = String.Format("{0}, {1}", p.Apellido.ToUpper(), p.Nombres);
+                row.Cells[2].Value = p.Domicilio;
+                row.Cells[3].Value = p.Telefono;
             }
         }
 

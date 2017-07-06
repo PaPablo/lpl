@@ -47,9 +47,9 @@ namespace WinTurnos.Formularios
                     MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 return;
             }
-            if (!ListTodoChk.Checked && this.DniChk.Checked)
+            if (!ListTodoChk.Checked && this.DniChk.Checked && !string.IsNullOrWhiteSpace(this.DniMsk.Text))
                 dni = Convert.ToInt32(this.DniMsk.Text);
-            if (!ListTodoChk.Checked && this.ApellidoChk.Checked)
+            if (!ListTodoChk.Checked && this.ApellidoChk.Checked && !string.IsNullOrWhiteSpace(this.ApellidoTxt.Text))
                 apellido = this.ApellidoTxt.Text;
             pfrm = new PacientesResultsFrm();
             Cursor.Current = Cursors.WaitCursor;

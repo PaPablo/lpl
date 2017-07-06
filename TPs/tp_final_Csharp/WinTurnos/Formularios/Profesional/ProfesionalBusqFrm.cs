@@ -47,9 +47,9 @@ namespace WinTurnos.Formularios
                     MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 return;
             }
-            if (!ListTodoChk.Checked && this.MatriculaChk.Checked)
+            if (!ListTodoChk.Checked && this.MatriculaChk.Checked && !string.IsNullOrWhiteSpace(this.MatriculaMsk.Text))
                 matricula = this.MatriculaMsk.Text;
-            if (!ListTodoChk.Checked && this.ApellidoChk.Checked)
+            if (!ListTodoChk.Checked && this.ApellidoChk.Checked && !string.IsNullOrWhiteSpace(this.ApellidoTxt.Text))
                 apellido = this.ApellidoTxt.Text;
             pfrm = new ProfesionalesResultsFrm();
             Cursor.Current = Cursors.WaitCursor;

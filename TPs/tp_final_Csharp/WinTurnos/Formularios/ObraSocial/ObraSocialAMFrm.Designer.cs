@@ -80,7 +80,7 @@
             this.Controls.Add(this.CancelarBtn);
             this.Controls.Add(this.AceptarBtn);
             this.Name = "ObraSocialAMFrm";
-            this.Text = "ObraSocialAMFrm";
+            this.Text = "Obra social";
             this.Load += new System.EventHandler(this.ObraSocialAMFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

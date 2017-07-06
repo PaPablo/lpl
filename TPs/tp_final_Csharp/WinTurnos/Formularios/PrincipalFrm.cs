@@ -104,7 +104,46 @@ namespace WinTurnos.Formularios
         private void listadoToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             new TurnoBusqFrm().Show();
+        }
 
+        private void altaToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new EspecialidadAMFrm().NewEspecialidad();
+        }
+
+        private void modificacionToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new EspecialidadIngresoFrm().ShowDialog();
+        }
+
+        private void listadoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new EspecialidadBusqFrm().ShowDialog();
+        }
+
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new PacienteAyudaFrm().ShowDialog();
+        }
+
+        private void ayudaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new ProfesionalAyudaFrm().ShowDialog();
+        }
+
+        private void ayudaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new ObraSocialAyudaFrm().ShowDialog();
+        }
+
+        private void ayudaToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new EspecialidadAyudaFrm().ShowDialog();
+        }
+
+        private void ayudaToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            new TurnosAyudaFrm().ShowDialog();
         }
     }
 }

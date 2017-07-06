@@ -31,9 +31,9 @@
             this.AceptarBtn = new System.Windows.Forms.Button();
             this.CancelarBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.CodigoTxt = new System.Windows.Forms.TextBox();
             this.PacientesChk = new System.Windows.Forms.CheckBox();
             this.ModificarChk = new System.Windows.Forms.CheckBox();
+            this.CodigoTxt = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // AceptarBtn
@@ -64,13 +64,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Código";
             // 
-            // CodigoTxt
-            // 
-            this.CodigoTxt.Location = new System.Drawing.Point(106, 22);
-            this.CodigoTxt.Name = "CodigoTxt";
-            this.CodigoTxt.Size = new System.Drawing.Size(100, 20);
-            this.CodigoTxt.TabIndex = 3;
-            // 
             // PacientesChk
             // 
             this.PacientesChk.AutoSize = true;
@@ -93,19 +86,27 @@
             this.ModificarChk.UseVisualStyleBackColor = true;
             this.ModificarChk.CheckedChanged += new System.EventHandler(this.ModificarChk_CheckedChanged);
             // 
+            // CodigoTxt
+            // 
+            this.CodigoTxt.Location = new System.Drawing.Point(95, 22);
+            this.CodigoTxt.Mask = "999";
+            this.CodigoTxt.Name = "CodigoTxt";
+            this.CodigoTxt.Size = new System.Drawing.Size(100, 20);
+            this.CodigoTxt.TabIndex = 6;
+            // 
             // ObraSocialIngresoFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(250, 185);
+            this.Controls.Add(this.CodigoTxt);
             this.Controls.Add(this.ModificarChk);
             this.Controls.Add(this.PacientesChk);
-            this.Controls.Add(this.CodigoTxt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CancelarBtn);
             this.Controls.Add(this.AceptarBtn);
             this.Name = "ObraSocialIngresoFrm";
-            this.Text = "ObraSocialIngresoFrm";
+            this.Text = "Ingreso de obra social";
             this.Load += new System.EventHandler(this.ObraSocialIngresoFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -117,8 +118,8 @@
         private System.Windows.Forms.Button AceptarBtn;
         private System.Windows.Forms.Button CancelarBtn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox CodigoTxt;
         private System.Windows.Forms.CheckBox PacientesChk;
         private System.Windows.Forms.CheckBox ModificarChk;
+        private System.Windows.Forms.MaskedTextBox CodigoTxt;
     }
 }

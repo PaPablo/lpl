@@ -34,6 +34,7 @@
             this.nombrePaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.matriculaProfesional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreProf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fechahora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.asistioChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.editarTurno = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.turnosGrid)).BeginInit();
@@ -41,7 +42,7 @@
             // 
             // CerrarBtn
             // 
-            this.CerrarBtn.Location = new System.Drawing.Point(573, 308);
+            this.CerrarBtn.Location = new System.Drawing.Point(845, 321);
             this.CerrarBtn.Name = "CerrarBtn";
             this.CerrarBtn.Size = new System.Drawing.Size(83, 31);
             this.CerrarBtn.TabIndex = 0;
@@ -57,11 +58,12 @@
             this.nombrePaciente,
             this.matriculaProfesional,
             this.nombreProf,
+            this.Fechahora,
             this.asistioChk,
             this.editarTurno});
             this.turnosGrid.Location = new System.Drawing.Point(12, 12);
             this.turnosGrid.Name = "turnosGrid";
-            this.turnosGrid.Size = new System.Drawing.Size(644, 275);
+            this.turnosGrid.Size = new System.Drawing.Size(916, 279);
             this.turnosGrid.TabIndex = 1;
             this.turnosGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.turnosGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.turnosGrid_DataBindingComplete);
@@ -79,6 +81,7 @@
             this.nombrePaciente.HeaderText = "Nombre del Paciente";
             this.nombrePaciente.Name = "nombrePaciente";
             this.nombrePaciente.ReadOnly = true;
+            this.nombrePaciente.Width = 200;
             // 
             // matriculaProfesional
             // 
@@ -86,6 +89,7 @@
             this.matriculaProfesional.HeaderText = "Matricula";
             this.matriculaProfesional.Name = "matriculaProfesional";
             this.matriculaProfesional.ReadOnly = true;
+            this.matriculaProfesional.Width = 60;
             // 
             // nombreProf
             // 
@@ -93,6 +97,13 @@
             this.nombreProf.HeaderText = "Nombre del Profesional";
             this.nombreProf.Name = "nombreProf";
             this.nombreProf.ReadOnly = true;
+            this.nombreProf.Width = 200;
+            // 
+            // Fechahora
+            // 
+            this.Fechahora.HeaderText = "Fecha y hora";
+            this.Fechahora.Name = "Fechahora";
+            this.Fechahora.Width = 150;
             // 
             // asistioChk
             // 
@@ -102,6 +113,7 @@
             this.asistioChk.ReadOnly = true;
             this.asistioChk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.asistioChk.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.asistioChk.Width = 60;
             // 
             // editarTurno
             // 
@@ -116,11 +128,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 361);
+            this.ClientSize = new System.Drawing.Size(946, 377);
             this.Controls.Add(this.turnosGrid);
             this.Controls.Add(this.CerrarBtn);
             this.Name = "TurnoResultsFrm";
-            this.Text = "TurnoResultsFrm";
+            this.Text = "Resultados de turnos";
             this.Load += new System.EventHandler(this.TurnoResultsFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.turnosGrid)).EndInit();
             this.ResumeLayout(false);
@@ -135,6 +147,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombrePaciente;
         private System.Windows.Forms.DataGridViewTextBoxColumn matriculaProfesional;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreProf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fechahora;
         private System.Windows.Forms.DataGridViewCheckBoxColumn asistioChk;
         private System.Windows.Forms.DataGridViewButtonColumn editarTurno;
     }

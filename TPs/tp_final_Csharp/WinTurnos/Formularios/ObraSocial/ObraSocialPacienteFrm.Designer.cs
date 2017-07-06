@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.GridPacienteObraSocial = new System.Windows.Forms.DataGridView();
+            this.DniPacienteGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombrePacienteGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CerrarBtn = new System.Windows.Forms.Button();
             this.codigoObraSocialLbl = new System.Windows.Forms.Label();
             this.NombreObraSocialLbl = new System.Windows.Forms.Label();
             this.NombreObraSocial = new System.Windows.Forms.TextBox();
             this.CodigoObraSocial = new System.Windows.Forms.TextBox();
-            this.DniPacienteGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombrePacienteGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GridPacienteObraSocial)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +50,17 @@
             this.GridPacienteObraSocial.Size = new System.Drawing.Size(394, 209);
             this.GridPacienteObraSocial.TabIndex = 0;
             this.GridPacienteObraSocial.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.GridPacienteObraSocial_DataBindingComplete);
+            // 
+            // DniPacienteGrid
+            // 
+            this.DniPacienteGrid.HeaderText = "DNI";
+            this.DniPacienteGrid.Name = "DniPacienteGrid";
+            // 
+            // NombrePacienteGrid
+            // 
+            this.NombrePacienteGrid.HeaderText = "Nombre";
+            this.NombrePacienteGrid.Name = "NombrePacienteGrid";
+            this.NombrePacienteGrid.Width = 250;
             // 
             // CerrarBtn
             // 
@@ -96,17 +107,6 @@
             this.CodigoObraSocial.Size = new System.Drawing.Size(120, 20);
             this.CodigoObraSocial.TabIndex = 7;
             // 
-            // DniPacienteGrid
-            // 
-            this.DniPacienteGrid.HeaderText = "DNI";
-            this.DniPacienteGrid.Name = "DniPacienteGrid";
-            // 
-            // NombrePacienteGrid
-            // 
-            this.NombrePacienteGrid.HeaderText = "Nombre";
-            this.NombrePacienteGrid.Name = "NombrePacienteGrid";
-            this.NombrePacienteGrid.Width = 250;
-            // 
             // ObraSocialPacienteFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,7 +119,7 @@
             this.Controls.Add(this.CerrarBtn);
             this.Controls.Add(this.GridPacienteObraSocial);
             this.Name = "ObraSocialPacienteFrm";
-            this.Text = "ObraSocialPacienteFrm";
+            this.Text = "Pacientes por obra social";
             this.Load += new System.EventHandler(this.ObraSocialPacienteFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GridPacienteObraSocial)).EndInit();
             this.ResumeLayout(false);

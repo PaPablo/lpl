@@ -33,10 +33,12 @@ namespace WinTurnos.Formularios
             }
         }
             
-        public void ResultadosTurno(int dnipaciente=-1, string matricula=null)
+        public void ResultadosTurno(int dnipaciente=-1, string matricula=null, DateTime fecha=default(DateTime))
         {
             this.turnosGrid.AutoGenerateColumns = false;
             List<Turno> lista;
+            string fechaSql = fecha == DateTime.Today? "" : String.Format("and fechahora = '{0}'", 
+                fecha.ToString("yyyy-MM-dd HH:mm:ss"));
             if (dnipaciente == -1 && matricula == null)
             {
                 /*
@@ -49,18 +51,18 @@ namespace WinTurnos.Formularios
             }
             else if (matricula != null && dnipaciente == -1)
             {
-                Profesional prof = ManagerDB<Profesional>.findbyKey(matricula);
-                lista = ManagerDB<Turno>.findAll(String.Format("codigoprofesional={0}", prof.Id));
+                List<Profesional> prof = ManagerDB<Profesional>.findAll(String.Format("matricula = '{0}'", matricula));
+                lista = prof == null ? null : ManagerDB<Turno>.findAll(String.Format("codigoprofesional={0} {1}", prof[0].Id,
+                fechaSql));
             }
             else if (matricula == null && dnipaciente != -1)
             {
-                lista = ManagerDB<Turno>.findAll(String.Format("dnipaciente={0}", dnipaciente));
+                lista = ManagerDB<Turno>.findAll(String.Format("dnipaciente={0} {1}", dnipaciente, fechaSql));
             }
             else 
             {
-                Profesional prof = ManagerDB<Profesional>.findbyKey(matricula);
-                lista = ManagerDB<Turno>.findAll(String.Format
-                    ("codigoprofesional={0} and dnipaciente={1}", matricula, dnipaciente));
+                List<Profesional> prof = ManagerDB<Profesional>.findAll(String.Format("matricula = '{0}'", matricula));
+                lista = prof == null ? null : ManagerDB<Turno>.findAll(String.Format("codigoprofesional={0} and dnipaciente={1} {2}", prof[0].Id, dnipaciente, fechaSql));
             }
 
             if (lista == null)
@@ -89,9 +91,10 @@ namespace WinTurnos.Formularios
                     turno.PacienteObj.Nombres); 
                 row.Cells[2].Value = turno.ProfesionalObj.Matricula;
                 row.Cells[3].Value = String.Format("{0}, {1}", turno.ProfesionalObj.Apellido.ToUpper(),
-                    turno.ProfesionalObj.Nombres); 
-                row.Cells[4].Value = turno.Asistio;
-                row.Cells[5].Value = "Editar";
+                    turno.ProfesionalObj.Nombres);
+                row.Cells[4].Value = turno.FechaHora;
+                row.Cells[5].Value = turno.Asistio;
+                row.Cells[6].Value = "Editar";
             }
         }
 

@@ -122,3 +122,13 @@ C:\Users\Administrador\github\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\Wi
 C:\Users\Administrador\github\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.TurnoBusqFrm.resources
 C:\Users\Administrador\github\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.TurnoResultsFrm.resources
 C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.TurnoResultsFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.EspecialidadAMFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.EspecialidadIngresoFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.EspecialidadProfFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.PacienteAyudaFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.ProfesionalAyudaFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.ObraSocialAyudaFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.EspecialidadAyudaFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.TurnosAyudaFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.EspecialidadBusqFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.EspecialidadResultsFrm.resources

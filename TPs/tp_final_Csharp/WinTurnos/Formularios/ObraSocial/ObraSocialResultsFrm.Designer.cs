@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.gridObrasSociales = new System.Windows.Forms.DataGridView();
-            this.CerrarBtn = new System.Windows.Forms.Button();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CerrarBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridObrasSociales)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,16 +48,6 @@
             this.gridObrasSociales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridObraSocial_CellContentClick);
             this.gridObrasSociales.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridObraSocial_DataBindingComplete);
             // 
-            // CerrarBtn
-            // 
-            this.CerrarBtn.Location = new System.Drawing.Point(273, 355);
-            this.CerrarBtn.Name = "CerrarBtn";
-            this.CerrarBtn.Size = new System.Drawing.Size(84, 27);
-            this.CerrarBtn.TabIndex = 14;
-            this.CerrarBtn.Text = "Cerrar";
-            this.CerrarBtn.UseVisualStyleBackColor = true;
-            this.CerrarBtn.Click += new System.EventHandler(this.CerrarBtn_Click);
-            // 
             // Codigo
             // 
             this.Codigo.DataPropertyName = "Codigo";
@@ -70,6 +60,16 @@
             this.Nombre.Name = "Nombre";
             this.Nombre.Width = 200;
             // 
+            // CerrarBtn
+            // 
+            this.CerrarBtn.Location = new System.Drawing.Point(273, 355);
+            this.CerrarBtn.Name = "CerrarBtn";
+            this.CerrarBtn.Size = new System.Drawing.Size(84, 27);
+            this.CerrarBtn.TabIndex = 14;
+            this.CerrarBtn.Text = "Cerrar";
+            this.CerrarBtn.UseVisualStyleBackColor = true;
+            this.CerrarBtn.Click += new System.EventHandler(this.CerrarBtn_Click);
+            // 
             // ObraSocialResultsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -81,7 +81,7 @@
             this.MinimizeBox = false;
             this.Name = "ObraSocialResultsFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = ":w";
+            this.Text = "Resultados de obras sociales";
             this.Load += new System.EventHandler(this.ObraSocialFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridObrasSociales)).EndInit();
             this.ResumeLayout(false);

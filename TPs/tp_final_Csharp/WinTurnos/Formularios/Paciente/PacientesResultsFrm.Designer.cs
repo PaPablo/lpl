@@ -30,10 +30,11 @@
         {
             this.gridPacientes = new System.Windows.Forms.DataGridView();
             this.CerrarBtn = new System.Windows.Forms.Button();
-            this.Edicion = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni_pac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edicion = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridPacientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,13 +42,14 @@
             // 
             this.gridPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPacientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dni_pac,
             this.NombreApellido,
             this.Domicilio,
             this.Telefono,
             this.Edicion});
             this.gridPacientes.Location = new System.Drawing.Point(2, 12);
             this.gridPacientes.Name = "gridPacientes";
-            this.gridPacientes.Size = new System.Drawing.Size(625, 316);
+            this.gridPacientes.Size = new System.Drawing.Size(645, 316);
             this.gridPacientes.TabIndex = 0;
             this.gridPacientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPacientes_CellContentClick);
             this.gridPacientes.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridPacientes_DataBindingComplete);
@@ -62,18 +64,16 @@
             this.CerrarBtn.UseVisualStyleBackColor = true;
             this.CerrarBtn.Click += new System.EventHandler(this.CerrarBtn_Click);
             // 
-            // Edicion
+            // dni_pac
             // 
-            this.Edicion.HeaderText = "Editar";
-            this.Edicion.Name = "Edicion";
-            this.Edicion.Text = "Editar";
-            this.Edicion.UseColumnTextForButtonValue = true;
+            this.dni_pac.HeaderText = "DNI";
+            this.dni_pac.Name = "dni_pac";
             // 
-            // Telefono
+            // NombreApellido
             // 
-            this.Telefono.DataPropertyName = "Telefono";
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
+            this.NombreApellido.HeaderText = "Nombre y Apellido";
+            this.NombreApellido.Name = "NombreApellido";
+            this.NombreApellido.Width = 200;
             // 
             // Domicilio
             // 
@@ -81,17 +81,24 @@
             this.Domicilio.HeaderText = "Domicilio";
             this.Domicilio.Name = "Domicilio";
             // 
-            // NombreApellido
+            // Telefono
             // 
-            this.NombreApellido.HeaderText = "Nombre y Apellido";
-            this.NombreApellido.Name = "NombreApellido";
-            this.NombreApellido.Width = 150;
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            // 
+            // Edicion
+            // 
+            this.Edicion.HeaderText = "Editar";
+            this.Edicion.Name = "Edicion";
+            this.Edicion.Text = "Editar";
+            this.Edicion.UseColumnTextForButtonValue = true;
             // 
             // PacientesResultsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 406);
+            this.ClientSize = new System.Drawing.Size(679, 406);
             this.Controls.Add(this.CerrarBtn);
             this.Controls.Add(this.gridPacientes);
             this.MaximizeBox = false;
@@ -110,6 +117,7 @@
         private System.Windows.Forms.DataGridView gridPacientes;
         private System.Windows.Forms.Button CerrarBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni_pac;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Domicilio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;

@@ -17,7 +17,7 @@ namespace LibTurnos.db
             get { return _nombre; }
             set
             {
-                if (value == "")
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     if(this.Validar != null)
                     {

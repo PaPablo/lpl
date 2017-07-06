@@ -134,7 +134,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Name = "TurnoAMFrm";
-            this.Text = "TurnoAMFrm";
+            this.Text = "Turno";
             this.ResumeLayout(false);
             this.PerformLayout();
 

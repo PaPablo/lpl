@@ -15,6 +15,7 @@ namespace WinTurnos.Formularios
         public ObraSocialBusqFrm()
         {
             InitializeComponent();
+            this.CodigoChk.Checked = true;
         }
 
         private void CodigoChk_CheckedChanged(object sender, EventArgs e)
@@ -57,9 +58,9 @@ namespace WinTurnos.Formularios
                     MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 return;
             }
-            if (!ListarTodoChk.Checked && this.CodigoChk.Checked)
+            if (!ListarTodoChk.Checked && this.CodigoChk.Checked && !string.IsNullOrWhiteSpace(this.CodigoTxt.Text))
                 codigo = Convert.ToInt32(this.CodigoTxt.Text);
-            if (!ListarTodoChk.Checked && this.NombreChk.Checked)
+            if (!ListarTodoChk.Checked && this.NombreChk.Checked && !string.IsNullOrWhiteSpace(this.NombreTxt.Text))
                 nombre = this.NombreTxt.Text;
             osfrm = new ObraSocialResultsFrm();
             Cursor.Current = Cursors.WaitCursor;

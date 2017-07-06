@@ -136,7 +136,7 @@
             this.MinimizeBox = false;
             this.Name = "ProfesionalBusqFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Busqueda de paciente";
+            this.Text = "Busqueda de profesional";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

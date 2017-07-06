@@ -29,14 +29,56 @@ namespace LibTurnos.db
         public int DniPaciente
         {
             get { return _dnipaciente; }
-            set { _dnipaciente = value; }
+            set {
+                try
+                {
+                    if ((Paciente)ManagerDB<Paciente>.findbyKey(value) == null)
+                    {
+                        if (this.Validar != null)
+                        {
+                            this.Validar(this, String.Format("No existe el paciente con DNI: {0}", value.ToString()));
+                            return;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    this.Validar(this, String.Format("Error al asignar el paciente ({0}) al turno", value.ToString()));
+                    return;
+                }
+                _dnipaciente = value;
+            }
         }
 
 			
         public int CodigoProfesional
         {
             get { return _codigoprofesional; }
-            set { _codigoprofesional = value; }
+            set {
+                try
+                {
+                    Profesional prof = (Profesional)ManagerDB<Profesional>.findbyKey(value);
+                    if (prof == null)
+                    {
+                        if (this.Validar != null)
+                        {
+                            this.Validar(this, String.Format("No existe el profesional con id: {0}", value.ToString()));
+                            return;
+                        }
+                    }
+                    if (!prof.Activo)
+                    {
+                        this.Validar(this, String.Format("El profesional ({0}) no está activo", value));
+                        return;
+                    }
+                }
+                catch (Exception)
+                {
+                    this.Validar(this, String.Format("Error al asignar el profesional ({0}) al turno", value.ToString()));
+                    return;
+                }
+                _codigoprofesional = value;
+            }
         }
 		
 		public bool Asistio

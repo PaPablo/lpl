@@ -11,60 +11,65 @@ using LibTurnos.db;
 
 namespace WinTurnos.Formularios
 {
+    public delegate void Operacion();
     public partial class TurnoAMFrm : Form
     {
-        private delegate void Operacion();
         private Operacion op;
+        private Turno turno;
+
         public TurnoAMFrm()
         {
             InitializeComponent();
+            this.turno = new Turno();
+            this.turno.Validar += new CommonObj.ValidacionIngreso(Validar_turno);
         }
 
         private void ModificarTurno() {
-            Turno t = new Turno();
-            t.FechaHora = this.dateTimePicker1.Value;
-            t.DniPaciente = Convert.ToInt32(this.dniPaciente.Text);
+            Profesional prof;
+            turno.FechaHora = this.dateTimePicker1.Value;
+            turno.DniPaciente = Convert.ToInt32(this.dniPaciente.Text);
 
             try
             {
-                Profesional p = ManagerDB<Profesional>.findAll
+                prof = ManagerDB<Profesional>.findAll
                     (String.Format("matricula = '{0}'",
-                    this.matriculaProfesional))[0];
+                    this.matriculaProfesional.Text))[0];
             }
             catch (NullReferenceException) {
-                MessageBox.Show("Profesional no existe", "ERROR");
+                MessageBox.Show(String.Format("No existe profesional con matrícula {0}", this.matriculaProfesional.Text), "ERROR");
                 return;
             }
 
-            t.Asistio = this.asistioChk.Checked;
+            turno.Asistio = this.asistioChk.Checked;
+            turno.CodigoProfesional = prof.Id;
 
-            if (!t.saveObj()) {
+            if (!turno.saveObj()) {
                 MessageBox.Show("No se pudo modificar el turno", "ERROR");
             }
 
             MessageBox.Show("Turno modificado exitosamente", "Operación exitosa");
             return;
-
         }
         private void CrearTurno() {
-            Turno t = new Turno();
-            t.FechaHora = this.dateTimePicker1.Value;
-            t.DniPaciente = Convert.ToInt32(this.dniPaciente.Text);
+            turno.FechaHora = this.dateTimePicker1.Value;
+            Profesional prof;
+            turno.DniPaciente = Convert.ToInt32(this.dniPaciente.Text);
 
             try
             {
-                Profesional p = ManagerDB<Profesional>.findAll
-                    (String.Format("matricula = '{}'",
-                    this.matriculaProfesional))[0];
+               prof = ManagerDB<Profesional>.findAll
+                    (String.Format("matricula = '{0}'",
+                    this.matriculaProfesional.Text))[0];
             }
             catch (NullReferenceException) {
                 MessageBox.Show("Profesional no existe", "ERROR");
                 return;
             }
 
-            t.Asistio = false;
+            turno.Asistio = false;
+            turno.CodigoProfesional = prof.Id;
 
-            if (!t.saveObj()) {
+            if (!turno.saveObj()) {
                 MessageBox.Show("No se pudo agregar el nuevo turno", "ERROR");
             }
 
@@ -91,7 +96,19 @@ namespace WinTurnos.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.op();
+            if (string.IsNullOrWhiteSpace(this.dniPaciente.Text) || string.IsNullOrWhiteSpace(this.matriculaProfesional.Text))
+            {
+                MessageBox.Show("Faltan datos del turno", "ERROR");
+                return;
+            }
+            try
+            {
+                this.op();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             this.Dispose();
         }
 
@@ -99,6 +116,11 @@ namespace WinTurnos.Formularios
         {
             this.Dispose();
         }
+
+        private void Validar_turno(object sender, string msg) {
+            throw new Exception(msg);
+        }
+
     }
 
 

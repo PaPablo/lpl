@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CodigoTxt = new System.Windows.Forms.MaskedTextBox();
             this.ListarTodoChk = new System.Windows.Forms.CheckBox();
             this.NombreTxt = new System.Windows.Forms.TextBox();
             this.NombreChk = new System.Windows.Forms.CheckBox();
             this.CodigoChk = new System.Windows.Forms.CheckBox();
             this.AceptarBtn = new System.Windows.Forms.Button();
             this.CancelarBtn = new System.Windows.Forms.Button();
-            this.CodigoTxt = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Criterios";
+            // 
+            // CodigoTxt
+            // 
+            this.CodigoTxt.Location = new System.Drawing.Point(80, 32);
+            this.CodigoTxt.Mask = "999";
+            this.CodigoTxt.Name = "CodigoTxt";
+            this.CodigoTxt.Size = new System.Drawing.Size(108, 20);
+            this.CodigoTxt.TabIndex = 5;
             // 
             // ListarTodoChk
             // 
@@ -113,14 +121,6 @@
             this.CancelarBtn.Text = "Cancelar";
             this.CancelarBtn.UseVisualStyleBackColor = true;
             // 
-            // CodigoTxt
-            // 
-            this.CodigoTxt.Location = new System.Drawing.Point(80, 32);
-            this.CodigoTxt.Mask = "999";
-            this.CodigoTxt.Name = "CodigoTxt";
-            this.CodigoTxt.Size = new System.Drawing.Size(108, 20);
-            this.CodigoTxt.TabIndex = 5;
-            // 
             // ObraSocialBusqFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,7 +130,7 @@
             this.Controls.Add(this.AceptarBtn);
             this.Controls.Add(this.groupBox1);
             this.Name = "ObraSocialBusqFrm";
-            this.Text = "ObraSocialBusqFrm";
+            this.Text = "Búsqueda de obra social";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

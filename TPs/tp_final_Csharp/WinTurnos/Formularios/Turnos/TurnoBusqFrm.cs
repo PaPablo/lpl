@@ -62,23 +62,32 @@ namespace WinTurnos.Formularios
         private void button1_Click(object sender, EventArgs e)
         {
             TurnoResultsFrm tfrm;
-            if(!this.todoChk.Checked && !this.dniChk.Checked && ! this.matriculaChk.Checked)
+            if(!this.todoChk.Checked && !this.dniChk.Checked && !this.matriculaChk.Checked && !this.fechaChk.Checked)
             {
                 MessageBox.Show("Tiene que ingresar criterio de busqueda","Faltan criterios",
                 MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 return;
             }
 
-            if (!this.todoChk.Checked && this.matriculaChk.Checked)
+            if (!this.todoChk.Checked && this.matriculaChk.Checked && !string.IsNullOrWhiteSpace(this.matriculaProfesional.Text))
                 matricula = this.matriculaProfesional.Text;
-            if (!this.todoChk.Checked && this.dniChk.Checked)
+            if (!this.todoChk.Checked && this.dniChk.Checked && !string.IsNullOrWhiteSpace(this.dniPaciente.Text))
+            {
                 dni = Convert.ToInt32(this.dniPaciente.Text);
+            }
+            if (!this.todoChk.Checked && this.fechaChk.Checked)
+                fecha = this.dateTimePicker1.Value;
             tfrm = new TurnoResultsFrm();
             Cursor.Current = Cursors.WaitCursor;
             this.Visible = false;
-            tfrm.ResultadosTurno(dni, matricula);
+            tfrm.ResultadosTurno(dni, matricula, fecha);
             this.Dispose(); 
 
+        }
+
+        private void CancelarBtn_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

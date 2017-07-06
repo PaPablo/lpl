@@ -124,6 +124,7 @@
             this.CancelarBtn.TabIndex = 8;
             this.CancelarBtn.Text = "Cancelar";
             this.CancelarBtn.UseVisualStyleBackColor = true;
+            this.CancelarBtn.Click += new System.EventHandler(this.CancelarBtn_Click);
             // 
             // TurnoBusqFrm
             // 
@@ -140,7 +141,7 @@
             this.Controls.Add(this.matriculaChk);
             this.Controls.Add(this.dniChk);
             this.Name = "TurnoBusqFrm";
-            this.Text = "TurnoBusqFrm";
+            this.Text = "Búsqueda de turno";
             this.Load += new System.EventHandler(this.TurnoBusqFrm_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
