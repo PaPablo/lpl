@@ -47,6 +47,7 @@
             this.CerrarBtn.TabIndex = 0;
             this.CerrarBtn.Text = "Cerrar";
             this.CerrarBtn.UseVisualStyleBackColor = true;
+            this.CerrarBtn.Click += new System.EventHandler(this.CerrarBtn_Click);
             // 
             // turnosGrid
             // 
@@ -63,6 +64,7 @@
             this.turnosGrid.Size = new System.Drawing.Size(644, 275);
             this.turnosGrid.TabIndex = 1;
             this.turnosGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.turnosGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.turnosGrid_DataBindingComplete);
             // 
             // dniPaciente
             // 
@@ -97,6 +99,7 @@
             this.asistioChk.DataPropertyName = "asistioChk";
             this.asistioChk.HeaderText = "¿Asistió?";
             this.asistioChk.Name = "asistioChk";
+            this.asistioChk.ReadOnly = true;
             this.asistioChk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.asistioChk.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -107,6 +110,7 @@
             this.editarTurno.Name = "editarTurno";
             this.editarTurno.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.editarTurno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.editarTurno.Text = "Editar";
             // 
             // TurnoResultsFrm
             // 

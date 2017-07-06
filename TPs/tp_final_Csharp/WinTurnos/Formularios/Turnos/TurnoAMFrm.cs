@@ -28,7 +28,7 @@ namespace WinTurnos.Formularios
             try
             {
                 Profesional p = ManagerDB<Profesional>.findAll
-                    (String.Format("matricula = '{}'",
+                    (String.Format("matricula = '{0}'",
                     this.matriculaProfesional))[0];
             }
             catch (NullReferenceException) {

@@ -121,3 +121,4 @@ C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debu
 C:\Users\Administrador\github\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.TurnoAMFrm.resources
 C:\Users\Administrador\github\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.TurnoBusqFrm.resources
 C:\Users\Administrador\github\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.TurnoResultsFrm.resources
+C:\Users\Luciano\Documents\GitHub\lpl\TPs\tp_final_Csharp\WinTurnos\obj\x86\Debug\WinTurnos.Formularios.TurnoResultsFrm.resources

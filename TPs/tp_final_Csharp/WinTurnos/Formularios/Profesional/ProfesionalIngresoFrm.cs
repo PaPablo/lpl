@@ -29,6 +29,8 @@ namespace WinTurnos.Formularios
                 MessageBox.Show("No se encontró nada");
                 return;
             }
+
+            //MessageBox.Show(p[0].ToString());
             if (this.modificarChk.Checked)
             {
                 new ProfesionalAMFrm().ShowProfesional(p[0], new ProfesionalesResultsFrm());

@@ -75,10 +75,6 @@ namespace WinTurnos.Formularios
                 frm.ShowProfesional(grid.Rows[e.RowIndex].DataBoundItem as Profesional,this);
             }
 
-            if (grid.Columns[e.ColumnIndex] is DataGridViewTextBoxColumn)
-            {
-                MessageBox.Show(String.Format("pulsaste la celda {0}, {1}", e.ColumnIndex, e.RowIndex));
-            }
         }
 
         private void gridProfesionales_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

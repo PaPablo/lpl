@@ -107,7 +107,7 @@
             this.MinimizeBox = false;
             this.Name = "ProfesionalesResultsFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Listado de Profesionales";
+            this.Text = "Resultados de profesionales";
             this.Load += new System.EventHandler(this.ProfesionalFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridProfesionales)).EndInit();
             this.ResumeLayout(false);

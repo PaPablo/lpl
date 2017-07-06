@@ -31,11 +31,6 @@ namespace WinTurnos.Formularios
                 TurnoAMFrm frm = new TurnoAMFrm();
                 frm.ShowTurno(grid.Rows[e.RowIndex].DataBoundItem as Turno);
             }
-
-            if (grid.Columns[e.ColumnIndex] is DataGridViewTextBoxColumn)
-            {
-                MessageBox.Show(String.Format("pulsaste la celda {0}, {1}", e.ColumnIndex, e.RowIndex));
-            }
         }
             
         public void ResultadosTurno(int dnipaciente=-1, string matricula=null)
@@ -77,28 +72,32 @@ namespace WinTurnos.Formularios
             this.turnosGrid.DataSource = lista;
             this.ShowDialog();
         }
-        private void gridProfesionales_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            Turno t;
-            Paciente pac;
-            Profesional prof;
-            foreach (DataGridViewRow row in turnosGrid.Rows)
-            {                
-                t = (row.DataBoundItem as Turno);
-                row.Cells[0].Value = t.DniPaciente;
-                pac = ManagerDB<Paciente>.findbyKey(t.DniPaciente);
-                row.Cells[10].Value = String.Format("{0}, {1}", pac.Apellido.ToUpper(), pac.Nombres);
-                prof = ManagerDB<Profesional>.findbyKey(t.CodigoProfesional);
-                row.Cells[2].Value = String.Format("{0}", prof.Matricula);
-                row.Cells[3].Value = String.Format("{0}, {1}", prof.Apellido.ToUpper(), prof.Nombres);
-                row.Cells[4].Value = t.Asistio;
-            }
-        }
 
         public void ReloadGrid()
         {
             this.turnosGrid.Refresh();
         }
-        
+
+        private void turnosGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            Turno turno;
+            foreach (DataGridViewRow row in this.turnosGrid.Rows)
+            {                
+                turno = (row.DataBoundItem as Turno);
+                row.Cells[0].Value = turno.DniPaciente;
+                row.Cells[1].Value = String.Format("{0}, {1}", turno.PacienteObj.Apellido.ToUpper(),
+                    turno.PacienteObj.Nombres); 
+                row.Cells[2].Value = turno.ProfesionalObj.Matricula;
+                row.Cells[3].Value = String.Format("{0}, {1}", turno.ProfesionalObj.Apellido.ToUpper(),
+                    turno.ProfesionalObj.Nombres); 
+                row.Cells[4].Value = turno.Asistio;
+                row.Cells[5].Value = "Editar";
+            }
+        }
+
+        private void CerrarBtn_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

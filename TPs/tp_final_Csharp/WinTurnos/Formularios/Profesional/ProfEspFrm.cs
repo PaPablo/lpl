@@ -41,6 +41,9 @@ namespace WinTurnos.Formularios {
             List<ProfesionalEspecialidad> listaProfEsp = ManagerDB<ProfesionalEspecialidad>.findAll(
                 String.Format("codigoprofesional = {0}", p.Id));
 
+            if (listaProfEsp == null) {
+                return;
+            }
             listaProfEsp.Sort((pe1, pe2) => pe1.CodigoEspecialidad.CompareTo(pe2.CodigoEspecialidad));
             this.gridEspecialidades.DataSource = listaProfEsp;
 

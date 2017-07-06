@@ -78,7 +78,8 @@ namespace LibTurnos.db
             {
                 string vvalues = String.Join(",", this.list_values());
                 string sqliu = (this.IsNew ? "insert into {0} ({1}) values ({2})" : "update  {0} set {1} where {2}");
-                return String.Format(sqliu, this.TableName, (this.IsNew ? String.Join(",", _columns).Replace("id,","") : vvalues), (this.IsNew ? vvalues : String.Format("id = {0}", this.Id)));
+                return String.Format(sqliu, this.TableName, (this.IsNew ? String.Join(",", _columns).Replace("id,","") :
+                    vvalues), (this.IsNew ? vvalues : String.Format("id = {0}", this.Id)));
             }
         }
 
