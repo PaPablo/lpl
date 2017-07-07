@@ -14,6 +14,7 @@ namespace WinTurnos.Formularios
         public ObraSocialAyudaFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
     }
 }

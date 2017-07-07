@@ -15,6 +15,7 @@ namespace WinTurnos.Formularios
         public PacienteTurnosFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private Paciente pac;
@@ -52,6 +53,11 @@ namespace WinTurnos.Formularios
                 row.Cells[2].Value = turno.ProfesionalObj.Matricula;
                 row.Cells[3].Value = turno.Asistio ? "SÍ" : "NO";
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

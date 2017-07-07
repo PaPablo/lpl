@@ -16,6 +16,7 @@ namespace WinTurnos.Formularios
         public PrincipalFrm()
         {            
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void PrincipalFrm_Load(object sender, EventArgs e)

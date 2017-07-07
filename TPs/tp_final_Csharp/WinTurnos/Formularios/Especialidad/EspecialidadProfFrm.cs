@@ -16,6 +16,7 @@ namespace WinTurnos.Formularios
         public EspecialidadProfFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         public void VerProfesionales(Especialidad esp)
@@ -49,6 +50,11 @@ namespace WinTurnos.Formularios
                 row.Cells[4].Value = pe.Observaciones;
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

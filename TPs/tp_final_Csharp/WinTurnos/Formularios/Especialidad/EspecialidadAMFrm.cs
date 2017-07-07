@@ -20,6 +20,7 @@ namespace WinTurnos.Formularios
             InitializeComponent();
             this.esp = new Especialidad();
             this.esp.Validar += new CommonObj.ValidacionIngreso(Validar_especialidad);
+            this.CenterToScreen();
         }
 
         public void NewEspecialidad() {

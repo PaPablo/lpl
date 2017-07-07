@@ -14,6 +14,7 @@ namespace WinTurnos.Formularios
         public ProfesionalBusqFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void DniChk_CheckedChanged(object sender, EventArgs e)

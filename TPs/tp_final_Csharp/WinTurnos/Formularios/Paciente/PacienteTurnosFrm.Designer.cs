@@ -37,6 +37,7 @@
             this.nombrePaciente = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dniPaciente = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridTurnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,9 +49,9 @@
             this.Profesional,
             this.Matricula,
             this.Asistio});
-            this.gridTurnos.Location = new System.Drawing.Point(3, 64);
+            this.gridTurnos.Location = new System.Drawing.Point(12, 73);
             this.gridTurnos.Name = "gridTurnos";
-            this.gridTurnos.Size = new System.Drawing.Size(656, 357);
+            this.gridTurnos.Size = new System.Drawing.Size(658, 294);
             this.gridTurnos.TabIndex = 0;
             this.gridTurnos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.gridTurnos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
@@ -111,11 +112,22 @@
             this.dniPaciente.Size = new System.Drawing.Size(120, 20);
             this.dniPaciente.TabIndex = 4;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(595, 399);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // PacienteTurnosFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 433);
+            this.ClientSize = new System.Drawing.Size(690, 443);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dniPaciente);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nombrePaciente);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Profesional;
         private System.Windows.Forms.DataGridViewTextBoxColumn Matricula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Asistio;
+        private System.Windows.Forms.Button button1;
     }
 }

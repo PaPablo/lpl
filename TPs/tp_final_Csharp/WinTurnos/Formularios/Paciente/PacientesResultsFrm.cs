@@ -15,6 +15,7 @@ namespace WinTurnos.Formularios
         public PacientesResultsFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         public void ResultadosPaciente(int dni=-1, string apellido=null)

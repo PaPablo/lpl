@@ -16,6 +16,7 @@ namespace WinTurnos.Formularios
         {
             InitializeComponent();
             this.CodigoChk.Checked = true;
+            this.CenterToScreen();
         }
 
         private void CodigoChk_CheckedChanged(object sender, EventArgs e)
@@ -67,6 +68,11 @@ namespace WinTurnos.Formularios
             this.Visible = false;
             osfrm.ResultadosObraSocial(codigo, nombre);
             this.Dispose(); 
+        }
+
+        private void CancelarBtn_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

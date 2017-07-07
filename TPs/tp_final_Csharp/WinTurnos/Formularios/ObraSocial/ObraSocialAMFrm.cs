@@ -21,6 +21,7 @@ namespace WinTurnos.Formularios
         public ObraSocialAMFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -87,6 +88,11 @@ namespace WinTurnos.Formularios
         private void ObraSocialAMFrm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void CancelarBtn_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 

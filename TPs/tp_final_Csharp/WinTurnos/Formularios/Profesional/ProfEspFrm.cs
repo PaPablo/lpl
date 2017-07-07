@@ -16,6 +16,7 @@ namespace WinTurnos.Formularios {
         public ProfEspFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         public void MostrarEspecialidades(Profesional p) {

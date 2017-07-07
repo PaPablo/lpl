@@ -15,6 +15,7 @@ namespace WinTurnos.Formularios
         public ModProfEspFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private ProfesionalEspecialidad profesp;

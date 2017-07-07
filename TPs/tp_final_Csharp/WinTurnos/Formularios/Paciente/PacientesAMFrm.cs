@@ -18,6 +18,7 @@ namespace WinTurnos.Formularios
         public PacientesAMFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
         public void ShowPaciente(Paciente paciente, IFormGridReload frmGrid)
         {

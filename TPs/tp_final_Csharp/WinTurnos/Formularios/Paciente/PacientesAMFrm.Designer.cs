@@ -164,7 +164,7 @@
             this.MinimizeBox = false;
             this.Name = "PacientesAMFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Formulario de Paciente";
+            this.Text = "Paciente";
             this.Load += new System.EventHandler(this.PacientesAMFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

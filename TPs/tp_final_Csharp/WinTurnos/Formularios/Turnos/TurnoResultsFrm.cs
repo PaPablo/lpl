@@ -12,9 +12,16 @@ namespace WinTurnos.Formularios
 {
     public partial class TurnoResultsFrm : Form
     {
+
+        private int dnipaciente;
+        private string matricula;
+        private DateTime fecha;
+        private List<Turno> lista;
+
         public TurnoResultsFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void TurnoResultsFrm_Load(object sender, EventArgs e)
@@ -30,13 +37,13 @@ namespace WinTurnos.Formularios
             {
                 TurnoAMFrm frm = new TurnoAMFrm();
                 frm.ShowTurno(grid.Rows[e.RowIndex].DataBoundItem as Turno);
+                this.RefrescarGrid(this.dnipaciente, this.matricula, this.fecha);
             }
+
         }
-            
-        public void ResultadosTurno(int dnipaciente=-1, string matricula=null, DateTime fecha=default(DateTime))
+
+        private void RefrescarGrid(int dnipaciente, string matricula, DateTime fecha)
         {
-            this.turnosGrid.AutoGenerateColumns = false;
-            List<Turno> lista;
             string fechaSql = fecha == DateTime.Today? "" : String.Format("and fechahora = '{0}'", 
                 fecha.ToString("yyyy-MM-dd HH:mm:ss"));
             if (dnipaciente == -1 && matricula == null)
@@ -65,13 +72,22 @@ namespace WinTurnos.Formularios
                 lista = prof == null ? null : ManagerDB<Turno>.findAll(String.Format("codigoprofesional={0} and dnipaciente={1} {2}", prof[0].Id, dnipaciente, fechaSql));
             }
 
+
+            this.turnosGrid.DataSource = lista;
+        }
+            
+        public void ResultadosTurno(int dnipaciente=-1, string matricula=null, DateTime fecha=default(DateTime))
+        {
+            this.dnipaciente = dnipaciente;
+            this.matricula = matricula;
+            this.fecha = fecha;
+            this.turnosGrid.AutoGenerateColumns = false;
+            this.RefrescarGrid(dnipaciente, matricula, fecha);
             if (lista == null)
             {
                 MessageBox.Show("No se encontró nada");
                 return;
             }
-
-            this.turnosGrid.DataSource = lista;
             this.ShowDialog();
         }
 

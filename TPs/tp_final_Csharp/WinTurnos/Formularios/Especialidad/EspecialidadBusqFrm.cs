@@ -16,6 +16,7 @@ namespace WinTurnos.Formularios
             InitializeComponent();
             this.codigoChk.Checked = true;
             this.nombreTxt.Enabled = false;
+            this.CenterToScreen();
         }
 
         private void codigoChk_CheckedChanged(object sender, EventArgs e)

@@ -14,6 +14,7 @@ namespace WinTurnos.Formularios
         public EspecialidadAyudaFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
     }
 }

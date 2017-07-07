@@ -15,6 +15,7 @@ namespace WinTurnos.Formularios
         public ObraSocialResultsFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         public void ResultadosObraSocial(int codigo=-1, string nombre=null)

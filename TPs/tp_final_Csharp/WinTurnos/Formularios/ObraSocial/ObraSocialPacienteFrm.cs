@@ -15,6 +15,7 @@ namespace WinTurnos.Formularios
         public ObraSocialPacienteFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void CerrarBtn_Click(object sender, EventArgs e)

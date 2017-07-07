@@ -17,6 +17,7 @@ namespace WinTurnos.Formularios
             InitializeComponent();
             this.modificarChk.Checked = true;
             this.profChk.Checked = false;
+            this.CenterToScreen();
         }
 
 

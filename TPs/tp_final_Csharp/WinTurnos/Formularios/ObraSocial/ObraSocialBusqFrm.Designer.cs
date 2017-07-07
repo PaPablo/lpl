@@ -120,6 +120,7 @@
             this.CancelarBtn.TabIndex = 2;
             this.CancelarBtn.Text = "Cancelar";
             this.CancelarBtn.UseVisualStyleBackColor = true;
+            this.CancelarBtn.Click += new System.EventHandler(this.CancelarBtn_Click);
             // 
             // ObraSocialBusqFrm
             // 

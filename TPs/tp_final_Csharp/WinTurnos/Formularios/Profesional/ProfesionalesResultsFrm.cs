@@ -15,6 +15,7 @@ namespace WinTurnos.Formularios
         public ProfesionalesResultsFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         public void ResultadosProfesional(string matricula=null, string apellido=null)

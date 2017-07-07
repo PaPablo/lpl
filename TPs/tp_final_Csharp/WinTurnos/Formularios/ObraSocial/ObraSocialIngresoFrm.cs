@@ -65,6 +65,11 @@ namespace WinTurnos.Formularios
 
         }
 
+        private void CancelarBtn_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         /*private void button1_Click(object sender, EventArgs e)
         {
 

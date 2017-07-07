@@ -20,31 +20,15 @@ namespace WinTurnos.Formularios
         public TurnoAMFrm()
         {
             InitializeComponent();
-            this.turno = new Turno();
-            this.turno.Validar += new CommonObj.ValidacionIngreso(Validar_turno);
+            this.CenterToScreen();
         }
 
         private void ModificarTurno() {
-            Profesional prof;
-            turno.FechaHora = this.dateTimePicker1.Value;
-            turno.DniPaciente = Convert.ToInt32(this.dniPaciente.Text);
+            this.turno.Asistio = this.asistioChk.Checked;
 
-            try
-            {
-                prof = ManagerDB<Profesional>.findAll
-                    (String.Format("matricula = '{0}'",
-                    this.matriculaProfesional.Text))[0];
-            }
-            catch (NullReferenceException) {
-                MessageBox.Show(String.Format("No existe profesional con matrícula {0}", this.matriculaProfesional.Text), "ERROR");
-                return;
-            }
-
-            turno.Asistio = this.asistioChk.Checked;
-            turno.CodigoProfesional = prof.Id;
-
-            if (!turno.saveObj()) {
+            if (!this.turno.saveObj()) {
                 MessageBox.Show("No se pudo modificar el turno", "ERROR");
+                return;
             }
 
             MessageBox.Show("Turno modificado exitosamente", "Operación exitosa");
@@ -79,6 +63,8 @@ namespace WinTurnos.Formularios
 
         public void NewTurno()
         {
+            this.turno = new Turno();
+            this.turno.Validar += new CommonObj.ValidacionIngreso(Validar_turno);
             this.asistioChk.Enabled = false;
             this.op = CrearTurno;
             this.ShowDialog();
@@ -86,17 +72,23 @@ namespace WinTurnos.Formularios
 
         public void ShowTurno(Turno turno)
         {
-            this.dateTimePicker1.Value = turno.FechaHora;
-            this.dniPaciente.Text = turno.DniPaciente.ToString();
-            this.matriculaProfesional.Text = turno.ProfesionalObj.Matricula;
-            this.asistioChk.Checked = turno.Asistio;
+            this.turno = turno;
+            this.turno.Validar += new CommonObj.ValidacionIngreso(Validar_turno);
+            this.dateTimePicker1.Value = this.turno.FechaHora;
+            this.dateTimePicker1.Enabled = false;
+            this.dniPaciente.Text = this.turno.DniPaciente.ToString();
+            this.dniPaciente.Enabled = false;
+            this.matriculaProfesional.Text = this.turno.ProfesionalObj.Matricula;
+            this.matriculaProfesional.Enabled = false;
+            this.asistioChk.Checked = this.turno.Asistio;
             this.op = ModificarTurno;
             this.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(this.dniPaciente.Text) || string.IsNullOrWhiteSpace(this.matriculaProfesional.Text))
+            if (string.IsNullOrWhiteSpace(this.dniPaciente.Text) ||
+                string.IsNullOrWhiteSpace(this.matriculaProfesional.Text))
             {
                 MessageBox.Show("Faltan datos del turno", "ERROR");
                 return;

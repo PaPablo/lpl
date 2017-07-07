@@ -19,6 +19,7 @@ namespace WinTurnos.Formularios
         public TurnoBusqFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
 

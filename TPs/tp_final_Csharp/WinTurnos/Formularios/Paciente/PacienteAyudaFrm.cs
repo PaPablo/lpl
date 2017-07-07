@@ -14,6 +14,7 @@ namespace WinTurnos.Formularios
         public PacienteAyudaFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
     }
 }

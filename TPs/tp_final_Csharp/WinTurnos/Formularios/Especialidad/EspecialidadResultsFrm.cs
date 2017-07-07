@@ -15,6 +15,7 @@ namespace WinTurnos.Formularios
         public EspecialidadResultsFrm()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         public void ResultadosEspecialidades(int codigo = -1, string nombre = null)
